@@ -20,7 +20,7 @@ public class Player2D : MonoBehaviour
 
 	private Rigidbody2D rb;
 	private BoxCollider2D boxCollider;
-	private Animator anim;
+	//private Animator anim;
 	//private float wallJumpCooldown;
 	private float horizontalInput;
 
@@ -29,7 +29,7 @@ public class Player2D : MonoBehaviour
     {
 		rb = GetComponent<Rigidbody2D>();
 		boxCollider = GetComponent<BoxCollider2D>();
-		anim = GetComponent<Animator>();
+		//anim = GetComponent<Animator>();
 	}
 
 	// Update is called once per frame
@@ -47,8 +47,8 @@ public class Player2D : MonoBehaviour
 		}
 	
 		//Set animaator parametors
-		anim.SetBool("Walking", horizontalInput != 0);
-		anim.SetBool("Grounded", isGrounded());
+		//anim.SetBool("Walking", horizontalInput != 0);
+		//anim.SetBool("Grounded", isGrounded());
 		
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
