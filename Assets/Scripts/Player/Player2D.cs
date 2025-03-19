@@ -65,7 +65,7 @@ public class Player2D : Singleton<Player2D>
 			spriteRenderer.flipX = false;
 		}
 	
-		//Set animaator parametors
+		//Set animaator parameters
 		//anim.SetBool("Walking", horizontalInput != 0);
 		//anim.SetBool("Grounded", isGrounded());
 		
