@@ -1,6 +1,11 @@
 using UnityEngine;
 
-public class Player2D : MonoBehaviour
+// refactor update to make it look cleaner - nik
+
+/// <summary>
+/// The Player movement script
+/// </summary>
+public class Player2D : Singleton<Player2D>
 {
 	[Header("Moovement Paramaters")]
 	[field: SerializeField] private float speed { get; set; } = 5.0f;
@@ -14,22 +19,32 @@ public class Player2D : MonoBehaviour
     [field: SerializeField] private float wallJumpX; //Horizontal wall jump force
     [field: SerializeField] private float wallJumpY; //Vertical wall jump force
 
+	// maybe we can seperate groundlayer / walllayer on the tilemap by individual tiles?
     [Header("Layers")]
     [field: SerializeField] private LayerMask groundLayer;
 	[field: SerializeField] private LayerMask wallLayer;
 
 	private Rigidbody2D rb;
 	private BoxCollider2D boxCollider;
+	private SpriteRenderer spriteRenderer;
 	//private Animator anim;
 	//private float wallJumpCooldown;
 	private float horizontalInput;
 
-	// Start is called once before the first execution of Update after the MonoBehaviour is created
-	void Start()
+    protected override void Awake()
     {
-		rb = GetComponent<Rigidbody2D>();
-		boxCollider = GetComponent<BoxCollider2D>();
-		//anim = GetComponent<Animator>();
+		base.Awake();
+
+        rb = GetComponent<Rigidbody2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
+		spriteRenderer = GetComponent<SpriteRenderer>();
+        //anim = GetComponent<Animator>();
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+
 	}
 
 	// Update is called once per frame
@@ -38,12 +53,16 @@ public class Player2D : MonoBehaviour
 		horizontalInput = Input.GetAxis("Horizontal");
 
 		// FLip player when moving left
+		// i've made it use the sprite renderers flipx property instead - nik
 		if (horizontalInput > 0.01f)
 		{
-			transform.localScale = Vector3.one;
+			//transform.localScale = Vector3.one;
+
+			spriteRenderer.flipX = true;
 		} else if (horizontalInput < -0.01f)
 		{
-			transform.localScale = new Vector3(-1, 1, 1);
+			//transform.localScale = new Vector3(-1, 1, 1);
+			spriteRenderer.flipX = false;
 		}
 	
 		//Set animaator parametors
