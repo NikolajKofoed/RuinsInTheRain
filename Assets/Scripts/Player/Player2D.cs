@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 // refactor update to make it look cleaner - nik
@@ -21,8 +22,7 @@ public class Player2D : Singleton<Player2D>
 
 	// maybe we can seperate groundlayer / walllayer on the tilemap by individual tiles?
     [Header("Layers")]
-    [field: SerializeField] private LayerMask groundLayer;
-	[field: SerializeField] private LayerMask wallLayer;
+    [field: SerializeField] private LayerMask surfaceLayer;
 
 	private Rigidbody2D rb;
 	private BoxCollider2D boxCollider;
@@ -80,24 +80,19 @@ public class Player2D : Singleton<Player2D>
 			rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y / 2);
 		}
 
-		if (OnWall())
-		{
-			rb.gravityScale = 1;
-			rb.linearVelocity = Vector2.zero;
-            jumpCounter = extraJumps; //Regain extra jump, while clining to wall
-			Debug.Log("hey there");
-        }
-		else
-		{
-			rb.gravityScale = 2;
-			rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocity.y);
-
-			if (isGrounded())
-			{
-				jumpCounter = extraJumps;
-			}
-		}
+		Move();
 	}
+
+	private void Move()
+	{
+        rb.gravityScale = 2;
+        rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocity.y);
+
+        if (isGrounded())
+        {
+            jumpCounter = extraJumps;
+        }
+    }
 
 	private void Jump()
 	{
@@ -105,7 +100,8 @@ public class Player2D : Singleton<Player2D>
 		if (OnWall())
 		{
 			WallJump();
-			Debug.Log("is on wall now");
+			Debug.Log("Performed wall jump");
+
 		}
 		else
 		{
@@ -121,25 +117,32 @@ public class Player2D : Singleton<Player2D>
                     jumpCounter--;
                 }
             }
+			Debug.Log("Jumped, but is not on wall");
         }
 	}
 
 	private void WallJump()
 	{
-        rb.AddForce(new Vector2(-Mathf.Sign(transform.localScale.x) * wallJumpX, wallJumpY));
-        //wallJumpCooldown = 0;
+        rb.gravityScale = 1;
+		//rb.linearVelocity = Vector2.zero;
+		rb.AddForce(new Vector2(-MathF.Sign(transform.localScale.x) * wallJumpX, wallJumpY));
+        jumpCounter = extraJumps;
+		//wallJumpCooldown = 0;
+		Debug.Log("Wall jump was jumped");
+
+       
     }
 
 	private bool isGrounded()
 	{
-		RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
+		RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, surfaceLayer);
 		return raycastHit.collider != null;
 	}
 
 	private bool OnWall()
 	{
-		RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
-		return raycastHit.collider != null;
+		RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, surfaceLayer);
+        return raycastHit.collider != null;
 		
 	}
 
