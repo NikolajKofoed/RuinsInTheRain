@@ -13738,9 +13738,9 @@ MonoBehaviour:
   m_ComponentVersion: 2
   m_LightType: 1
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 1
+  m_FalloffIntensity: 0.695
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 6.61
+  m_Intensity: 3.08
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 0000000063b26400
@@ -13759,8 +13759,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.13540006, y: 0.3257501, z: 0}
-    m_Extent: {x: 7.3970003, y: 7.26845, z: 0}
+    m_Center: {x: -0.13520002, y: 0.3248999, z: 0}
+    m_Extent: {x: 7.717, y: 7.5881996, z: 0}
   m_PointLightInnerAngle: 94.532425
   m_PointLightOuterAngle: 94.532425
   m_PointLightInnerRadius: 2
@@ -13768,7 +13768,7 @@ MonoBehaviour:
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 5.95
+  m_ShapeLightFalloffSize: 6.27
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
   - {x: -0.6951126, y: -0.7071049, z: 0}
@@ -15371,6 +15371,10 @@ PrefabInstance:
     - target: {fileID: 6977369802976063879, guid: 1a7c971c16b4d9e45a1071350e9f4edc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639853312593728018, guid: 1a7c971c16b4d9e45a1071350e9f4edc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.46737528
       objectReference: {fileID: 0}
     - target: {fileID: 8444518077136889040, guid: 1a7c971c16b4d9e45a1071350e9f4edc, type: 3}
       propertyPath: m_Name
