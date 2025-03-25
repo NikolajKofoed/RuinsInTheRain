@@ -58,11 +58,11 @@ public class Player2D : Singleton<Player2D>
 		{
 			//transform.localScale = Vector3.one;
 
-			spriteRenderer.flipX = true;
+			spriteRenderer.flipX = false;
 		} else if (horizontalInput < -0.01f)
 		{
 			//transform.localScale = new Vector3(-1, 1, 1);
-			spriteRenderer.flipX = false;
+			spriteRenderer.flipX = true;
 		}
 	
 		//Set animaator parameters
