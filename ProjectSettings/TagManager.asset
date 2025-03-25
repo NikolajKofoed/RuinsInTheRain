@@ -6,30 +6,23 @@ TagManager:
   tags:
   - Enemy
   - NPC
-  - Ground
-  - Wall
-  tags: []
+  - Surface
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Surface
   - Water
   - UI
-  - Ground
-  - Wall
   - Player
   - Enemy
   - NPC
+  - Player Projectile
+  - Enemy Projectile
   - Cinemachine
-  - Ground
+  - Checkpoint
   - Background Layer 1
   - Background Layer 2
-  - 
-  - 
-  - 
-  - 
-  - 
   - 
   - 
   - 
@@ -53,6 +46,9 @@ TagManager:
     locked: 0
   - name: Background Layer1 Tint
     uniqueID: 6599267
+    locked: 0
+  - name: Surface
+    uniqueID: 2397049419
     locked: 0
   m_RenderingLayers:
   - Default

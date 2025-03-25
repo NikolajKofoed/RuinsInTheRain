@@ -6,7 +6,7 @@ public class PlayerAttack : MonoBehaviour
 	[SerializeField] private float meleeCooldown;
 	[SerializeField] Transform meleePoint;
     [SerializeField] private float meleeRange;
-    [SerializeField] public int meleeDamage;
+    [SerializeField] private int MeleeDamage;
     [SerializeField] LayerMask enemyLayers;
     // Range attacks
 	[SerializeField] private float projectileCooldown;
@@ -25,11 +25,11 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-		if (Input.GetKey(KeyCode.J) && cooldownTimer > meleeCooldown && playerMovement.canAttack())
+		if (Input.GetKey(KeyCode.J) && cooldownTimer > meleeCooldown && playerMovement.CanAttack())
 		{
 			MeleeAttack();
 		}
-		if (Input.GetKey(KeyCode.K) && cooldownTimer > projectileCooldown && playerMovement.canAttack())
+		if (Input.GetKey(KeyCode.K) && cooldownTimer > projectileCooldown && playerMovement.CanAttack())
         {
             RangedAttack();
         }
@@ -46,7 +46,7 @@ public class PlayerAttack : MonoBehaviour
         // Damage them
         foreach(Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyHealth>().TakeDamage(meleeDamage);
+            enemy.GetComponent<EnemyHealth>().TakeDamage(MeleeDamage);
         }
     }
 

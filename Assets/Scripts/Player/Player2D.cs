@@ -9,29 +9,30 @@ using UnityEngine;
 public class Player2D : Singleton<Player2D>
 {
 	[Header("Moovement Paramaters")]
-	[field: SerializeField] private float speed { get; set; } = 5.0f;
-	[field: SerializeField] private float jumpPower { get; set; } = 10.0f;
+	[field: SerializeField] private float Speed { get; set; } = 5.0f;
+	[field: SerializeField] private float JumpPower { get; set; } = 10.0f;
 
 	[Header("Multi jump")]
-	[SerializeField] private int extraJumps;
-	private int jumpCounter;
+	[SerializeField] private int ExtraJumps;
+	private int JumpCounter;
 
 	[Header("Wall Jumping")]
-    [field: SerializeField] private float wallJumpX; //Horizontal wall jump force
-    [field: SerializeField] private float wallJumpY; //Vertical wall jump force
+    [field: SerializeField] private float WallJumpX; //Horizontal wall jump force
+    [field: SerializeField] private float WallJumpY; //Vertical wall jump force
 
 	// maybe we can seperate groundlayer / walllayer on the tilemap by individual tiles?
     [Header("Layers")]
-    [field: SerializeField] private LayerMask surfaceLayer;
+    [field: SerializeField] private LayerMask SurfaceLayer;
 
 	private Rigidbody2D rb;
 	private BoxCollider2D boxCollider;
 	private SpriteRenderer spriteRenderer;
 	private Animator anim;
-	//private float wallJumpCooldown;
 	private float horizontalInput;
 
-    protected override void Awake()
+
+	// Start is called once before the first execution of Update after the MonoBehaviour is created
+	protected override void Awake()
     {
 		base.Awake();
 
@@ -41,11 +42,6 @@ public class Player2D : Singleton<Player2D>
 		anim = GetComponent<Animator>();
 	}
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-	}
 
 	// Update is called once per frame
 	void Update()
@@ -53,21 +49,20 @@ public class Player2D : Singleton<Player2D>
 		horizontalInput = Input.GetAxis("Horizontal");
 
 		// FLip player when moving left
-		// i've made it use the sprite renderers flipx property instead - nik
 		if (horizontalInput > 0.01f)
 		{
 			//transform.localScale = Vector3.one;
-
-			spriteRenderer.flipX = false;
-		} else if (horizontalInput < -0.01f)
+			spriteRenderer.flipX = false; // It is this that break the wall Jump.
+		}
+		else if (horizontalInput < -0.01f)
 		{
 			//transform.localScale = new Vector3(-1, 1, 1);
 			spriteRenderer.flipX = true;
 		}
 
-		//Set animaator parameters
+		//Set animaator parametors
 		anim.SetBool("Walking", horizontalInput != 0);
-		anim.SetBool("Grounded", isGrounded());
+		anim.SetBool("Grounded", IsGrounded());
 
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
@@ -80,19 +75,23 @@ public class Player2D : Singleton<Player2D>
 			rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y / 2);
 		}
 
-		Move();
+		if (OnWall())
+		{
+			rb.gravityScale = 1;
+			rb.linearVelocity = Vector2.zero;
+			JumpCounter = ExtraJumps; //Regain extra jump, while clining to wall
+		}
+		else
+		{
+			rb.gravityScale = 2;
+			rb.linearVelocity = new Vector2(horizontalInput * Speed, rb.linearVelocity.y);
+
+			if (IsGrounded())
+			{
+				JumpCounter = ExtraJumps;
+			}
+		}
 	}
-
-	private void Move()
-	{
-        rb.gravityScale = 2;
-        rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocity.y);
-
-        if (isGrounded())
-        {
-            jumpCounter = extraJumps;
-        }
-    }
 
 	private void Jump()
 	{
@@ -100,53 +99,43 @@ public class Player2D : Singleton<Player2D>
 		if (OnWall())
 		{
 			WallJump();
-			Debug.Log("Performed wall jump");
-
 		}
 		else
 		{
-            if (isGrounded())
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
-            }
-            else
-            {
-                if (jumpCounter > 0) //If we have extra  jumps, then jump and decrease the jump counter
-                {
-                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
-                    jumpCounter--;
-                }
-            }
-			Debug.Log("Jumped, but is not on wall");
-        }
+			if (IsGrounded())
+			{
+				rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpPower);
+			}
+			else
+			{
+				if (JumpCounter > 0) //If we have extra  jumps, then jump and decrease the jump counter
+				{
+					rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpPower);
+					JumpCounter--;
+				}
+			}
+		}
 	}
 
 	private void WallJump()
 	{
-        rb.gravityScale = 1;
-		//rb.linearVelocity = Vector2.zero;
-		rb.AddForce(new Vector2(-MathF.Sign(transform.localScale.x) * wallJumpX, wallJumpY));
-        jumpCounter = extraJumps;
+		rb.AddForce(new Vector2(-Mathf.Sign(transform.localScale.x) * WallJumpX, WallJumpY));
 		//wallJumpCooldown = 0;
-		Debug.Log("Wall jump was jumped");
+	}
 
-       
-    }
-
-	private bool isGrounded()
+	private bool IsGrounded()
 	{
-		RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, surfaceLayer);
+		RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, SurfaceLayer);
 		return raycastHit.collider != null;
 	}
 
 	private bool OnWall()
 	{
-		RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, surfaceLayer);
-        return raycastHit.collider != null;
-		
+		RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, SurfaceLayer);
+		return raycastHit.collider != null;
 	}
 
-	public bool canAttack()
+	public bool CanAttack()
 	{
 		return true;
 	}

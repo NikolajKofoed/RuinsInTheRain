@@ -502,12 +502,9 @@ MonoBehaviour:
   extraJumps: 1
   wallJumpX: 1500
   wallJumpY: 1000
-  groundLayer:
+  surfaceLayer:
     serializedVersion: 2
-    m_Bits: 0
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!114 &3121539000270260383
 MonoBehaviour:
   m_ObjectHideFlags: 0
