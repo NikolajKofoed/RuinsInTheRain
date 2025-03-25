@@ -8,6 +8,7 @@ TagManager:
   - NPC
   - Ground
   - Wall
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -20,6 +21,11 @@ TagManager:
   - Player
   - Enemy
   - NPC
+  - Cinemachine
+  - Ground
+  - Background Layer 1
+  - Background Layer 2
+  - 
   - 
   - 
   - 
@@ -44,6 +50,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background Layer1 Tint
+    uniqueID: 6599267
     locked: 0
   m_RenderingLayers:
   - Default
