@@ -27,7 +27,7 @@ public class Player2D : Singleton<Player2D>
 	private Rigidbody2D rb;
 	private BoxCollider2D boxCollider;
 	private SpriteRenderer spriteRenderer;
-	//private Animator anim;
+	private Animator anim;
 	//private float wallJumpCooldown;
 	private float horizontalInput;
 
@@ -38,8 +38,8 @@ public class Player2D : Singleton<Player2D>
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
-        //anim = GetComponent<Animator>();
-    }
+		anim = GetComponent<Animator>();
+	}
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -64,11 +64,11 @@ public class Player2D : Singleton<Player2D>
 			//transform.localScale = new Vector3(-1, 1, 1);
 			spriteRenderer.flipX = true;
 		}
-	
+
 		//Set animaator parameters
-		//anim.SetBool("Walking", horizontalInput != 0);
-		//anim.SetBool("Grounded", isGrounded());
-		
+		anim.SetBool("Walking", horizontalInput != 0);
+		anim.SetBool("Grounded", isGrounded());
+
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
 			Jump();
@@ -80,11 +80,12 @@ public class Player2D : Singleton<Player2D>
 			rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y / 2);
 		}
 
-		if (onWall())
+		if (OnWall())
 		{
 			rb.gravityScale = 1;
 			rb.linearVelocity = Vector2.zero;
             jumpCounter = extraJumps; //Regain extra jump, while clining to wall
+			Debug.Log("hey there");
         }
 		else
 		{
@@ -101,9 +102,10 @@ public class Player2D : Singleton<Player2D>
 	private void Jump()
 	{
 		//SoundManager.instance.PlaySound(jumpSound);
-		if (onWall())
+		if (OnWall())
 		{
 			WallJump();
+			Debug.Log("is on wall now");
 		}
 		else
 		{
@@ -134,10 +136,11 @@ public class Player2D : Singleton<Player2D>
 		return raycastHit.collider != null;
 	}
 
-	private bool onWall()
+	private bool OnWall()
 	{
 		RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
 		return raycastHit.collider != null;
+		
 	}
 
 	public bool canAttack()
