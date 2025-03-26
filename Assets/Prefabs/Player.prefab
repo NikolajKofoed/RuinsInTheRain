@@ -303,7 +303,6 @@ GameObject:
   - component: {fileID: 6802203259498343292}
   - component: {fileID: 2668830078902638485}
   - component: {fileID: 9145142619570170536}
-  - component: {fileID: 186132060242512871}
   - component: {fileID: 5351254532873604335}
   - component: {fileID: 1597740594368491403}
   - component: {fileID: 3121539000270260383}
@@ -417,52 +416,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &186132060242512871
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7826323211666912656}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.77, y: 3.02}
-    newSize: {x: 0.77, y: 3.02}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.77, y: 3.02}
-  m_EdgeRadius: 0
 --- !u!95 &5351254532873604335
 Animator:
   serializedVersion: 7
@@ -497,14 +450,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66cbba73c5cab2d4dbc3b97e9e0d313b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <speed>k__BackingField: 5
-  <jumpPower>k__BackingField: 11
-  extraJumps: 1
-  wallJumpX: 1500
-  wallJumpY: 1000
-  surfaceLayer:
+  <Speed>k__BackingField: 5
+  <JumpPower>k__BackingField: 10
+  ExtraJumps: 0
+  WallJumpX: 0
+  WallJumpY: 0
+  SurfaceLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
 --- !u!114 &3121539000270260383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,7 +473,7 @@ MonoBehaviour:
   meleeCooldown: 0.2
   meleePoint: {fileID: 4939675433061290243}
   meleeRange: 1
-  meleeDamage: 1
+  MeleeDamage: 0
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512

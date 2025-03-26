@@ -19,10 +19,13 @@ public class Player2D : Singleton<Player2D>
 	[Header("Wall Jumping")]
     [field: SerializeField] private float WallJumpX; //Horizontal wall jump force
     [field: SerializeField] private float WallJumpY; //Vertical wall jump force
-
 	// maybe we can seperate groundlayer / walllayer on the tilemap by individual tiles?
     [Header("Layers")]
     [field: SerializeField] private LayerMask SurfaceLayer;
+
+	[Header("Dash")]
+	[field: SerializeField] private float DashLength;
+	private float DashCooldown = 0.1f;
 
 	private Rigidbody2D rb;
 	private BoxCollider2D boxCollider;
@@ -75,6 +78,12 @@ public class Player2D : Singleton<Player2D>
 			rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y / 2);
 		}
 
+		//Dash
+		if (Input.GetKeyDown(KeyCode.LeftShift) && DashCooldown > 1.0f) //Cooldown hasn't been made yet to work
+		{
+			Dash();
+		}
+
 		if (OnWall())
 		{
 			rb.gravityScale = 1;
@@ -121,6 +130,11 @@ public class Player2D : Singleton<Player2D>
 	{
 		rb.AddForce(new Vector2(-Mathf.Sign(transform.localScale.x) * WallJumpX, WallJumpY));
 		//wallJumpCooldown = 0;
+	}
+
+	private void Dash()
+	{
+		rb.linearVelocity = new Vector2(DashLength, rb.linearVelocity.y); // Need to checked later if correct
 	}
 
 	private bool IsGrounded()
