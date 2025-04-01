@@ -461,7 +461,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!95 &5351254532873604335
 Animator:
@@ -500,12 +500,14 @@ MonoBehaviour:
   <Speed>k__BackingField: 5
   <JumpPower>k__BackingField: 10
   ExtraJumps: 1
-  WallJumpX: 1500
-  WallJumpY: 1000
+  WallJumpX: 1000
+  WallJumpY: 500
   SurfaceLayer:
     serializedVersion: 2
     m_Bits: 8
-  DashLength: 0
+  DashLength: 3
+  DashDuration: 0.2
+  DashMaxAirAmounts: 1
 --- !u!114 &3121539000270260383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,6 +530,9 @@ MonoBehaviour:
   projectileCooldown: 0.25
   firePoint: {fileID: 1156475371060216418}
   playerProjectiles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
