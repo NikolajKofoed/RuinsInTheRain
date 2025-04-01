@@ -55,7 +55,7 @@ public class Player2D : Singleton<Player2D>
 		if (horizontalInput > 0.01f)
 		{
 			transform.localScale = Vector3.one;
-			// spriteRenderer.flipX = false; // It is this that break the wall Jump.
+			//spriteRenderer.flipX = false; // It is this that break the wall Jump.
 		}
 		else if (horizontalInput < -0.01f)
 		{
