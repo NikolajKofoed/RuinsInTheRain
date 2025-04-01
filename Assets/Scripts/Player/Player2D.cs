@@ -54,13 +54,13 @@ public class Player2D : Singleton<Player2D>
 		// FLip player when moving left
 		if (horizontalInput > 0.01f)
 		{
-			//transform.localScale = Vector3.one;
-			spriteRenderer.flipX = false; // It is this that break the wall Jump.
+			transform.localScale = Vector3.one;
+			// spriteRenderer.flipX = false; // It is this that break the wall Jump.
 		}
 		else if (horizontalInput < -0.01f)
 		{
-			//transform.localScale = new Vector3(-1, 1, 1);
-			spriteRenderer.flipX = true;
+			transform.localScale = new Vector3(-1, 1, 1);
+			//spriteRenderer.flipX = true;
 		}
 
 		//Set animaator parametors
