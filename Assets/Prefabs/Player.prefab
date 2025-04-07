@@ -523,7 +523,7 @@ MonoBehaviour:
   meleeCooldown: 0.2
   meleePoint: {fileID: 4939675433061290243}
   meleeRange: 0.8
-  MeleeDamage: 1
+  MeleeDamage: 4
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
