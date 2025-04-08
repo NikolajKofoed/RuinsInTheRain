@@ -3,7 +3,6 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
 	[field: SerializeField] public int maxHealth { get; set; } = 10;
-	[SerializeField] private int Damage = 1;
 	private int currentHealth;
 	private Animator anim;
 
@@ -12,16 +11,6 @@ public class EnemyHealth : MonoBehaviour
     {
 		currentHealth = maxHealth;
 		anim = GetComponent<Animator>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-			var playerHealth = collision.GetComponent<Health>();
-
-			playerHealth.TakeDamage(Attack());
-        }
     }
 
     public void TakeDamage(int damage)
@@ -34,11 +23,6 @@ public class EnemyHealth : MonoBehaviour
 		{
 			Dies();
 		}
-	}
-
-	public int Attack()
-	{
-		return Damage;
 	}
 
 	void Dies()

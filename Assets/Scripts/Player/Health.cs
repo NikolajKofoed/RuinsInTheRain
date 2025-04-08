@@ -25,16 +25,20 @@ public class Health : MonoBehaviour
 	[field: SerializeField] public UnityEvent OnRespawnHazard { get; set; }
 	[field: SerializeField] public UnityEvent OnDie { get; set; }
 
+	[SerializeField] private float knockbackForce = 15f;
+	private Knockback knockback;
+
 
 	private void Awake()
 	{
 		currentHealth = startingHealth;
 		anim = GetComponent<Animator>();
 		spriteRend = GetComponent<SpriteRenderer>();
+		knockback = GetComponent<Knockback>();
 		respawnPoint = transform.position;
 	}
 
-	public void TakeDamage(float _damage)
+	public void TakeDamage(float _damage, Transform otherTransform)
 	{
 		currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
 
@@ -43,6 +47,7 @@ public class Health : MonoBehaviour
 			Debug.Log("Player took damage, current health: " + currentHealth);
 			//anim.SetTrigger("hurt");
 			OnHitByEnemy?.Invoke();
+			knockback.GetKnockedBack(otherTransform, knockbackForce);
 			StartCoroutine(InvunerabilityRoutine());
 		}
 		else

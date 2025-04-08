@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public class DroneHunter : MonoBehaviour
+public class DroneHunter : MonoBehaviour, IEnemy
 {
 	// Movement
 	[SerializeField] private float speed;
 	[SerializeField] private float lineOfSight;
+	[SerializeField] private int AttackDamage = 1;
 	private bool hunterMode = false;
 
     private Rigidbody2D rb;
@@ -33,7 +34,21 @@ public class DroneHunter : MonoBehaviour
 		{
 			transform.position = Vector2.MoveTowards(rb.position, player.position, (speed * Time.deltaTime));
 		}
+	}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+		if (collision.CompareTag("Player"))
+		{
+			var playerHealth = collision.GetComponent<Health>();
+			playerHealth?.TakeDamage(AttackDamage, this.transform);
 		}
+    }
+
+    public int Attack()
+	{
+		return AttackDamage;
+	}
 
     // So we can see what the enemy can see
 	private void OnDrawGizmosSelected()
