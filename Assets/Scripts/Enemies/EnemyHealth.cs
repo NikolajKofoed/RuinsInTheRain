@@ -3,31 +3,29 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
 	[field: SerializeField] public int maxHealth { get; set; } = 10;
-	[SerializeField] private int Damage = 1;
+	[SerializeField] private float knockbackForce = 15f;
 	private int currentHealth;
 	private Animator anim;
+	private Knockback knockback;
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
     {
 		currentHealth = maxHealth;
 		anim = GetComponent<Animator>();
+		knockback = GetComponent<Knockback>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-			var playerHealth = collision.GetComponent<Health>();
-
-			playerHealth.TakeDamage(Attack());
-        }
-    }
-
-    public void TakeDamage(int damage)
+	/// <summary>
+	/// used for attacks that have knockback
+	/// </summary>
+	/// <param name="damage">the amount of damage</param>
+	/// <param name="other">position of the damage dealer</param>
+    public void TakeDamage(int damage, Transform other)
 	{
 		currentHealth -= damage;
 		Debug.Log(currentHealth);
+		knockback.GetKnockedBack(other, knockbackForce);
 		//animator.SetTrigger("Hurt")
 
 		if (currentHealth <= 0)
@@ -36,12 +34,23 @@ public class EnemyHealth : MonoBehaviour
 		}
 	}
 
-	public int Attack()
-	{
-		return Damage;
-	}
+	/// <summary>
+	/// used for attacks where no knockback occurs
+	/// </summary>
+	/// <param name="damage">the amount of damage</param>
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        Debug.Log(currentHealth);
+        //animator.SetTrigger("Hurt")
 
-	void Dies()
+        if (currentHealth <= 0)
+        {
+            Dies();
+        }
+    }
+
+    void Dies()
 	{
 		Debug.Log("Enemy died");
 		//animator.SetBool("IsDead", true);

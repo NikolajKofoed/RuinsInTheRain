@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public class DroneHunter : MonoBehaviour
+public class DroneHunter : MonoBehaviour, IEnemy
 {
 	// Movement
 	[SerializeField] private float speed;
 	[SerializeField] private float lineOfSight;
+	[SerializeField] private int AttackDamage = 1;
 	private bool hunterMode = false;
 
     private Rigidbody2D rb;

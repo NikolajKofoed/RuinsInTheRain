@@ -2616,6 +2616,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1156475371060216418, guid: fa4e2914bfa3fc541afbda2ddd8fab5a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156475371060216418, guid: fa4e2914bfa3fc541afbda2ddd8fab5a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 3121539000270260383, guid: fa4e2914bfa3fc541afbda2ddd8fab5a, type: 3}
       propertyPath: 'playerProjectiles.Array.data[0]'
       value: 
@@ -2805,6 +2813,14 @@ PrefabInstance:
     - target: {fileID: 7486847245184378809, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
       propertyPath: m_Name
       value: Hunter Drone
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116086532221019097, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116086532221019097, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: lineOfSight
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

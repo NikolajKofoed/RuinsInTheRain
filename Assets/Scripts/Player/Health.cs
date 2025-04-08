@@ -25,24 +25,29 @@ public class Health : MonoBehaviour
 	[field: SerializeField] public UnityEvent OnRespawnHazard { get; set; }
 	[field: SerializeField] public UnityEvent OnDie { get; set; }
 
+	[SerializeField] private float knockbackForce = 15f;
+	private Knockback knockback;
+
 
 	private void Awake()
 	{
 		currentHealth = startingHealth;
 		anim = GetComponent<Animator>();
 		spriteRend = GetComponent<SpriteRenderer>();
+		knockback = GetComponent<Knockback>();
 		respawnPoint = transform.position;
 	}
 
-	public void TakeDamage(float _damage)
+	public void TakeDamage(float _damage, Transform otherTransform)
 	{
 		currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
 
-		if (currentHealth > 0)
+		if (currentHealth > 0 && knockback.GettingKnockedBack == false)
 		{
 			Debug.Log("Player took damage, current health: " + currentHealth);
-			//anim.SetTrigger("hurt");
-			OnHitByEnemy?.Invoke();
+            knockback.GetKnockedBack(otherTransform, knockbackForce);
+            //anim.SetTrigger("hurt");
+            OnHitByEnemy?.Invoke();
 			StartCoroutine(InvunerabilityRoutine());
 		}
 		else
@@ -56,6 +61,29 @@ public class Health : MonoBehaviour
 			}
 		}
 	}
+
+	public void TakeDamage(float _damage)
+	{
+        currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+
+        if (currentHealth > 0 && knockback.GettingKnockedBack == false)
+        {
+            Debug.Log("Player took damage, current health: " + currentHealth);
+            //anim.SetTrigger("hurt");
+            OnHitByEnemy?.Invoke();
+            StartCoroutine(InvunerabilityRoutine());
+        }
+        else
+        {
+            if (!isDead)
+            {
+                OnDie?.Invoke();
+                GetComponent<Player2D>().enabled = false; //ChangeName Depending on Player controller
+                                                          //anim.SetTrigger("die");
+                isDead = true;
+            }
+        }
+    }
 
 	// Sets the player respawn point, when they touch a checkpoint
 	private void OnTriggerEnter2D(Collider2D collision)
