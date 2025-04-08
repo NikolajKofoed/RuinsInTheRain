@@ -40,7 +40,7 @@ public class Health : MonoBehaviour
 
 		if (currentHealth > 0)
 		{
-			Debug.Log(currentHealth);
+			Debug.Log("Player took damage, current health: " + currentHealth);
 			//anim.SetTrigger("hurt");
 			OnHitByEnemy?.Invoke();
 			StartCoroutine(InvunerabilityRoutine());

@@ -42,7 +42,7 @@ public class PlayerAttack : MonoBehaviour
         cooldownTimer = 0;
         // Detect enemies in range of attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(meleePoint.position, meleeRange, enemyLayers);
-
+        Debug.Log("Melee attack occured");
         // Damage them
         foreach(Collider2D enemy in hitEnemies)
         {
