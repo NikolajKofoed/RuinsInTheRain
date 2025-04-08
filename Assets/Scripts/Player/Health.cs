@@ -43,7 +43,7 @@ public class Health : MonoBehaviour
 			Debug.Log(currentHealth);
 			//anim.SetTrigger("hurt");
 			OnHitByEnemy?.Invoke();
-			StartCoroutine(Invunerability());
+			StartCoroutine(InvunerabilityRoutine());
 		}
 		else
 		{
