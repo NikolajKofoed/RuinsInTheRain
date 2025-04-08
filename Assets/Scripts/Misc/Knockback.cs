@@ -15,9 +15,13 @@ public class Knockback : MonoBehaviour
 
     public void GetKnockedBack(Transform damageSource, float knockBackThrust)
     {
+        Debug.Log("Getting knocked back");
+
         GettingKnockedBack = true;
         Vector2 difference = (transform.position - damageSource.position).normalized * knockBackThrust * rb.mass;
         rb.AddForce(difference, ForceMode2D.Impulse);
+        Debug.Log($"differencex: {difference.x}, differnce.y: {difference.y}");
+
         StartCoroutine(knockRoutine());
     }
 

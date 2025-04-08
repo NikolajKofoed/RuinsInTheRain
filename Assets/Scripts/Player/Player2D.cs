@@ -37,6 +37,7 @@ public class Player2D : Singleton<Player2D>
 	private BoxCollider2D boxCollider;
 	private SpriteRenderer spriteRenderer;
 	private Animator anim;
+	private Knockback knockback;
 	private float horizontalInput;
 
 
@@ -49,6 +50,7 @@ public class Player2D : Singleton<Player2D>
         boxCollider = GetComponent<BoxCollider2D>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		anim = GetComponent<Animator>();
+		knockback = GetComponent<Knockback>();
 	}
 
 
@@ -103,7 +105,7 @@ public class Player2D : Singleton<Player2D>
 			JumpCounter = ExtraJumps; //Regain extra jump, while clining to wall
 			DashCounter = DashMaxAirAmounts;
 		}
-		else
+		else if(!knockback.GettingKnockedBack)
 		{
 			rb.gravityScale = 2;
 			rb.linearVelocity = new Vector2(horizontalInput * Speed, rb.linearVelocity.y);
@@ -120,12 +122,12 @@ public class Player2D : Singleton<Player2D>
 	private void Jump()
 	{
 		//SoundManager.instance.PlaySound(jumpSound);
-		if (OnWall() && !IsGrounded())
+		if (OnWall() && !IsGrounded() && !knockback.GettingKnockedBack)
 		{
 			WallJump();
 		}
-		else
-		{
+		else if (!knockback.GettingKnockedBack)
+        {
 			if (IsGrounded())
 			{
 				rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpPower);
@@ -143,14 +145,20 @@ public class Player2D : Singleton<Player2D>
 
 	private void WallJump()
 	{
-		rb.AddForce(new Vector2(-Mathf.Sign(transform.localScale.x) * WallJumpX, WallJumpY));
-	}
+		if (!knockback.GettingKnockedBack)
+		{
+            rb.AddForce(new Vector2(-Mathf.Sign(transform.localScale.x) * WallJumpX, WallJumpY));
+        }
+    }
 
 	private void Dash()
 	{
-		DashCooldown = DashDuration + 0.2f; // Reset cooldown time after a dash
-		StartCoroutine(PerformDash());
-		DashCounter--;
+		if (!knockback.GettingKnockedBack)
+		{
+            DashCooldown = DashDuration + 0.2f; // Reset cooldown time after a dash
+            StartCoroutine(PerformDash());
+            DashCounter--;
+        }
 	}
 
 	private IEnumerator PerformDash()

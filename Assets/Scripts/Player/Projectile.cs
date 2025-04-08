@@ -34,7 +34,7 @@ public class Projectile : MonoBehaviour
         //anim.SetTrigger("explode");
         if(collision.tag == "Enemy")
         {
-            collision.GetComponent<EnemyHealth>().TakeDamage(projectileDamage);
+            collision.GetComponent<EnemyHealth>().TakeDamage(projectileDamage); // change later
         }
         Deactivate(); //temp because I have no animation
     }
