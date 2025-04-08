@@ -40,6 +40,7 @@ public class Health : MonoBehaviour
 
 		if (currentHealth > 0)
 		{
+			Debug.Log(currentHealth);
 			//anim.SetTrigger("hurt");
 			OnHitByEnemy?.Invoke();
 			StartCoroutine(Invunerability());
@@ -76,7 +77,7 @@ public class Health : MonoBehaviour
 			//anim.ResetTrigger("");
 			//anim.Play("idle");
 			transform.position = respawnPoint;
-			StartCoroutine(Invunerability());
+			StartCoroutine(InvunerabilityRoutine());
 		}
 		else
 		{
@@ -90,18 +91,13 @@ public class Health : MonoBehaviour
 		}
 	}
 
-	private void StartCoroutine(IEnumerable enumerable)
-	{
-		throw new NotImplementedException();
-	}
-
 	public void AddHealth(float _heal)
 	{
 		OnHeal?.Invoke();
 		currentHealth = Mathf.Clamp(currentHealth + _heal, 0, startingHealth);
 	}
 
-	private IEnumerable Invunerability()
+	private IEnumerator InvunerabilityRoutine()
 	{
 		Physics2D.IgnoreLayerCollision(10, 11, true);
 		for (int i = 0; i < numberOfFlashes; i++)
