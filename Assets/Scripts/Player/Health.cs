@@ -38,13 +38,20 @@ public class Health : MonoBehaviour
 		respawnPoint = transform.position;
 	}
 
+	/// <summary>
+	/// Takes damage and gets knocked back
+	/// </summary>
+	/// <param name="_damage">amount of damage</param>
+	/// <param name="otherTransform">damage dealers transform</param>
 	public void TakeDamage(float _damage, Transform otherTransform)
 	{
-		currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+		if(_damage <= 0) { return; } // 0 or negative damage doesn't count as an attack
 
 		if (currentHealth > 0 && knockback.GettingKnockedBack == false)
 		{
-			Debug.Log("Player took damage, current health: " + currentHealth);
+            currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+
+            Debug.Log("Player took damage, current health: " + currentHealth);
             knockback.GetKnockedBack(otherTransform, knockbackForce);
             //anim.SetTrigger("hurt");
             OnHitByEnemy?.Invoke();
@@ -60,8 +67,14 @@ public class Health : MonoBehaviour
 				isDead = true;
 			}
 		}
+
+		Debug.Log(currentHealth);
 	}
 
+	/// <summary>
+	/// takes damage
+	/// </summary>
+	/// <param name="_damage">amount of damage</param>
 	public void TakeDamage(float _damage)
 	{
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);

@@ -34,9 +34,10 @@ public class Projectile : MonoBehaviour
         //anim.SetTrigger("explode");
         if(collision.tag == "Enemy")
         {
+            Deactivate(); //temp because I have no animation
             collision.GetComponent<EnemyHealth>().TakeDamage(projectileDamage); // change later
         }
-        Deactivate(); //temp because I have no animation
+
     }
 
     public void SetDirection(float _direction)

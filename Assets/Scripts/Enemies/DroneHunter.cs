@@ -5,7 +5,6 @@ public class DroneHunter : MonoBehaviour, IEnemy
 	// Movement
 	[SerializeField] private float speed;
 	[SerializeField] private float lineOfSight;
-	[SerializeField] private int AttackDamage = 1;
 	private bool hunterMode = false;
 
     private Rigidbody2D rb;
@@ -42,7 +41,7 @@ public class DroneHunter : MonoBehaviour, IEnemy
 		// When this enemy touches the player, the player takes damage
 		if (collision.gameObject.tag == "Player")
 		{
-			collision.GetComponent<Health>().TakeDamage(damage);
+			collision.GetComponent<Health>().TakeDamage(damage, transform);
 		}
 	}
 
@@ -52,4 +51,9 @@ public class DroneHunter : MonoBehaviour, IEnemy
 		Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, lineOfSight);
 	}
+
+    public float Attack()
+    {
+		return damage;
+    }
 }

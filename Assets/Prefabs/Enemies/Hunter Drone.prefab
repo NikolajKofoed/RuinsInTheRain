@@ -177,6 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <maxHealth>k__BackingField: 7
+  knockbackForce: 15
 --- !u!114 &8116086532221019097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,10 +185,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7486847245184378809}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d715fbf9b28991241993a838ff322fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  lineOfSight: 4
+  lineOfSight: 5
+  AttackDamage: 1

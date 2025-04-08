@@ -4,9 +4,13 @@ public class EnemyHealth : MonoBehaviour
 {
 	[field: SerializeField] public int maxHealth { get; set; } = 10;
 	[SerializeField] private float knockbackForce = 15f;
+	[SerializeField] private GameObject deathSmokeVfx;
+	[SerializeField] private GameObject deathExplosionVfx;
+	[SerializeField] private GameObject deathDroneBodyVfx;
 	private int currentHealth;
 	private Animator anim;
 	private Knockback knockback;
+
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
@@ -28,10 +32,7 @@ public class EnemyHealth : MonoBehaviour
 		knockback.GetKnockedBack(other, knockbackForce);
 		//animator.SetTrigger("Hurt")
 
-		if (currentHealth <= 0)
-		{
-			Dies();
-		}
+		CheckIfDead();
 	}
 
 	/// <summary>
@@ -42,21 +43,25 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth -= damage;
         Debug.Log(currentHealth);
-        //animator.SetTrigger("Hurt")
+		//animator.SetTrigger("Hurt")
 
-        if (currentHealth <= 0)
-        {
-            Dies();
-        }
+		CheckIfDead();
     }
 
-    void Dies()
+    void CheckIfDead()
 	{
-		Debug.Log("Enemy died");
-		//animator.SetBool("IsDead", true);
+		if(currentHealth <= 0)
+		{
+            Debug.Log("Enemy died");
+			//animator.SetBool("IsDead", true);
 
-		GetComponent<Collider2D>().enabled = false;
-		anim.SetBool("Dies", true);
-		this.enabled = false;
+			Instantiate(deathDroneBodyVfx, transform.position, Quaternion.Euler(-90,0,0));
+			Instantiate(deathExplosionVfx, transform.position, Quaternion.Euler(-90,0,0));
+			Instantiate(deathSmokeVfx, transform.position, Quaternion.Euler(-90,0,0));
+			gameObject.SetActive(false); // disable object
+            anim.SetBool("Dies", true);
+        }
 	}
+
+
 }

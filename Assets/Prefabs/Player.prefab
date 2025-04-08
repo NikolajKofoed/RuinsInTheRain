@@ -286,7 +286,7 @@ Transform:
   m_GameObject: {fileID: 5880654492169449584}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.65, y: 0.09, z: 0}
+  m_LocalPosition: {x: 0.42, y: 0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -309,6 +309,7 @@ GameObject:
   - component: {fileID: 3121539000270260383}
   - component: {fileID: 7745966446135913442}
   - component: {fileID: 4902749096293044157}
+  - component: {fileID: 8471867870573097081}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -526,7 +527,7 @@ MonoBehaviour:
   MeleeDamage: 4
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 128
   projectileCooldown: 0.25
   firePoint: {fileID: 1156475371060216418}
   playerProjectiles:
@@ -613,6 +614,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  knockbackForce: 15
 --- !u!114 &4902749096293044157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,3 +627,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b713f0d17ddb322428da58dec5479af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8471867870573097081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7826323211666912656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b4c7dfdcfb31748b8c05711c27fcf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackTime: 0.2
