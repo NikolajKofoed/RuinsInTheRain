@@ -1,4 +1,7 @@
 using System;
+using System.Collections;
+using Unity.Cinemachine;
+using Unity.Mathematics;
 using UnityEngine;
 
 // refactor update to make it look cleaner - nik
@@ -14,7 +17,7 @@ public class Player2D : Singleton<Player2D>
 
 	[Header("Multi jump")]
 	[SerializeField] private int ExtraJumps;
-	private int JumpCounter;
+	private int JumpCounter; // For resetting ExtraJump
 
 	[Header("Wall Jumping")]
     [field: SerializeField] private float WallJumpX; //Horizontal wall jump force
@@ -25,6 +28,9 @@ public class Player2D : Singleton<Player2D>
 
 	[Header("Dash")]
 	[field: SerializeField] private float DashLength;
+	[field: SerializeField] private float DashDuration = 0.2f; //Durantion of the dash
+	[field: SerializeField] private int DashMaxAirAmounts;
+	private int DashCounter; // For resetting DashAmounts
 	private float DashCooldown = 0.1f;
 
 	private Rigidbody2D rb;
@@ -47,7 +53,12 @@ public class Player2D : Singleton<Player2D>
 
 
 	// Update is called once per frame
-	void Update()
+	private void FixedUpdate()
+	{
+		
+	}
+
+	private void Update()
 	{
 		horizontalInput = Input.GetAxis("Horizontal");
 
@@ -55,7 +66,7 @@ public class Player2D : Singleton<Player2D>
 		if (horizontalInput > 0.01f)
 		{
 			transform.localScale = Vector3.one;
-			// spriteRenderer.flipX = false; // It is this that break the wall Jump.
+			//spriteRenderer.flipX = false; // It is this that break the wall Jump.
 		}
 		else if (horizontalInput < -0.01f)
 		{
@@ -79,16 +90,18 @@ public class Player2D : Singleton<Player2D>
 		}
 
 		//Dash
-		if (Input.GetKeyDown(KeyCode.LeftShift) && DashCooldown > 1.0f) //Cooldown hasn't been made yet to work
+		if (Input.GetKeyDown(KeyCode.LeftShift) && DashCooldown < 0 && DashCounter > 0) //Cooldown hasn't been made yet to work
 		{
+			//anim.SetTrigger("Dash");
 			Dash();
 		}
 
-		if (OnWall())
+		if (OnWall() && !IsGrounded())
 		{
 			rb.gravityScale = 1;
 			rb.linearVelocity = Vector2.zero;
 			JumpCounter = ExtraJumps; //Regain extra jump, while clining to wall
+			DashCounter = DashMaxAirAmounts;
 		}
 		else
 		{
@@ -98,14 +111,16 @@ public class Player2D : Singleton<Player2D>
 			if (IsGrounded())
 			{
 				JumpCounter = ExtraJumps;
+				DashCounter = DashMaxAirAmounts;
 			}
 		}
+		DashCooldown -= Time.deltaTime;
 	}
 
 	private void Jump()
 	{
 		//SoundManager.instance.PlaySound(jumpSound);
-		if (OnWall())
+		if (OnWall() && !IsGrounded())
 		{
 			WallJump();
 		}
@@ -129,13 +144,60 @@ public class Player2D : Singleton<Player2D>
 	private void WallJump()
 	{
 		rb.AddForce(new Vector2(-Mathf.Sign(transform.localScale.x) * WallJumpX, WallJumpY));
-		//wallJumpCooldown = 0;
 	}
 
 	private void Dash()
 	{
-		rb.AddForceX(1000f, ForceMode2D.Impulse);
-		Debug.Log("has dashed");
+		DashCooldown = DashDuration + 0.2f; // Reset cooldown time after a dash
+		StartCoroutine(PerformDash());
+		DashCounter--;
+	}
+
+	private IEnumerator PerformDash()
+	{
+		// Determine dash direction
+		float dashDirection = Mathf.Sign(transform.localScale.x);
+		Vector2 startPosition = transform.position;
+		Vector2 targetPosition = new Vector2(startPosition.x + dashDirection * DashLength, startPosition.y);
+
+		float timeElapsed = 0f;
+		float dashStep = 0.05f;  // Small step to check collisions frequently
+
+		// Continue the dash while the time has not exceeded the dash duration
+		while (timeElapsed < DashDuration)
+		{
+			// Calculate the new position based on the Lerp	
+			Vector2 newPosition = Vector2.Lerp(startPosition, targetPosition, timeElapsed / DashDuration);
+
+			// Perform a more granular collision check
+			if (CheckDashCollision(newPosition))
+			{
+				// If a collision occurs, stop the dash immediately
+				transform.position = newPosition;
+				yield break; // Break out of the coroutine early
+			}
+
+			// If no collision, continue to move
+			transform.position = newPosition;
+			timeElapsed += Time.deltaTime; // Increment the time
+
+			yield return null; // Wait for the next frame
+		}
+
+		// Ensure the final dash position is set
+		transform.position = targetPosition;
+	}
+
+	private bool CheckDashCollision(Vector2 targetPosition)
+	{
+		// BoxCast checks if a collision occurs along the player's dash path
+		Vector2 direction = targetPosition - (Vector2)transform.position;
+
+		// Perform a BoxCast for collision detection
+		RaycastHit2D hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0f, direction.normalized, direction.magnitude, SurfaceLayer);
+
+		// Return true if a collision happens
+		return hit.collider != null;
 	}
 
 	private bool IsGrounded()
