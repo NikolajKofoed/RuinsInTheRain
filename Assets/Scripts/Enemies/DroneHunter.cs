@@ -28,7 +28,7 @@ public class DroneHunter : MonoBehaviour
 		}
 	}
 
-	private void FixedUpdate()
+    private void FixedUpdate()
 	{
 		if (hunterMode)
 		{
