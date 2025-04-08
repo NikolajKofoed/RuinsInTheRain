@@ -134,7 +134,8 @@ public class Player2D : Singleton<Player2D>
 
 	private void Dash()
 	{
-		rb.linearVelocity = new Vector2(DashLength, rb.linearVelocity.y); // Need to checked later if correct
+		rb.AddForceX(1000f, ForceMode2D.Impulse);
+		Debug.Log("has dashed");
 	}
 
 	private bool IsGrounded()
