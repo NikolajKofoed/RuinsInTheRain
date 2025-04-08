@@ -8,10 +8,11 @@ public class DroneHunter : MonoBehaviour
 	private bool hunterMode = false;
 
     private Rigidbody2D rb;
-    private Transform player;
+	private Transform player;
+	[field: SerializeField] private float damage;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+	// Start is called once before the first execution of Update after the MonoBehaviour is created
+	void Start()
     {
 		rb = GetComponent<Rigidbody2D>();
 		player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -33,9 +34,18 @@ public class DroneHunter : MonoBehaviour
 		{
 			transform.position = Vector2.MoveTowards(rb.position, player.position, (speed * Time.deltaTime));
 		}
-		}
+	}
 
-    // So we can see what the enemy can see
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		// When this enemy touches the player, the player takes damage
+		if (collision.gameObject.tag == "Player")
+		{
+			collision.GetComponent<Health>().TakeDamage(damage);
+		}
+	}
+
+	// So we can see what the enemy can see
 	private void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.green;

@@ -10,6 +10,7 @@ public class DroneBroken : MonoBehaviour
 
     private Rigidbody2D rb;
 	private BoxCollider2D boxCollider;
+	[field: SerializeField] private float damage;
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
@@ -29,8 +30,17 @@ public class DroneBroken : MonoBehaviour
 		rb.MovePosition(rb.position + (moveDirection * Time.deltaTime));
 	}
 
-    // What should happen when the drone hit something
-    private void HitLogic()
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // When this enemy touches the player, the player takes damage
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.GetComponent<Health>().TakeDamage(damage);
+        }
+    }
+
+	// What should happen when the drone hit something
+	private void HitLogic()
     {
         if (TouchedGround() && !goingUp)
         {
