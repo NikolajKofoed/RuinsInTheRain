@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IEnemy
 {
-    float Attack();
+    void Attack();
 }

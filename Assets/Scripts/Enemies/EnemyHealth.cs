@@ -4,9 +4,8 @@ public class EnemyHealth : MonoBehaviour
 {
 	[field: SerializeField] public int maxHealth { get; set; } = 10;
 	[SerializeField] private float knockbackForce = 15f;
-	[SerializeField] private GameObject deathSmokeVfx;
-	[SerializeField] private GameObject deathExplosionVfx;
-	[SerializeField] private GameObject deathDroneBodyVfx;
+	[SerializeField] private GameObject deathVfxPrefab;
+
 	private int currentHealth;
 	private Animator anim;
 	private Knockback knockback;
@@ -54,14 +53,37 @@ public class EnemyHealth : MonoBehaviour
 		{
             Debug.Log("Enemy died");
 			//animator.SetBool("IsDead", true);
+			if (deathVfxPrefab != null)
+			{
+				Debug.Log("should play particle system now");
+				PlayVFX();
+            }
 
-			Instantiate(deathDroneBodyVfx, transform.position, Quaternion.Euler(-90,0,0));
-			Instantiate(deathExplosionVfx, transform.position, Quaternion.Euler(-90,0,0));
-			Instantiate(deathSmokeVfx, transform.position, Quaternion.Euler(-90,0,0));
 			gameObject.SetActive(false); // disable object
             anim.SetBool("Dies", true);
         }
 	}
 
+	private void PlayVFX()
+    {
+        GameObject vfxInstance = Instantiate(deathVfxPrefab, transform.position, Quaternion.identity);
+
+        // Play all particle systems inside the instantiated prefab
+        foreach (var ps in vfxInstance.GetComponentsInChildren<ParticleSystem>())
+        {
+            ps.Play();
+			Debug.Log($"particle system: {ps}");
+        }
+
+        //// destroy the effect after its duration
+        //float maxDuration = 0f;
+        //foreach (var ps in vfxInstance.GetComponentsInChildren<ParticleSystem>())
+        //{
+        //    if (ps.main.duration > maxDuration)
+        //        maxDuration = ps.main.duration;
+        //}
+
+        //Destroy(vfxInstance, maxDuration + 1f); // Add buffer to ensure particles finish
+    }
 
 }

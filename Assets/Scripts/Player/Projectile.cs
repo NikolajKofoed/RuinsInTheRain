@@ -39,7 +39,10 @@ public class Projectile : MonoBehaviour
             collision.GetComponent<EnemyHealth>().TakeDamage(projectileDamage); // change later
         }
         Deactivate();
-        StartCoroutine(DeactiveProjectileTimerRoutine()); // safety routine cuz of current bug
+        if (gameObject.activeSelf)
+        {
+            StartCoroutine(DeactiveProjectileTimerRoutine()); // safety routine cuz of current bug
+        }
 
     }
 

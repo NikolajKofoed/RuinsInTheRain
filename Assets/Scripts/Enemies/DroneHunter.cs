@@ -52,8 +52,10 @@ public class DroneHunter : MonoBehaviour, IEnemy
         Gizmos.DrawWireSphere(transform.position, lineOfSight);
 	}
 
-    public float Attack()
+	/// <summary>
+	/// Currently there is no attack, they just deal damage on collision
+	/// </summary>
+    public void Attack()
     {
-		return damage;
     }
 }

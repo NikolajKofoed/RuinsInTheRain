@@ -178,9 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <maxHealth>k__BackingField: 1
   knockbackForce: 15
-  deathSmokeVfx: {fileID: 2335902068944475071, guid: 524c066683aecf949996c0a2339bf8e1, type: 3}
-  deathExplosionVfx: {fileID: 4284406247787899531, guid: be5005af2a0c94842b69be03980731f7, type: 3}
-  deathDroneBodyVfx: {fileID: 5151142095215029502, guid: 6dc15d3d4b40e184e8ec27ce37de6c5b, type: 3}
+  deathVfxPrefab: {fileID: 7221401576058908131, guid: 5eb6191deb168414abac92ac9a90de04, type: 3}
 --- !u!114 &8116086532221019097
 MonoBehaviour:
   m_ObjectHideFlags: 0

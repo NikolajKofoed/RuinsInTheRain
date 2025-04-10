@@ -70,6 +70,7 @@ public class PlayerAttack : MonoBehaviour
         playerProjectiles[FindProjectile()].GetComponent<Projectile>().SetDirection(Mathf.Sign(transform.localScale.x));
     }
 
+
     private int FindProjectile()
     {
         for (int i = 0; i < playerProjectiles.Length; i++)
