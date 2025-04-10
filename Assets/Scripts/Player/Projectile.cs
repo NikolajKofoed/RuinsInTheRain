@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -32,11 +33,13 @@ public class Projectile : MonoBehaviour
         hit = true;
         circleCollider.enabled = false;
         //anim.SetTrigger("explode");
-        if(collision.tag == "Enemy")
+        if(collision.CompareTag("Enemy"))
         {
             Deactivate(); //temp because I have no animation
             collision.GetComponent<EnemyHealth>().TakeDamage(projectileDamage); // change later
         }
+        Deactivate();
+        StartCoroutine(DeactiveProjectileTimerRoutine()); // safety routine cuz of current bug
 
     }
 
@@ -59,5 +62,14 @@ public class Projectile : MonoBehaviour
     private void Deactivate()
     {
         gameObject.SetActive(false);
+    }
+
+    private IEnumerator DeactiveProjectileTimerRoutine()
+    {
+        yield return new WaitForSeconds(2.5f);
+        if (gameObject.activeSelf)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
