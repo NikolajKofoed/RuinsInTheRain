@@ -152,10 +152,10 @@ TextureImporter:
       name: Computer Chips.v1_0
       rect:
         serializedVersion: 2
-        x: 44
-        y: 326
-        width: 8
-        height: 23
+        x: 0
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,10 +174,10 @@ TextureImporter:
       name: Computer Chips.v1_1
       rect:
         serializedVersion: 2
-        x: 140
-        y: 326
-        width: 8
-        height: 23
+        x: 96
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,10 +196,10 @@ TextureImporter:
       name: Computer Chips.v1_2
       rect:
         serializedVersion: 2
-        x: 236
-        y: 326
-        width: 8
-        height: 23
+        x: 192
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,10 +218,10 @@ TextureImporter:
       name: Computer Chips.v1_3
       rect:
         serializedVersion: 2
-        x: 332
-        y: 326
-        width: 8
-        height: 23
+        x: 288
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,10 +240,10 @@ TextureImporter:
       name: Computer Chips.v1_4
       rect:
         serializedVersion: 2
-        x: 32
-        y: 227
-        width: 29
-        height: 26
+        x: 0
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,10 +262,10 @@ TextureImporter:
       name: Computer Chips.v1_5
       rect:
         serializedVersion: 2
-        x: 128
-        y: 227
-        width: 29
-        height: 26
+        x: 96
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,10 +284,10 @@ TextureImporter:
       name: Computer Chips.v1_6
       rect:
         serializedVersion: 2
-        x: 224
-        y: 227
-        width: 29
-        height: 26
+        x: 192
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -306,10 +306,10 @@ TextureImporter:
       name: Computer Chips.v1_7
       rect:
         serializedVersion: 2
-        x: 320
-        y: 227
-        width: 29
-        height: 26
+        x: 288
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -328,10 +328,10 @@ TextureImporter:
       name: Computer Chips.v1_8
       rect:
         serializedVersion: 2
-        x: 23
-        y: 113
-        width: 56
-        height: 56
+        x: 0
+        y: 96
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -350,10 +350,10 @@ TextureImporter:
       name: Computer Chips.v1_9
       rect:
         serializedVersion: 2
-        x: 119
-        y: 113
-        width: 56
-        height: 56
+        x: 96
+        y: 96
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -372,10 +372,10 @@ TextureImporter:
       name: Computer Chips.v1_10
       rect:
         serializedVersion: 2
-        x: 215
-        y: 113
-        width: 56
-        height: 56
+        x: 192
+        y: 96
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -394,10 +394,10 @@ TextureImporter:
       name: Computer Chips.v1_11
       rect:
         serializedVersion: 2
-        x: 311
-        y: 113
-        width: 56
-        height: 56
+        x: 288
+        y: 96
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -416,10 +416,10 @@ TextureImporter:
       name: Computer Chips.v1_12
       rect:
         serializedVersion: 2
-        x: 23
-        y: 17
-        width: 56
-        height: 56
+        x: 0
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -438,7 +438,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8379e3ec380c55d46ac7b0f2d67207b9
     internalID: 0
     vertices: []
     indices: 
