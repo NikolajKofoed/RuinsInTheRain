@@ -1,35 +1,66 @@
 using System.Collections;
+using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
 public class CurvedProjectile : MonoBehaviour
 {
-    [SerializeField] private float duration = 1f;
-    [SerializeField] private AnimationCurve animCurve;
-    [SerializeField] private float heightY = 3f;
+    private float arcHeight = 3f;
+    private float gravityScale = 1f;
+
+    private Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     private void Start()
     {
-        Vector3 playerPos = Player2D.Instance.transform.position;
-
-        StartCoroutine(ProjectileCurveRoutine(transform.position, playerPos));
+        LaunchToTarget(Player2D.Instance.transform.position);
     }
-
-    private IEnumerator ProjectileCurveRoutine(Vector3 startPosition, Vector3 endPosition)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        float timePassed = 0f;
-
-        while (timePassed < duration)
+        if (collision.CompareTag("Player"))
         {
-            timePassed += Time.deltaTime;
-            float linearTime = timePassed / duration;
-            float heightTime = animCurve.Evaluate(linearTime);
-            float height = Mathf.Lerp(0f, heightY, heightTime);
-
-            transform.position = Vector2.Lerp(startPosition, endPosition, linearTime) + new Vector2(0f, height);
-
-            yield return null;
+            collision.GetComponent<Health>()?.TakeDamage(1, transform);
         }
 
-        //Instantiate(splatterPrefab, transform.position, Quaternion.identity); // explosion
         Destroy(gameObject);
     }
+
+    public void LaunchToTarget(Vector3 targetPosition)
+    {
+        Vector2 startPos = transform.position;
+        Vector2 endPos = targetPosition;
+
+        Physics2D.gravity = new Vector2(0, -9.81f); // Ensure standard gravity
+        rb.gravityScale = gravityScale;
+
+        Vector2 velocity = CalculateArcVelocity(startPos, endPos, arcHeight, Physics2D.gravity.y * gravityScale);
+        rb.linearVelocity = velocity;
+    }
+
+    private Vector2 CalculateArcVelocity(Vector2 start, Vector2 end, float height, float gravity)
+    {
+        float displacementY = end.y - start.y;
+        Vector2 displacementXZ = new Vector2(end.x - start.x, 0f);
+
+        // Calculate time to reach the apex
+        float timeToApex = Mathf.Sqrt(2 * height / -gravity);
+        float totalTimeDown = Mathf.Sqrt(2 * (height - displacementY) / -gravity);
+        float totalTime = timeToApex + totalTimeDown;
+
+        // Horizontal velocity
+        float vx = displacementXZ.x / totalTime;
+
+        // Initial vertical velocity to reach desired height
+        float vy = Mathf.Sqrt(-2 * gravity * height);
+
+        return new Vector2(vx, vy);
+    }
+
+
 }
+
+
+

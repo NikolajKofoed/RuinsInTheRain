@@ -108,6 +108,6 @@ public class EnemyAi : MonoBehaviour
             return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
 
         }
-        return new Vector2(Random.Range(-1f, 0f), Random.Range(-1f, 0f)).normalized;
+        return new Vector2(Random.Range(-1f, 1f), 0).normalized;
     }
 }

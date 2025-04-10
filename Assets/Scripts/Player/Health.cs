@@ -55,7 +55,7 @@ public class Health : MonoBehaviour
             knockback.GetKnockedBack(otherTransform, knockbackForce);
             //anim.SetTrigger("hurt");
             OnHitByEnemy?.Invoke();
-			StartCoroutine(InvunerabilityRoutine());
+			//StartCoroutine(InvunerabilityRoutine());
 		}
 		else
 		{

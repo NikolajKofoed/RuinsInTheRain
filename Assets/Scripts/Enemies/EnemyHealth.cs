@@ -58,9 +58,9 @@ public class EnemyHealth : MonoBehaviour
 				Debug.Log("should play particle system now");
 				PlayVFX();
             }
-			GetComponent<PickupSpawner>().DropItems();
+			GetComponent<PickupSpawner>()?.DropItems();
 			gameObject.SetActive(false); // disable object
-            anim.SetBool("Dies", true);
+            anim?.SetBool("Dies", true);
         }
 	}
 
