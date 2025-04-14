@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - NPC
   - Surface
+  - Ground
+  - DynamicParticleSystem
+  - PlayerProjectile
   layers:
   - Default
   - TransparentFX
