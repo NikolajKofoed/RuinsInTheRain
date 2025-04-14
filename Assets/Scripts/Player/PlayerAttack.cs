@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -13,13 +14,15 @@ public class PlayerAttack : MonoBehaviour
 	[SerializeField] private Transform firePoint;
     [SerializeField] private GameObject[] playerProjectiles;
 
-    //private Animator anim;
+    private Animator anim;
     private Player2D playerMovement;
     private float cooldownTimer = Mathf.Infinity;
 
+    private bool canMeleeAttack = true;
+
     private void Awake()
     {
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         playerMovement = GetComponent<Player2D>();
     }
 
@@ -36,19 +39,30 @@ public class PlayerAttack : MonoBehaviour
         cooldownTimer += Time.deltaTime;
     }
 
-    private void MeleeAttack()
+    public void MeleeAttack()
     {
-        //anim.SetTrigger("meleeAttack")
+        if (!canMeleeAttack) { return; } // can't attack if on cooldown
+        canMeleeAttack = false;
+
+        anim.SetTrigger("meleeAttack");
         cooldownTimer = 0;
+
         // Detect enemies in range of attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(meleePoint.position, meleeRange, enemyLayers);
+
         Debug.Log("Melee attack occured");
-        // Damage them
         foreach(Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyHealth>().TakeDamage(MeleeDamage, this.transform);
             Debug.Log($"hit enemy: " + enemy);
         }
+        StartCoroutine(MeleeAttackCooldownRoutine());
+    }
+
+    private IEnumerator MeleeAttackCooldownRoutine()
+    {
+        yield return new WaitForSeconds(meleeCooldown);
+        canMeleeAttack = true;
     }
 
     void OnDrawGizmosSelected()

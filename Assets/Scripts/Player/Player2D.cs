@@ -153,13 +153,17 @@ public class Player2D : Singleton<Player2D>
 
 	private void Dash()
 	{
-		if (!knockback.GettingKnockedBack)
-		{
-            DashCooldown = DashDuration + 0.2f; // Reset cooldown time after a dash
-            StartCoroutine(PerformDash());
-            DashCounter--;
-        }
-	}
+		//if (!knockback.GettingKnockedBack)
+		//{
+  //          DashCooldown = DashDuration + 0.2f; // Reset cooldown time after a dash
+  //          StartCoroutine(PerformDash());
+  //          DashCounter--;
+  //      }
+
+        DashCooldown = DashDuration + 0.2f; // Reset cooldown time after a dash
+        StartCoroutine(PerformDash());
+        DashCounter--;
+    }
 
 	private IEnumerator PerformDash()
 	{

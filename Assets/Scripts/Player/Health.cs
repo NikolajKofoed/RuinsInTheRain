@@ -10,7 +10,7 @@ public class Health : MonoBehaviour
 	[SerializeField] private float startingHealth;
     public float currentHealth { get; private set; }
 	private Animator anim;
-	private bool isDead = false;
+
 	// Respawn
 	private Vector3 respawnPoint;
 
@@ -38,34 +38,34 @@ public class Health : MonoBehaviour
 		respawnPoint = transform.position;
 	}
 
-	/// <summary>
-	/// Takes damage and gets knocked back
-	/// </summary>
-	/// <param name="_damage">amount of damage</param>
-	/// <param name="otherTransform">damage dealers transform</param>
-	public void TakeDamage(float _damage, Transform otherTransform)
+    // Sets the player respawn point, when they touch a checkpoint
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Checkpoint")
+        {
+            respawnPoint = transform.position;
+        }
+    }
+
+    /// <summary>
+    /// Takes damage and gets knocked back
+    /// </summary>
+    /// <param name="_damage">amount of damage</param>
+    /// <param name="otherTransform">damage dealers transform</param>
+    public void TakeDamage(float _damage, Transform otherTransform)
 	{
 		if(_damage <= 0) { return; } // 0 or negative damage doesn't count as an attack
 
-		if (currentHealth > 0 && knockback.GettingKnockedBack == false)
-		{
+		if (currentHealth > 0 && knockback.GettingKnockedBack == false) // can't take damage while knockbacked
+        {
             currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
-
-            Debug.Log("Player took damage, current health: " + currentHealth);
             knockback.GetKnockedBack(otherTransform, knockbackForce);
+
             //anim.SetTrigger("hurt");
             OnHitByEnemy?.Invoke();
-			//StartCoroutine(InvunerabilityRoutine());
-		}
-		else
-		{
-			if (!isDead)
-			{
-				OnDie?.Invoke();
-				GetComponent<Player2D>().enabled = false; //ChangeName Depending on Player controller
-				//anim.SetTrigger("die");
-				isDead = true;
-			}
+			//StartCoroutine(InvunerabilityRoutine()); // currently bugged
+
+			CheckIfDead();
 		}
 
 		Debug.Log(currentHealth);
@@ -77,35 +77,19 @@ public class Health : MonoBehaviour
 	/// <param name="_damage">amount of damage</param>
 	public void TakeDamage(float _damage)
 	{
-        currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+        if (_damage <= 0) { return; } // 0 or negative damage doesn't count as an attack
 
-        if (currentHealth > 0 && knockback.GettingKnockedBack == false)
+        if (currentHealth > 0 && knockback.GettingKnockedBack == false) // can't take damage while knockbacked
         {
+            currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
             Debug.Log("Player took damage, current health: " + currentHealth);
             //anim.SetTrigger("hurt");
             OnHitByEnemy?.Invoke();
-            StartCoroutine(InvunerabilityRoutine());
-        }
-        else
-        {
-            if (!isDead)
-            {
-                OnDie?.Invoke();
-                GetComponent<Player2D>().enabled = false; //ChangeName Depending on Player controller
-                                                          //anim.SetTrigger("die");
-                isDead = true;
-            }
+            //StartCoroutine(InvunerabilityRoutine());
+			CheckIfDead();
         }
     }
 
-	// Sets the player respawn point, when they touch a checkpoint
-	private void OnTriggerEnter2D(Collider2D collision)
-	{
-		if(collision.tag == "Checkpoint")
-		{
-			respawnPoint = transform.position;
-		}
-	}
 	// For when player comes into contact with extreme enviromental hazards
 	public void RespawnHazard(float _hazardDamage)
 	{
@@ -118,19 +102,13 @@ public class Health : MonoBehaviour
 			//anim.ResetTrigger("");
 			//anim.Play("idle");
 			transform.position = respawnPoint;
-			StartCoroutine(InvunerabilityRoutine());
-		}
-		else
-		{
-			if (!isDead)
-			{
-				OnDie?.Invoke();
-				GetComponent<Player2D>().enabled = false; //ChangeName Depending on Player controller
-														  //anim.SetTrigger("die");
-				isDead = true;
-			}
-		}
-	}
+
+			CheckIfDead();
+
+            //StartCoroutine(InvunerabilityRoutine());
+
+        }
+    }
 
 	public void AddHealth(float _heal)
 	{
@@ -138,7 +116,17 @@ public class Health : MonoBehaviour
 		currentHealth = Mathf.Clamp(currentHealth + _heal, 0, startingHealth);
 	}
 
-	private IEnumerator InvunerabilityRoutine()
+    private void CheckIfDead()
+    {
+        if (currentHealth <= 0)
+        {
+            Debug.Log("Plauer died");
+            gameObject.SetActive(false); // disable object
+            //anim?.SetBool("Dies", true);
+        }
+    }
+
+    private IEnumerator InvunerabilityRoutine()
 	{
 		Physics2D.IgnoreLayerCollision(10, 11, true);
 		for (int i = 0; i < numberOfFlashes; i++)
