@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -24,66 +25,74 @@ public class EnemyHealth : MonoBehaviour
 	/// </summary>
 	/// <param name="damage">the amount of damage</param>
 	/// <param name="other">position of the damage dealer</param>
-    public void TakeDamage(int damage, Transform other)
+    public void TakeDamage(int damage, Transform other = null)
 	{
 		currentHealth -= damage;
 		Debug.Log(currentHealth);
-		knockback.GetKnockedBack(other, knockbackForce);
-		//animator.SetTrigger("Hurt")
+        if (!other.CompareTag("PlayerProjectile"))
+        {
+            knockback.GetKnockedBack(other, knockbackForce);
+        }
+        //animator.SetTrigger("Hurt")
 
-		CheckIfDead();
+        CheckIfDead(other);
 	}
 
-	/// <summary>
-	/// used for attacks where no knockback occurs
-	/// </summary>
-	/// <param name="damage">the amount of damage</param>
-    public void TakeDamage(int damage)
+    void CheckIfDead(Transform other)
     {
-        currentHealth -= damage;
-        Debug.Log(currentHealth);
-		//animator.SetTrigger("Hurt")
-
-		CheckIfDead();
+        if (currentHealth <= 0)
+        {
+            //animator.SetBool("IsDead", true);
+            if (deathVfxPrefab != null)
+            {
+                PlayVFX(other);
+            }
+            GetComponent<PickupSpawner>()?.DropItems();
+            gameObject.SetActive(false); // disable object
+            //anim?.SetBool("Dies", true);
+        }
     }
 
-    void CheckIfDead()
-	{
-		if(currentHealth <= 0)
-		{
-            Debug.Log("Enemy died");
-			//animator.SetBool("IsDead", true);
-			if (deathVfxPrefab != null)
-			{
-				Debug.Log("should play particle system now");
-				PlayVFX();
-            }
-			GetComponent<PickupSpawner>()?.DropItems();
-			gameObject.SetActive(false); // disable object
-            anim?.SetBool("Dies", true);
-        }
-	}
 
-	private void PlayVFX()
+
+    private void PlayVFX(Transform other)
     {
         GameObject vfxInstance = Instantiate(deathVfxPrefab, transform.position, Quaternion.identity);
 
-        // Play all particle systems inside the instantiated prefab
-        foreach (var ps in vfxInstance.GetComponentsInChildren<ParticleSystem>())
+        Vector3 directionAwayFromPlayer = Vector3.right; // default direction
+
+        if (other != null)
         {
-            ps.Play();
-			Debug.Log($"particle system: {ps}");
+            directionAwayFromPlayer = (transform.position - other.position).normalized;
+            Debug.Log("Calculated direction: " + directionAwayFromPlayer);
         }
 
-        //// destroy the effect after its duration
-        //float maxDuration = 0f;
-        //foreach (var ps in vfxInstance.GetComponentsInChildren<ParticleSystem>())
-        //{
-        //    if (ps.main.duration > maxDuration)
-        //        maxDuration = ps.main.duration;
-        //}
+        foreach (var ps in vfxInstance.GetComponentsInChildren<ParticleSystem>())
+        {
+            if (ps.CompareTag("DynamicParticleSystem"))
+            {
+                var vel = ps.velocityOverLifetime;
+                vel.enabled = true;
+                vel.space = ParticleSystemSimulationSpace.Local;
 
-        //Destroy(vfxInstance, maxDuration + 1f); // Add buffer to ensure particles finish
+                // You can use separate X/Y curves or just set a constant
+                vel.x = directionAwayFromPlayer.x * 5f;
+                vel.y = directionAwayFromPlayer.y * 5f;
+            }
+
+            ps.Play();
+        }
+
+        // Clean up
+        float maxDuration = 0f;
+        foreach (var ps in vfxInstance.GetComponentsInChildren<ParticleSystem>())
+        {
+            if (ps.main.duration > maxDuration)
+                maxDuration = ps.main.duration;
+        }
+
+        Destroy(vfxInstance, maxDuration + 1f);
     }
+
 
 }

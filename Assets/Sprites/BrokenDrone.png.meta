@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: ee8887826ef191041afbae3065fd0ea7
+guid: 3eac71ddbde315d47ab0ec1bc2ea2769
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3233127789767178974
-    second: Drones 1_0
-  - first:
-      213: -8262038655610386974
-    second: Drones 1_1
-  - first:
-      213: -8990526482663414232
-    second: Drones 1_2
+      213: 78395411109819676
+    second: BrokenDrone_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Drones 1_0
+      name: BrokenDrone_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 60
-        width: 60
-        height: 60
+        x: 5
+        y: 8
+        width: 47
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,52 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 225cb71b76f9123d0800000000000000
-      internalID: -3233127789767178974
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Drones 1_1
-      rect:
-        serializedVersion: 2
-        x: 60
-        y: 60
-        width: 60
-        height: 60
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2e50ccbed97575d80800000000000000
-      internalID: -8262038655610386974
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Drones 1_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 60
-        height: 60
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 826ea114ccb3b3380800000000000000
-      internalID: -8990526482663414232
+      spriteID: c15b8370634861100800000000000000
+      internalID: 78395411109819676
       vertices: []
       indices: 
       edges: []
@@ -188,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: b390f41560b59ca44bf69f42fe27832d
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -197,10 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Drones 1_0: -3233127789767178974
-      Drones 1_1: -8262038655610386974
-      Drones 1_2: -8990526482663414232
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5543272880257240007}
   - component: {fileID: 8863260671131463208}
-  - component: {fileID: 5763971585338835861}
   - component: {fileID: 5326440772715035858}
+  - component: {fileID: 5763971585338835861}
   - component: {fileID: 6693879411367166585}
   - component: {fileID: 8116086532221019097}
   - component: {fileID: -3222321511970295360}
+  - component: {fileID: 4279772974471388029}
   m_Layer: 7
   m_Name: Hunter Drone
   m_TagString: Enemy
@@ -92,33 +93,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &5763971585338835861
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7486847245184378809}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!61 &5326440772715035858
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -165,6 +139,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.47, y: 0.41}
   m_EdgeRadius: 0
+--- !u!50 &5763971585338835861
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7486847245184378809}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!114 &6693879411367166585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232f90c34cc41844e9d0b47f470d57a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <maxHealth>k__BackingField: 1
+  <maxHealth>k__BackingField: 3
   knockbackForce: 15
   deathVfxPrefab: {fileID: 7221401576058908131, guid: 5eb6191deb168414abac92ac9a90de04, type: 3}
 --- !u!114 &8116086532221019097
@@ -209,3 +210,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currencyPrefab: {fileID: 2224924491784914626, guid: cd5922497f4549f46bfde2736f64b6f7, type: 3}
   amountDropped: 1
+--- !u!114 &4279772974471388029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7486847245184378809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b4c7dfdcfb31748b8c05711c27fcf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackTime: 0.1

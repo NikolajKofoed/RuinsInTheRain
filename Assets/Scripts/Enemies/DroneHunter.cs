@@ -39,7 +39,7 @@ public class DroneHunter : MonoBehaviour, IEnemy
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		// When this enemy touches the player, the player takes damage
-		if (collision.gameObject.tag == "Player")
+		if (collision.CompareTag("Player"))
 		{
 			collision.GetComponent<Health>().TakeDamage(damage, transform);
 		}

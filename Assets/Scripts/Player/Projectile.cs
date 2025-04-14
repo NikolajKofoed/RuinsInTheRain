@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour
         if(collision.CompareTag("Enemy"))
         {
             Deactivate(); //temp because I have no animation
-            collision.GetComponent<EnemyHealth>().TakeDamage(projectileDamage); // change later
+            collision.GetComponent<EnemyHealth>().TakeDamage(projectileDamage, this.transform); // change later
         }
         Deactivate();
         if (gameObject.activeSelf)
