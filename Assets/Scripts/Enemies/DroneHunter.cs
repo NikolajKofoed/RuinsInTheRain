@@ -4,7 +4,9 @@ public class DroneHunter : MonoBehaviour, IEnemy
 {
 	// Movement
 	[SerializeField] private float speed;
-	[SerializeField] private float lineOfSight;
+	[SerializeField] private float idleLineOfSight;
+	[SerializeField] private float huntingLineOfSight;
+	private float lineOfSight;
 	private bool hunterMode = false;
 
     private Rigidbody2D rb;
@@ -24,7 +26,13 @@ public class DroneHunter : MonoBehaviour, IEnemy
 		float distantanceFromPlayer = Vector2.Distance(player.position, transform.position);
 		if (distantanceFromPlayer < lineOfSight)
 		{
+			lineOfSight = huntingLineOfSight;
 			hunterMode = true;
+		}
+		else
+		{
+			lineOfSight = idleLineOfSight;
+			hunterMode = false;
 		}
 	}
 
@@ -49,7 +57,9 @@ public class DroneHunter : MonoBehaviour, IEnemy
 	private void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, lineOfSight);
+        Gizmos.DrawWireSphere(transform.position, idleLineOfSight);
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(transform.position, huntingLineOfSight);
 	}
 
     public float Attack()

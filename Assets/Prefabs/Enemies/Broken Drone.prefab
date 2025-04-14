@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8821670638249150406, guid: 1c22794450f67ef4eaf6e914413d0af2, type: 3}
+  m_Sprite: {fileID: -3233127789767178974, guid: ee8887826ef191041afbae3065fd0ea7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -177,6 +177,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <maxHealth>k__BackingField: 5
+  knockbackForce: 15
+  deathSmokeVfx: {fileID: 0}
+  deathExplosionVfx: {fileID: 0}
+  deathDroneBodyVfx: {fileID: 0}
 --- !u!114 &7930238029273767516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,3 +199,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   goingUp: 1
+  damage: 0

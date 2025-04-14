@@ -13,13 +13,13 @@ public class PlayerAttack : MonoBehaviour
 	[SerializeField] private Transform firePoint;
     [SerializeField] private GameObject[] playerProjectiles;
 
-    //private Animator anim;
+    private Animator anim;
     private Player2D playerMovement;
     private float cooldownTimer = Mathf.Infinity;
 
     private void Awake()
     {
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         playerMovement = GetComponent<Player2D>();
     }
 
@@ -38,7 +38,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void MeleeAttack()
     {
-        //anim.SetTrigger("meleeAttack")
+        anim.SetTrigger("AttackMelee");
         cooldownTimer = 0;
         // Detect enemies in range of attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(meleePoint.position, meleeRange, enemyLayers);
@@ -63,7 +63,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void RangedAttack()
     {
-        //anim.SetTrigger("rangeAttack");
+        anim.SetTrigger("AttackRange");
         cooldownTimer = 0;
 
         playerProjectiles[FindProjectile()].transform.position = firePoint.position;

@@ -101,7 +101,7 @@ public class Health : MonoBehaviour
 	// Sets the player respawn point, when they touch a checkpoint
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if(collision.tag == "Checkpoint")
+		if(collision.tag == "Respawn")
 		{
 			respawnPoint = transform.position;
 		}
