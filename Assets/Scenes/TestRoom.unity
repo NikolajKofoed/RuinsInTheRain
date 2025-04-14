@@ -184,14 +184,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7204271575212583910, guid: f956318cf2520444395205b4b7be7e87, type: 3}
+  m_Sprite: {fileID: 6522536790819584192, guid: 4afa38f34d79b3d4d88cf96287f240a9, type: 3}
   m_Type: 3
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -337,11 +337,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7639853312593728018, guid: 1a7c971c16b4d9e45a1071350e9f4edc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.085841
+      value: 4.0406394
       objectReference: {fileID: 0}
     - target: {fileID: 7639853312593728018, guid: 1a7c971c16b4d9e45a1071350e9f4edc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2393821
+      value: 1.239312
       objectReference: {fileID: 0}
     - target: {fileID: 7639853312593728018, guid: 1a7c971c16b4d9e45a1071350e9f4edc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -441,7 +441,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.78616345, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.08565211, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1933,6 +1933,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &685329016 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5151142095215029502, guid: 6dc15d3d4b40e184e8ec27ce37de6c5b, type: 3}
+  m_PrefabInstance: {fileID: 5421361464987801848}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &881775581
 GameObject:
   m_ObjectHideFlags: 0
@@ -2123,7 +2128,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7204271575212583910, guid: f956318cf2520444395205b4b7be7e87, type: 3}
+  m_Sprite: {fileID: -4630727782715974510, guid: 4afa38f34d79b3d4d88cf96287f240a9, type: 3}
   m_Type: 3
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2290,6 +2295,61 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4257499589687239635, guid: 6dc15d3d4b40e184e8ec27ce37de6c5b, type: 3}
   m_PrefabInstance: {fileID: 5421361464987801848}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1371814778
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685329016}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -8990526482663414232, guid: ee8887826ef191041afbae3065fd0ea7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.47, y: 0.41}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1447785304
 GameObject:
   m_ObjectHideFlags: 0
@@ -2610,8 +2670,8 @@ Transform:
   m_GameObject: {fileID: 1862178142}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.146, y: -3.0391, z: 0}
-  m_LocalScale: {x: 0.75040835, y: 0.3621042, z: 1}
+  m_LocalPosition: {x: 4.13, y: -3.12, z: 0}
+  m_LocalScale: {x: 0.9136972, y: 0.55803883, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2743,6 +2803,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 940228359336488193, guid: fa4e2914bfa3fc541afbda2ddd8fab5a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3121539000270260383, guid: fa4e2914bfa3fc541afbda2ddd8fab5a, type: 3}
       propertyPath: 'playerProjectiles.Array.data[0]'
       value: 
@@ -2940,7 +3004,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5151142095215029502, guid: 6dc15d3d4b40e184e8ec27ce37de6c5b, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1371814778}
   m_SourcePrefab: {fileID: 100100000, guid: 6dc15d3d4b40e184e8ec27ce37de6c5b, type: 3}
 --- !u!1001 &8339806118686662898
 PrefabInstance:
@@ -3050,6 +3117,18 @@ PrefabInstance:
     - target: {fileID: 7486847245184378809, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
       propertyPath: m_Name
       value: Hunter Drone
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116086532221019097, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: lineOfSight
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116086532221019097, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: idleLineOfSight
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116086532221019097, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: huntingLineOfSight
+      value: 5.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

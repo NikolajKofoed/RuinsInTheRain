@@ -79,13 +79,14 @@ public class Player2D : Singleton<Player2D>
 		//Set animaator parametors
 		anim.SetBool("Walking", horizontalInput != 0);
 		anim.SetBool("Grounded", IsGrounded());
+		anim.SetBool("OnWall", OnWall());
 
+		//Jump
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
 			Jump();
 		}
-
-		//Jump
+		
 		if (Input.GetKeyUp(KeyCode.Space) && rb.linearVelocity.y > 0)
 		{
 			rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y / 2);
