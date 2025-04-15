@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 651573553325816211}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.7184408, y: 0.07231212, z: -9.999022}
+  m_LocalPosition: {x: -10.56156, y: 1.442312, z: -11.999022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -54,7 +54,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 6802203259498343292, guid: fa4e2914bfa3fc541afbda2ddd8fab5a, type: 3}
+    TrackingTarget: {fileID: 0}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -95,7 +95,7 @@ MonoBehaviour:
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
-  FollowOffset: {x: 0, y: 0, z: -10}
+  FollowOffset: {x: 0, y: 0, z: -12}
 --- !u!114 &1951433752901512775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 5624161429667993968}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.71843576, y: 1.0573121, z: -9.999022}
+  m_LocalPosition: {x: -8.529152, y: 1.9399921, z: -11.999022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -364,10 +364,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 13, y: -2}
-      - {x: 13, y: 6.7}
-      - {x: -5, y: 6.7}
-      - {x: -5, y: -2}
+    - - {x: 14.601116, y: -1.8949347}
+      - {x: 14.539715, y: 11.562546}
+      - {x: -14.819822, y: 11.474499}
+      - {x: -15.107321, y: 4.120962}
+      - {x: -14.970501, y: -1.6444116}
+      - {x: -2.491047, y: -1.8098431}
   m_UseDelaunayMesh: 0
 --- !u!1 &8444518077136889040
 GameObject:

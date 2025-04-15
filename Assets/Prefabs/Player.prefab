@@ -255,8 +255,8 @@ Transform:
   m_GameObject: {fileID: 3487763657091523549}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.69, y: 0.22, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.76, y: -0.04, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6802203259498343292}
@@ -429,7 +429,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.47, y: 1.82}
+    oldSize: {x: 1.5, y: 2.4}
     newSize: {x: 0.77, y: 3.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -521,10 +521,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc3985df5360bf489e8a977f5e756cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleeCooldown: 0.2
+  meleeCooldown: 0.5
   meleePoint: {fileID: 4939675433061290243}
   meleeRange: 0.8
-  MeleeDamage: 4
+  MeleeDamage: 1
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
@@ -551,7 +551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448d9edda287aa84b9d9b2ae88d4e3eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 5
+  startingHealth: 10
   iFramesDuration: 2
   numberOfFlashes: 4
   <OnHeal>k__BackingField:

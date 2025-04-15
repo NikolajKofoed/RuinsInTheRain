@@ -20,6 +20,7 @@ public class Player2D : Singleton<Player2D>
 	private int JumpCounter; // For resetting ExtraJump
 
 	[Header("Wall Jumping")]
+	[SerializeField] private bool canWallJump;
     [field: SerializeField] private float WallJumpX; //Horizontal wall jump force
     [field: SerializeField] private float WallJumpY; //Vertical wall jump force
 	// maybe we can seperate groundlayer / walllayer on the tilemap by individual tiles?
@@ -27,6 +28,7 @@ public class Player2D : Singleton<Player2D>
     [field: SerializeField] private LayerMask SurfaceLayer;
 
 	[Header("Dash")]
+	[SerializeField] private bool canDash;
 	[field: SerializeField] private float DashLength;
 	[field: SerializeField] private float DashDuration = 0.2f; //Durantion of the dash
 	[field: SerializeField] private int DashMaxAirAmounts;
@@ -80,6 +82,7 @@ public class Player2D : Singleton<Player2D>
 		anim.SetBool("Walking", horizontalInput != 0);
 		anim.SetBool("Grounded", IsGrounded());
 		anim.SetBool("OnWall", OnWall());
+		anim.SetBool("canWallJump", canWallJump);
 
 		//Jump
 		if (Input.GetKeyDown(KeyCode.Space))
@@ -99,7 +102,7 @@ public class Player2D : Singleton<Player2D>
 			Dash();
 		}
 
-		if (OnWall() && !IsGrounded())
+		if (OnWall() && !IsGrounded() && canWallJump)
 		{
 			rb.gravityScale = 1;
 			rb.linearVelocity = Vector2.zero;
@@ -146,6 +149,8 @@ public class Player2D : Singleton<Player2D>
 
 	private void WallJump()
 	{
+		if(!canWallJump) { return; }
+
 		if (!knockback.GettingKnockedBack)
 		{
             rb.AddForce(new Vector2(-Mathf.Sign(transform.localScale.x) * WallJumpX, WallJumpY));
@@ -154,6 +159,8 @@ public class Player2D : Singleton<Player2D>
 
 	private void Dash()
 	{
+		if(!canDash) { return; }
+
 		if (!knockback.GettingKnockedBack)
 		{
 			DashCooldown = DashDuration + 0.2f; // Reset cooldown time after a dash

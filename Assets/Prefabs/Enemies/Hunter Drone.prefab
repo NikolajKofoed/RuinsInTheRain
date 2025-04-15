@@ -16,13 +16,14 @@ GameObject:
   - component: {fileID: 8116086532221019097}
   - component: {fileID: -3222321511970295360}
   - component: {fileID: 4279772974471388029}
+  - component: {fileID: 6059851713446539650}
   m_Layer: 7
   m_Name: Hunter Drone
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5543272880257240007
 Transform:
   m_ObjectHideFlags: 0
@@ -131,7 +132,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.47, y: 0.41}
+    oldSize: {x: 0.6, y: 0.6}
     newSize: {x: 0.47, y: 0.41}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -195,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   idleLineOfSight: 4
-  huntingLineOfSight: 5.5
+  huntingLineOfSight: 8
   damage: 1
 --- !u!114 &-3222321511970295360
 MonoBehaviour:
@@ -223,4 +224,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b4c7dfdcfb31748b8c05711c27fcf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockBackTime: 0.1
+  knockBackTime: 0.15
+--- !u!114 &6059851713446539650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7486847245184378809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf8d8c59e1c8db4a812af6f3a8ddc43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currencyPrefab: {fileID: 0}
+  amountDropped: 3
