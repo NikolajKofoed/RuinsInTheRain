@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      HangingMossAndGrass_1024x512_0: 7694245283282974030
+      HangingMossAndGrass_1024x512_1: 3442020236086959737
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

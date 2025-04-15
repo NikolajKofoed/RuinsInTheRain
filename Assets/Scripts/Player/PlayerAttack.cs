@@ -44,7 +44,7 @@ public class PlayerAttack : MonoBehaviour
         if (!canMeleeAttack) { return; } // can't attack if on cooldown
         canMeleeAttack = false;
 
-        anim.SetTrigger("meleeAttack");
+        anim.SetTrigger("MeleeAttack");
         cooldownTimer = 0;
 
         // Detect enemies in range of attack
@@ -77,7 +77,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void RangedAttack()
     {
-        anim.SetTrigger("rangeAttack");
+        anim.SetTrigger("RangeAttack");
         cooldownTimer = 0;
 
         playerProjectiles[FindProjectile()].transform.position = firePoint.position;
