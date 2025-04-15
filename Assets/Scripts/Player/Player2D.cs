@@ -126,7 +126,7 @@ public class Player2D : Singleton<Player2D>
 	private void Jump()
 	{
 		//SoundManager.instance.PlaySound(jumpSound);
-		if (OnWall() && !IsGrounded() && !knockback.GettingKnockedBack)
+		if (OnWall() && !IsGrounded() && !knockback.GettingKnockedBack && canWallJump)
 		{
 			WallJump();
 		}
@@ -149,8 +149,6 @@ public class Player2D : Singleton<Player2D>
 
 	private void WallJump()
 	{
-		if(!canWallJump) { return; }
-
 		if (!knockback.GettingKnockedBack)
 		{
             rb.AddForce(new Vector2(-Mathf.Sign(transform.localScale.x) * WallJumpX, WallJumpY));
