@@ -45,6 +45,10 @@ public class Health : MonoBehaviour
         {
             respawnPoint = transform.position;
         }
+        if (collision.tag == "Respawn")
+        {
+            respawnPoint = transform.position;
+        }
     }
 
     /// <summary>
@@ -90,14 +94,6 @@ public class Health : MonoBehaviour
         }
     }
 
-	// Sets the player respawn point, when they touch a checkpoint
-	private void OnTriggerEnter2D(Collider2D collision)
-	{
-		if(collision.tag == "Respawn")
-		{
-			respawnPoint = transform.position;
-		}
-	}
 	// For when player comes into contact with extreme enviromental hazards
 	public void RespawnHazard(float _hazardDamage)
 	{

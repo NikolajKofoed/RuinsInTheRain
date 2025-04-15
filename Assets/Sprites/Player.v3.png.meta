@@ -207,6 +207,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1059,7 +1072,45 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Player.v3_0: 1181095546745147229
+      Player.v3_1: 8105521913418425304
+      Player.v3_10: -8508393825161511760
+      Player.v3_11: -1188546509381533275
+      Player.v3_12: -7466561151470009935
+      Player.v3_13: 7915179537628594093
+      Player.v3_14: 2688199729620874406
+      Player.v3_15: -4170881590921252787
+      Player.v3_16: 3319357148161381021
+      Player.v3_17: 7026057391836855432
+      Player.v3_18: 3273518034570323163
+      Player.v3_19: 6620195543737293042
+      Player.v3_2: 6990234529192734680
+      Player.v3_20: -7911324743262662714
+      Player.v3_21: 1524829775275245322
+      Player.v3_22: 3850718002933536160
+      Player.v3_23: -865398855306111768
+      Player.v3_24: 6029796372585772671
+      Player.v3_25: 8992394233381639153
+      Player.v3_26: -4516688822153574200
+      Player.v3_27: -874537277587258010
+      Player.v3_28: 8017902214778146178
+      Player.v3_29: -3165318767930312590
+      Player.v3_3: -3702852033527912360
+      Player.v3_30: 1827707917356284105
+      Player.v3_31: -5008348762139431554
+      Player.v3_32: -7828992512163004676
+      Player.v3_33: 4877157860529381688
+      Player.v3_34: 4647432520011519973
+      Player.v3_35: 6607127112255709275
+      Player.v3_36: 8058279092148945324
+      Player.v3_37: 6819540934365914517
+      Player.v3_4: -3510547945448111819
+      Player.v3_5: 5867730956378393099
+      Player.v3_6: 7105109534624703396
+      Player.v3_7: 2680992301128501758
+      Player.v3_8: -8333272323904500728
+      Player.v3_9: 5931306216325866070
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
