@@ -77,7 +77,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void RangedAttack()
     {
-        anim.SetTrigger("AttackRange");
+        anim.SetTrigger("rangeAttack");
         cooldownTimer = 0;
 
         playerProjectiles[FindProjectile()].transform.position = firePoint.position;
