@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BrokenDrone_0: 78395411109819676
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

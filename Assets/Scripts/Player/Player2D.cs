@@ -82,7 +82,6 @@ public class Player2D : Singleton<Player2D>
 		anim.SetBool("Walking", horizontalInput != 0);
 		anim.SetBool("Grounded", IsGrounded());
 		anim.SetBool("OnWall", OnWall());
-		anim.SetBool("canWallJump", canWallJump);
 
 		//Jump
 		if (Input.GetKeyDown(KeyCode.Space))
