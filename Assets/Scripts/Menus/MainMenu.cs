@@ -1,22 +1,42 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame()
+    public GameObject MenuScreen;
+    public GameObject OptionMenu;
+	public GameObject QuitMenu;
+
+
+	public void PlayGame()
     {
-        //SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync(1);
     }
 
     public void Settings()
     {
+        MenuScreen.SetActive(false);
+        OptionMenu.SetActive(true);
+    }
 
+    public void Quitting()
+    {
+        MenuScreen.SetActive(false);
+        QuitMenu.SetActive(true);
+    }
+
+    public void Return()
+    {
+        MenuScreen.SetActive(true);
+        OptionMenu.SetActive(false);
+        QuitMenu.SetActive(false);
     }
 
     public void QuitGame()
     {
-        Console.WriteLine("Quit game");
-        Application.Quit();
-    }
+        Debug.Log("Quit game!");
+		Application.Quit();
+	}
 }
