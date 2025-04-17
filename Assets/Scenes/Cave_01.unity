@@ -46831,11 +46831,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7358117220228928170, guid: 83aa43439f9de464bb4543356c04910b, type: 3}
   m_PrefabInstance: {fileID: 1466636716}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1379136183 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1815764912291856214, guid: a329c34cfdf852442874083f82a9d647, type: 3}
-  m_PrefabInstance: {fileID: 2155551439171942028}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1380509013 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8296391428086165091, guid: 613c69f86e531c04097989666c8725ab, type: 3}
@@ -55465,7 +55460,7 @@ PrefabInstance:
     - target: {fileID: 3121539000270260383, guid: fa4e2914bfa3fc541afbda2ddd8fab5a, type: 3}
       propertyPath: playerProjectiles
       value: 
-      objectReference: {fileID: 1379136183}
+      objectReference: {fileID: 1815764912291856214, guid: a329c34cfdf852442874083f82a9d647, type: 3}
     - target: {fileID: 6802203259498343292, guid: fa4e2914bfa3fc541afbda2ddd8fab5a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -37.76

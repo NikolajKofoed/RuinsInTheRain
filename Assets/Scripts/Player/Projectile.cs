@@ -9,12 +9,10 @@ public class Projectile : MonoBehaviour
     private bool hit;
     private float lifetime;
 
-    private CircleCollider2D circleCollider;
     private Vector3 initialScale;
 
     private void Awake()
     {
-        circleCollider = GetComponent<CircleCollider2D>();
         initialScale = transform.localScale; // Cache original scale
     }
 
@@ -32,7 +30,6 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         hit = true;
-        circleCollider.enabled = false;
 
         if (collision.CompareTag("Enemy"))
         {
@@ -54,7 +51,6 @@ public class Projectile : MonoBehaviour
         direction = _direction;
         hit = false;
         gameObject.SetActive(true);
-        circleCollider.enabled = true;
 
         // Always flip based on initial scale
         transform.localScale = new Vector3(initialScale.x * _direction, initialScale.y, initialScale.z);
