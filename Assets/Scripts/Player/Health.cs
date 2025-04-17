@@ -99,19 +99,17 @@ public class Health : MonoBehaviour
 	// For when player comes into contact with extreme enviromental hazards
 	public void RespawnHazard(float _hazardDamage)
 	{
-		currentHealth = Mathf.Clamp(currentHealth - _hazardDamage, 0, startingHealth);
 
 		if (currentHealth > 0)
 		{
-			//anim.SetTrigger("hurt");
-			OnRespawnHazard?.Invoke();
+            TakeDamage(_hazardDamage);
+
+            //anim.SetTrigger("hurt");
+            OnRespawnHazard?.Invoke();
 			//anim.ResetTrigger("");
 			//anim.Play("idle");
 			transform.position = respawnPoint;
 
-			CheckIfDead();
-
-            //StartCoroutine(InvunerabilityRoutine());
 
         }
     }

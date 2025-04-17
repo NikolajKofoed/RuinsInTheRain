@@ -1,71 +1,103 @@
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.Rendering.Universal;
 
 public class DroneHunter : MonoBehaviour, IEnemy
 {
-	// Movement
-	[SerializeField] private float speed;
-	[SerializeField] private float idleLineOfSight;
-	[SerializeField] private float huntingLineOfSight;
-	private float lineOfSight;
-	private bool hunterMode = false;
+    // Movement
+    [SerializeField] private float speed;
+    [SerializeField] private float idleLineOfSight;
+    [SerializeField] private float huntingLineOfSight;
+    [SerializeField] private Transform SpotlightPosRight;
+    [SerializeField] private Transform SpotlightPosLeft;
+    private float lineOfSight;
+    private bool hunterMode = false;
 
     private Rigidbody2D rb;
-	private Transform player;
-	[field: SerializeField] private float damage;
+    private Transform player;
+    private SpriteRenderer spriteRenderer; // new
+    private Light2D spotlight;
 
-	// Start is called once before the first execution of Update after the MonoBehaviour is created
-	void Start()
+    [field: SerializeField] private float damage;
+
+    void Start()
     {
-		rb = GetComponent<Rigidbody2D>();
-		player = GameObject.FindGameObjectWithTag("Player").transform;
+        spotlight = GetComponentInChildren<Light2D>();
+        rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>(); // cache it
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    // Update is called once per frame
     void Update()
-	{
-		float distantanceFromPlayer = Vector2.Distance(player.position, transform.position);
-		if (distantanceFromPlayer < lineOfSight)
-		{
-			lineOfSight = huntingLineOfSight;
-			hunterMode = true;
-		}
-		else
-		{
-			lineOfSight = idleLineOfSight;
-			hunterMode = false;
-		}
-	}
+    {
+        float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
+
+        if (distanceFromPlayer < lineOfSight)
+        {
+            lineOfSight = huntingLineOfSight;
+            hunterMode = true;
+        }
+        else
+        {
+            lineOfSight = idleLineOfSight;
+            hunterMode = false;
+        }
+
+
+    }
 
     private void FixedUpdate()
-	{
-		if (hunterMode)
-		{
-			transform.position = Vector2.MoveTowards(rb.position, player.position, (speed * Time.deltaTime));
-		}
-	}
+    {
+        if (hunterMode)
+        {
+            transform.position = Vector2.MoveTowards(rb.position, player.position, speed * Time.deltaTime);
+            bool facingLeft = player.position.x < transform.position.x;
 
-	private void OnTriggerEnter2D(Collider2D collision)
-	{
-		// When this enemy touches the player, the player takes damage
-		if (collision.CompareTag("Player"))
-		{
-			collision.GetComponent<Health>().TakeDamage(damage, transform);
-		}
-	}
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.flipX = facingLeft;
+            }
 
-	// So we can see what the enemy can see
-	private void OnDrawGizmosSelected()
-	{
-		Gizmos.color = Color.green;
+            if (spotlight != null)
+            {
+                float spotlightAngle;
+
+                if (facingLeft)
+                {
+                    spotlightAngle = 90f;
+                    spotlight.transform.position = SpotlightPosLeft.transform.position;
+                }
+                else
+                {
+                    spotlightAngle = -90f;
+                    spotlight.transform.position = SpotlightPosRight.transform.position;
+
+                }
+
+                spotlight.transform.rotation = Quaternion.Euler(0f, 0f, spotlightAngle);
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            collision.GetComponent<Health>().TakeDamage(damage, transform);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, idleLineOfSight);
-		Gizmos.color = Color.red;
-		Gizmos.DrawWireSphere(transform.position, huntingLineOfSight);
-	}
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, huntingLineOfSight);
+    }
 
-	/// <summary>
-	/// Currently there is no attack, they just deal damage on collision
-	/// </summary>
     public void Attack()
     {
+        // Optional: Add attack logic here
     }
 }
+
