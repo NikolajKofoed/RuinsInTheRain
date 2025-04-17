@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 759716811524343187}
-  - component: {fileID: 6018691455492704327}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -38,21 +37,6 @@ RectTransform:
   m_AnchoredPosition: {x: 959.99994, y: -636.80005}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6018691455492704327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283347748880886569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 761ac3b31b866e34796638017f4f5fc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
-  totalHealthBar: {fileID: 8194774298107041141}
-  currentHealthBar: {fileID: 2026630937547167970}
 --- !u!1 &2024205763550176503
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +107,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.5
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -241,7 +225,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -135.662, y: -66.100006}
+  m_AnchoredPosition: {x: -135.66211, y: -66.1001}
   m_SizeDelta: {x: 246.291, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4334215548750836320
@@ -509,7 +493,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.5
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

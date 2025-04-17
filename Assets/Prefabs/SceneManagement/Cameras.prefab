@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 651573553325816211}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.56156, y: 1.442312, z: -11.999022}
+  m_LocalPosition: {x: -34.46156, y: 6.872312, z: -14.999022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -95,7 +95,7 @@ MonoBehaviour:
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
-  FollowOffset: {x: 0, y: 0, z: -12}
+  FollowOffset: {x: 0, y: 0, z: -15}
 --- !u!114 &1951433752901512775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   SlowingDistance: 5
   OversizeWindow:
     Enabled: 0
-    MaxWindowSize: 0
+    MaxWindowSize: 1
     Padding: 0
   m_LegacyMaxWindowSize: -2
 --- !u!1 &5624161429667993968
@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 5624161429667993968}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.529152, y: 1.9399921, z: -11.999022}
+  m_LocalPosition: {x: -31.228317, y: 6.873742, z: -14.999022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -364,12 +364,32 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 14.601116, y: -1.8949347}
-      - {x: 14.539715, y: 11.562546}
-      - {x: -14.819822, y: 11.474499}
-      - {x: -15.107321, y: 4.120962}
-      - {x: -14.970501, y: -1.6444116}
-      - {x: -2.491047, y: -1.8098431}
+    - - {x: 22.765898, y: 1.9334779}
+      - {x: 28.57366, y: 1.9402552}
+      - {x: 93.043434, y: 1.7628012}
+      - {x: 93.40434, y: 23.77335}
+      - {x: 94.981445, y: 24.841715}
+      - {x: 103.65953, y: 25.216211}
+      - {x: 103.77982, y: 33.178307}
+      - {x: 103.731544, y: 38.768257}
+      - {x: 95.22407, y: 39.632877}
+      - {x: 78.86561, y: 36.1305}
+      - {x: 70.23477, y: 32.704575}
+      - {x: 67.85153, y: 29.56535}
+      - {x: 59.035065, y: 26.888695}
+      - {x: 54.446587, y: 22.234335}
+      - {x: 53.93394, y: 13.967887}
+      - {x: 52.594986, y: 13.567486}
+      - {x: 48.86592, y: 13.588621}
+      - {x: 40.065952, y: 16.720276}
+      - {x: 29.979322, y: 23.96468}
+      - {x: 21.469864, y: 23.998045}
+      - {x: 11.244667, y: 24.030214}
+      - {x: -26.963142, y: 23.784111}
+      - {x: -32.345856, y: 22.242506}
+      - {x: -39.39466, y: 17.291277}
+      - {x: -39.37336, y: 2.072846}
+      - {x: 9.059417, y: 2.2331634}
   m_UseDelaunayMesh: 0
 --- !u!1 &8444518077136889040
 GameObject:

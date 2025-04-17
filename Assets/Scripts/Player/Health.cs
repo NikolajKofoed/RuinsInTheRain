@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem.Processors;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -11,8 +13,14 @@ public class Health : MonoBehaviour
     public float currentHealth { get; private set; }
 	private Animator anim;
 
-	// Respawn
-	private Vector3 respawnPoint;
+    // Respawn
+    private Vector3 respawnPoint;
+
+	private Image totalHealthBar;
+	private Image currentHealthBar;
+	const string TOTAL_HEALTH_BAR = "HealthbarFull";
+	const string CURRENT_HEALTH_BAR = "HealthbarCurrent";
+	const string defaultLoadSceneOnDeath = "Cave_01";
 
 	[Header("iFrames")]
 	[SerializeField] private float iFramesDuration;
@@ -31,7 +39,6 @@ public class Health : MonoBehaviour
 
 	private void Awake()
 	{
-		currentHealth = startingHealth;
 		anim = GetComponent<Animator>();
 		spriteRend = GetComponent<SpriteRenderer>();
 		knockback = GetComponent<Knockback>();
@@ -51,19 +58,33 @@ public class Health : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        respawnPoint = transform.position;
+
+        currentHealth = startingHealth;
+        UpdateHealthBar();
+    }
+
     /// <summary>
     /// Takes damage and gets knocked back
     /// </summary>
     /// <param name="_damage">amount of damage</param>
     /// <param name="otherTransform">damage dealers transform</param>
-    public void TakeDamage(float _damage, Transform otherTransform)
+    public void TakeDamage(float _damage, Transform otherTransform = null)
 	{
 		if(_damage <= 0) { return; } // 0 or negative damage doesn't count as an attack
 
 		if (currentHealth > 0 && knockback.GettingKnockedBack == false) // can't take damage while knockbacked
         {
             currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
-            knockback.GetKnockedBack(otherTransform, knockbackForce);
+            UpdateHealthBar();
+
+            if (otherTransform != null)
+            {
+                knockback.GetKnockedBack(otherTransform, knockbackForce);
+
+            }
 
             //anim.SetTrigger("hurt");
             OnHitByEnemy?.Invoke();
@@ -74,25 +95,6 @@ public class Health : MonoBehaviour
 
 		Debug.Log(currentHealth);
 	}
-
-	/// <summary>
-	/// takes damage
-	/// </summary>
-	/// <param name="_damage">amount of damage</param>
-	public void TakeDamage(float _damage)
-	{
-        if (_damage <= 0) { return; } // 0 or negative damage doesn't count as an attack
-
-        if (currentHealth > 0 && knockback.GettingKnockedBack == false) // can't take damage while knockbacked
-        {
-            currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
-            Debug.Log("Player took damage, current health: " + currentHealth);
-            //anim.SetTrigger("hurt");
-            OnHitByEnemy?.Invoke();
-            //StartCoroutine(InvunerabilityRoutine());
-			CheckIfDead();
-        }
-    }
 
 	// For when player comes into contact with extreme enviromental hazards
 	public void RespawnHazard(float _hazardDamage)
@@ -118,17 +120,70 @@ public class Health : MonoBehaviour
 	{
 		OnHeal?.Invoke();
 		currentHealth = Mathf.Clamp(currentHealth + _heal, 0, startingHealth);
+		UpdateHealthBar();
 	}
 
     private void CheckIfDead()
     {
         if (currentHealth <= 0)
         {
-            Debug.Log("Plauer died");
-            gameObject.SetActive(false); // disable object
+			currentHealth = 0;
+			Debug.Log("Plauer died");
+			StartCoroutine(DeathLoadSceneRoutine());
             //anim?.SetBool("Dies", true);
         }
     }
+
+
+
+    private IEnumerator DeathLoadSceneRoutine()
+	{
+        // yield return new WaitForSeconds(2);
+        yield return null;
+        Destroy(gameObject);
+        SceneManager.LoadScene(defaultLoadSceneOnDeath);
+    }
+    private void UpdateHealthBar()
+    {
+        if (totalHealthBar == null)
+        {
+            var totalObj = GameObject.Find(TOTAL_HEALTH_BAR);
+            if (totalObj != null)
+            {
+                totalHealthBar = totalObj.GetComponent<Image>();
+                Debug.Log("Found total healthbar: " + totalHealthBar.name);
+            }
+            else
+            {
+                Debug.LogWarning("Total health bar not found!");
+            }
+        }
+
+        if (currentHealthBar == null)
+        {
+            var currentObj = GameObject.Find(CURRENT_HEALTH_BAR);
+            if (currentObj != null)
+            {
+                currentHealthBar = currentObj.GetComponent<Image>();
+                Debug.Log("Found current healthbar: " + currentHealthBar.name);
+            }
+            else
+            {
+                Debug.LogWarning("Current health bar not found!");
+            }
+        }
+
+        if (totalHealthBar != null)
+        {
+            totalHealthBar.fillAmount = startingHealth;
+        }
+
+        if (currentHealthBar != null && startingHealth > 0)
+        {
+            currentHealthBar.fillAmount = currentHealth / startingHealth;
+        }
+    }
+
 
     private IEnumerator InvunerabilityRoutine()
 	{
