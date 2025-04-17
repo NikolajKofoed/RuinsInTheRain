@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 8116086532221019097}
   - component: {fileID: -3222321511970295360}
   - component: {fileID: 4279772974471388029}
-  - component: {fileID: 6059851713446539650}
   m_Layer: 7
   m_Name: Hunter Drone
   m_TagString: Enemy
@@ -225,17 +224,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockBackTime: 0.15
---- !u!114 &6059851713446539650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7486847245184378809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cf8d8c59e1c8db4a812af6f3a8ddc43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currencyPrefab: {fileID: 0}
-  amountDropped: 3
