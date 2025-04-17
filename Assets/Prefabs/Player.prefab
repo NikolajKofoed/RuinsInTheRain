@@ -532,15 +532,7 @@ MonoBehaviour:
     m_Bits: 128
   projectileCooldown: 0.25
   firePoint: {fileID: 1156475371060216418}
-  playerProjectiles:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  playerProjectiles: {fileID: 0}
 --- !u!114 &7745966446135913442
 MonoBehaviour:
   m_ObjectHideFlags: 0

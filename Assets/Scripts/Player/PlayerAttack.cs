@@ -1,24 +1,31 @@
 using System.Collections;
+using System.Linq;
+using UnityEngine;
+
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-	// Melee attacks
-	[SerializeField] private float meleeCooldown;
-	[SerializeField] Transform meleePoint;
+    // Melee attacks
+    [SerializeField] private float meleeCooldown;
+    [SerializeField] Transform meleePoint;
     [SerializeField] private float meleeRange;
     [SerializeField] private int MeleeDamage;
     [SerializeField] LayerMask enemyLayers;
+
     // Range attacks
-	[SerializeField] private float projectileCooldown;
-	[SerializeField] private Transform firePoint;
-    [SerializeField] private GameObject[] playerProjectiles;
+    [SerializeField] private float projectileCooldown;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject playerProjectiles;
 
     private Animator anim;
     private Player2D playerMovement;
     private float cooldownTimer = Mathf.Infinity;
-
     private bool canMeleeAttack = true;
+
+    private List<Projectile> projectilePool = new List<Projectile>();
 
     private void Awake()
     {
@@ -26,36 +33,53 @@ public class PlayerAttack : MonoBehaviour
         playerMovement = GetComponent<Player2D>();
     }
 
+    private void Start()
+    {
+        // Manually cache inactive projectiles from the pool
+        foreach (Transform child in playerProjectiles.transform)
+        {
+            Projectile p = child.GetComponent<Projectile>();
+            if (p != null)
+            {
+                projectilePool.Add(p);
+            }
+        }
+
+        Debug.Log("Cached " + projectilePool.Count + " projectiles.");
+    }
+
     private void Update()
     {
-		if (Input.GetKey(KeyCode.J) && cooldownTimer > meleeCooldown && playerMovement.CanAttack())
-		{
-			MeleeAttack();
-		}
-		if (Input.GetKey(KeyCode.K) && cooldownTimer > projectileCooldown && playerMovement.CanAttack())
+        if (Input.GetKey(KeyCode.J) && cooldownTimer > meleeCooldown && playerMovement.CanAttack())
+        {
+            MeleeAttack();
+        }
+
+        if (Input.GetKey(KeyCode.K) && cooldownTimer > projectileCooldown && playerMovement.CanAttack())
         {
             RangedAttack();
         }
+
         cooldownTimer += Time.deltaTime;
     }
 
     public void MeleeAttack()
     {
-        if (!canMeleeAttack) { return; } // can't attack if on cooldown
-        canMeleeAttack = false;
+        if (!canMeleeAttack) { return; }
 
+        canMeleeAttack = false;
         anim.SetTrigger("MeleeAttack");
         cooldownTimer = 0;
 
-        // Detect enemies in range of attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(meleePoint.position, meleeRange, enemyLayers);
 
-        Debug.Log("Melee attack occured");
-        foreach(Collider2D enemy in hitEnemies)
+        Debug.Log("Melee attack occurred");
+        foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyHealth>().TakeDamage(MeleeDamage, this.transform);
-            Debug.Log($"hit enemy: " + enemy);
+            Debug.Log($"Hit enemy: " + enemy);
         }
+
         StartCoroutine(MeleeAttackCooldownRoutine());
     }
 
@@ -67,33 +91,33 @@ public class PlayerAttack : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        if (meleePoint == null)
-        {
-            return;
-        }
-
+        if (meleePoint == null) return;
         Gizmos.DrawWireSphere(meleePoint.position, meleeRange);
     }
 
     private void RangedAttack()
     {
+        Debug.Log("Ranged attack occurred");
         anim.SetTrigger("RangeAttack");
         cooldownTimer = 0;
 
-        playerProjectiles[FindProjectile()].transform.position = firePoint.position;
-        playerProjectiles[FindProjectile()].GetComponent<Projectile>().SetDirection(Mathf.Sign(transform.localScale.x));
-    }
+        bool fired = false;
 
-
-    private int FindProjectile()
-    {
-        for (int i = 0; i < playerProjectiles.Length; i++)
+        foreach (var projectile in projectilePool)
         {
-            if (!playerProjectiles[i].activeInHierarchy)
+            if (!projectile.isActiveAndEnabled)
             {
-                return i;
+                projectile.gameObject.SetActive(true);
+                projectile.transform.position = firePoint.position;
+                projectile.SetDirection(Mathf.Sign(transform.localScale.x));
+                fired = true;
+                break;
             }
         }
-        return 0;
+
+        if (!fired)
+        {
+            Debug.LogWarning("No inactive projectiles available in pool!");
+        }
     }
 }

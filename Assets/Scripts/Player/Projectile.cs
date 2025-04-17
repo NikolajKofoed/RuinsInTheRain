@@ -9,18 +9,19 @@ public class Projectile : MonoBehaviour
     private bool hit;
     private float lifetime;
 
-    //private Animator anim;
     private CircleCollider2D circleCollider;
+    private Vector3 initialScale;
 
     private void Awake()
     {
-        //anim = GetComponent<Animator>();
         circleCollider = GetComponent<CircleCollider2D>();
+        initialScale = transform.localScale; // Cache original scale
     }
 
     void Update()
     {
         if (hit) return;
+
         float movementSpeed = speed * Time.deltaTime * direction;
         transform.Translate(movementSpeed, 0, 0);
 
@@ -32,34 +33,31 @@ public class Projectile : MonoBehaviour
     {
         hit = true;
         circleCollider.enabled = false;
-        //anim.SetTrigger("explode");
-        if(collision.CompareTag("Enemy"))
+
+        if (collision.CompareTag("Enemy"))
         {
-            Deactivate(); //temp because I have no animation
-            collision.GetComponent<EnemyHealth>().TakeDamage(projectileDamage, this.transform); // change later
-        }
-        Deactivate();
-        if (gameObject.activeSelf)
-        {
-            StartCoroutine(DeactiveProjectileTimerRoutine()); // safety routine cuz of current bug
+            Deactivate();
+            collision.GetComponent<EnemyHealth>().TakeDamage(projectileDamage, this.transform);
         }
 
+        Deactivate();
+
+        if (gameObject.activeSelf)
+        {
+            StartCoroutine(DeactiveProjectileTimerRoutine()); // failsafe
+        }
     }
 
     public void SetDirection(float _direction)
     {
         lifetime = 0;
         direction = _direction;
-        gameObject.SetActive(true);
         hit = false;
+        gameObject.SetActive(true);
         circleCollider.enabled = true;
 
-        float localScaleX = transform.localScale.x;
-        if(Mathf.Sign(localScaleX) != _direction)
-        {
-            localScaleX = -localScaleX;
-        }
-        transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z);
+        // Always flip based on initial scale
+        transform.localScale = new Vector3(initialScale.x * _direction, initialScale.y, initialScale.z);
     }
 
     private void Deactivate()
