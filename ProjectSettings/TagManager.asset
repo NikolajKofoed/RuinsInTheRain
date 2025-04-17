@@ -47,11 +47,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background Layer1 Tint
-    uniqueID: 6599267
-    locked: 0
   - name: Surface
     uniqueID: 2397049419
+    locked: 0
+  - name: Background
+    uniqueID: 6599267
+    locked: 0
+  - name: Player
+    uniqueID: 3702093755
+    locked: 0
+  - name: Foreground
+    uniqueID: 1548686135
     locked: 0
   m_RenderingLayers:
   - Default

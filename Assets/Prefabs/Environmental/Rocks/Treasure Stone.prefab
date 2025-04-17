@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 8666926562093383815}
   m_Layer: 7
   m_Name: Treasure Stone
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,7 +115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123041993423339024}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.33404377, w: 0.9425576}
+  m_LocalRotation: {x: 0, y: 0, z: 0.33404532, w: 0.942557}
   m_LocalPosition: {x: 24.028, y: -3.277, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
