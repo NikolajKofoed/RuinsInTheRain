@@ -54,6 +54,7 @@ public class PlayerAttack : MonoBehaviour
         foreach(Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyHealth>().TakeDamage(MeleeDamage, this.transform);
+            Player2D.Instance.gameObject.GetComponent<Health>().AddHealth(MeleeDamage);
             Debug.Log($"hit enemy: " + enemy);
         }
         StartCoroutine(MeleeAttackCooldownRoutine());

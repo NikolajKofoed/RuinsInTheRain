@@ -425,7 +425,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.010596633}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -435,7 +435,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.47, y: 1.82}
+  m_Size: {x: 0.47, y: 1.7988069}
   m_EdgeRadius: 0
 --- !u!50 &9145142619570170536
 Rigidbody2D:
@@ -453,7 +453,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b547c615da7e0104288628eb4e1894db, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -501,11 +501,13 @@ MonoBehaviour:
   <Speed>k__BackingField: 5
   <JumpPower>k__BackingField: 10
   ExtraJumps: 1
+  canWallJump: 0
   WallJumpX: 1000
   WallJumpY: 500
   SurfaceLayer:
     serializedVersion: 2
     m_Bits: 8
+  canDash: 0
   DashLength: 3
   DashDuration: 0.2
   DashMaxAirAmounts: 1

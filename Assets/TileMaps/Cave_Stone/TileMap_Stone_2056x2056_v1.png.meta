@@ -214,6 +214,8 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: 256, y: 221}
+        - {x: 226, y: 225}
+        - {x: -194, y: 225}
         - {x: -256, y: 219}
         - {x: -256, y: -256}
         - {x: 256, y: -256}
@@ -296,11 +298,11 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: 256, y: 256}
-        - {x: -222.34631, y: 256}
+        - {x: -211, y: 256}
         - {x: -222, y: 245}
         - {x: -223, y: 226}
         - {x: -223, y: -178}
-        - {x: -222.54755, y: -256}
+        - {x: -214, y: -256}
         - {x: 256, y: -256}
       tessellationDetail: 0
       bones: []
@@ -323,7 +325,11 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 256, y: 256}
+        - {x: -256, y: 256}
+        - {x: -256, y: -256}
+        - {x: 256, y: -256}
       tessellationDetail: 0
       bones: []
       spriteID: b23e5e875a1809cb0800000000000000
@@ -400,9 +406,9 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape:
-      - - {x: 256, y: -221.84583}
+      - - {x: 256, y: -220}
         - {x: 256, y: 256}
-        - {x: -221.95148, y: 256}
+        - {x: -211, y: 256}
         - {x: -222, y: 235}
         - {x: -222, y: -222}
         - {x: 230, y: -222}
@@ -429,11 +435,11 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: 162, y: -222}
-        - {x: 206.36658, y: -221.71918}
-        - {x: 256, y: -221.8194}
+        - {x: 204, y: -218}
+        - {x: 256, y: -211}
         - {x: 256, y: 256}
         - {x: -256, y: 256}
-        - {x: -256, y: -222.46014}
+        - {x: -256, y: -213}
         - {x: -227, y: -223}
         - {x: 123, y: -223}
       tessellationDetail: 0
@@ -462,7 +468,7 @@ TextureImporter:
         - {x: 218, y: 251}
         - {x: 209, y: 256}
         - {x: -256, y: 256}
-        - {x: -256, y: -221.83368}
+        - {x: -256, y: -210}
         - {x: -229, y: -222}
         - {x: 204, y: -222}
       tessellationDetail: 0

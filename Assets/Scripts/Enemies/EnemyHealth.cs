@@ -42,6 +42,13 @@ public class EnemyHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
+            var enemy = GetComponent<IEnemy>();
+            if (enemy != null)
+            {
+                Player2D.Instance.gameObject.GetComponent<Health>().AddHealth(1);
+            }
+
+
             //animator.SetBool("IsDead", true);
             if (deathVfxPrefab != null)
             {
