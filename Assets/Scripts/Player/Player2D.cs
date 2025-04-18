@@ -12,7 +12,7 @@ using UnityEngine;
 public class Player2D : Singleton<Player2D>
 {
 	[Header("Moovement Paramaters")]
-	[field: SerializeField] private float Speed { get; set; } = 5.0f;
+	[field: SerializeField] public float Speed { get; private set; } = 5.0f;
 	[field: SerializeField] private float JumpPower { get; set; } = 10.0f;
 
 	[Header("Multi jump")]
@@ -40,6 +40,7 @@ public class Player2D : Singleton<Player2D>
 	private SpriteRenderer spriteRenderer;
 	private Animator anim;
 	private Knockback knockback;
+	private PlayerAudio playerAudio;
 	private float horizontalInput;
 
 
@@ -48,6 +49,7 @@ public class Player2D : Singleton<Player2D>
     {
 		base.Awake();
 
+		playerAudio = GetComponent<PlayerAudio>();
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
@@ -134,13 +136,15 @@ public class Player2D : Singleton<Player2D>
         {
 			if (IsGrounded())
 			{
+				playerAudio.PlayJump();
 				rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpPower);
 			}
 			else
 			{
 				if (JumpCounter > 0) //If we have extra  jumps, then jump and decrease the jump counter
 				{
-					rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpPower);
+					playerAudio.PlayAirJump();
+                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpPower);
 					JumpCounter--;
 				}
 			}
