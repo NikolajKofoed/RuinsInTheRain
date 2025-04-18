@@ -8,7 +8,7 @@ public class Pickup : MonoBehaviour
     {
         Currency
     }
-
+    [SerializeField] private AudioClip pickupSound;
     [SerializeField] private PickupType pickupType;
     [SerializeField] private float pickupDistance = 5f;
     [SerializeField] private float accelarationRate = .2f;
@@ -21,9 +21,11 @@ public class Pickup : MonoBehaviour
 
     private Rigidbody2D rb;
     private bool hasLanded = false;
+    private AudioSource audioSource;
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -62,6 +64,7 @@ public class Pickup : MonoBehaviour
         if (collision.gameObject.GetComponent<Player2D>())
         {
             DetectPickupType();
+            PlayPickupSoundDetached();
             Destroy(gameObject);
         }
 
@@ -100,6 +103,30 @@ public class Pickup : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    private void PlayPickupSoundDetached()
+    {
+        if (pickupSound == null || audioSource == null) return;
+
+        GameObject tempGO = new GameObject("TempAudio");
+        AudioSource tempSource = tempGO.AddComponent<AudioSource>();
+
+        tempSource.clip = pickupSound;
+        tempSource.volume = audioSource.volume;
+        tempSource.pitch = audioSource.pitch;
+        tempSource.spatialBlend = audioSource.spatialBlend;
+        tempSource.Play();
+
+        Destroy(tempGO, pickupSound.length);
+    }
+
+    private void PlayPickupSound()
+    {
+        if(pickupSound != null)
+        {
+            audioSource.PlayOneShot(pickupSound);
         }
     }
 }

@@ -10,22 +10,31 @@ public class DroneHunter : MonoBehaviour, IEnemy
     [SerializeField] private float huntingLineOfSight;
     [SerializeField] private Transform SpotlightPosRight;
     [SerializeField] private Transform SpotlightPosLeft;
+    [SerializeField] private AudioClip DetectionSound;
     private float lineOfSight;
     private bool hunterMode = false;
+    private bool canPlayDetectionSound = false;
 
     private Rigidbody2D rb;
     private Transform player;
     private SpriteRenderer spriteRenderer; // new
     private Light2D spotlight;
+    private AudioSource audioSource;
 
     [field: SerializeField] private float damage;
 
-    void Start()
+    private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         spotlight = GetComponentInChildren<Light2D>();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>(); // cache it
         player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    void Start()
+    {
+
     }
 
     void Update()
@@ -36,11 +45,18 @@ public class DroneHunter : MonoBehaviour, IEnemy
         {
             lineOfSight = huntingLineOfSight;
             hunterMode = true;
+            if (canPlayDetectionSound)
+            {
+                canPlayDetectionSound = false;
+                PlayDetectionSound();
+                Debug.Log("played detection sound");
+            }
         }
         else
         {
             lineOfSight = idleLineOfSight;
             hunterMode = false;
+            canPlayDetectionSound = true;
         }
 
 
@@ -98,6 +114,15 @@ public class DroneHunter : MonoBehaviour, IEnemy
     public void Attack()
     {
         // Optional: Add attack logic here
+    }
+
+    private void PlayDetectionSound()
+    {
+        if(DetectionSound != null)
+        {
+            audioSource.PlayOneShot(DetectionSound);
+            Debug.Log("detection sound was not null");
+        }
     }
 }
 

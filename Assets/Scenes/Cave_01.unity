@@ -5654,8 +5654,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ff6ca4f0fb657254d86c51d008e5e07e, type: 3}
-  m_Resource: {fileID: 8300000, guid: ff6ca4f0fb657254d86c51d008e5e07e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4b2190e31ca6ddf41821ee2441607776, type: 3}
+  m_Resource: {fileID: 8300000, guid: 4b2190e31ca6ddf41821ee2441607776, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -37693,6 +37693,7 @@ Transform:
   m_Children:
   - {fileID: 53444528}
   - {fileID: 319862590}
+  - {fileID: 2003058814}
   - {fileID: 1405743287}
   - {fileID: 320929618}
   - {fileID: 672034555}
@@ -40840,6 +40841,103 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8296391428086165091, guid: 613c69f86e531c04097989666c8725ab, type: 3}
   m_PrefabInstance: {fileID: 429455508}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1399880218
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1096003034}
+    m_Modifications:
+    - target: {fileID: 5543272880257240007, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543272880257240007, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543272880257240007, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543272880257240007, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543272880257240007, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543272880257240007, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543272880257240007, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543272880257240007, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543272880257240007, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543272880257240007, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763971585338835861, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: m_Constraints
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432373950269850721, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432373950269850721, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432373950269850721, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: MaxDistance
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432373950269850721, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: MinDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432373950269850721, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432373950269850721, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: rolloffMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432373950269850721, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432373950269850721, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.54519653
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432373950269850721, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486847245184378809, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: m_Name
+      value: Hunter Drone (13)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
 --- !u!4 &1400033844 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2953998628135166409, guid: 18f255a2fde768843ac6926cc0d26151, type: 3}
@@ -43949,14 +44047,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1661538397}
   footstepClips:
-  - {fileID: 8300000, guid: 8ffd3a8209be0204baef0c5ac2a48946, type: 3}
-  - {fileID: 8300000, guid: d95b481074843094ab7c3b6b4e36e24b, type: 3}
-  - {fileID: 8300000, guid: b03698be12be84f40842f90a3b40c527, type: 3}
-  - {fileID: 8300000, guid: 051eef1a0a181d14fabd87e8fe560314, type: 3}
-  jumpClip: {fileID: 8300000, guid: 0142ce2b7ffb5034f9821e6c807afe90, type: 3}
-  airJump: {fileID: 8300000, guid: 344660ca75c524a4db30263830e7d2bc, type: 3}
-  meleeAttackClip: {fileID: 8300000, guid: 65a2b37503725c14db398b540fe67fbc, type: 3}
-  rangedAttackClip: {fileID: 8300000, guid: 7a665b2118e54114ba221db9a38b5748, type: 3}
+  - {fileID: 8300000, guid: b202ca8e6b03ab54a88d313b6835ea2b, type: 3}
+  - {fileID: 8300000, guid: 354fd9a039192f541be4f47df60acadc, type: 3}
+  - {fileID: 8300000, guid: e27eee2428376fd47ab775148646460c, type: 3}
+  - {fileID: 8300000, guid: ee82ebed2cf47d142a025999c23ec91c, type: 3}
+  jumpClip: {fileID: 8300000, guid: 5e87c10ae6f5f7942b53a92856ba418d, type: 3}
+  airJump: {fileID: 8300000, guid: 718d9eef7d224e647980023a14ea997c, type: 3}
+  meleeAttackClip: {fileID: 8300000, guid: f5e60c3fb96930a4899cb6c2e9aa87f8, type: 3}
+  rangedAttackClip: {fileID: 8300000, guid: 696e88d1b98db494685f12e8433aede8, type: 3}
 --- !u!82 &1661538397
 AudioSource:
   m_ObjectHideFlags: 0
@@ -43970,7 +44068,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -44946,10 +45044,6 @@ PrefabInstance:
     - target: {fileID: 7486847245184378809, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
       propertyPath: m_Name
       value: Hunter Drone (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8863260671131463208, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
-      propertyPath: m_FlipX
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -47904,6 +47998,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hunter Drone
       objectReference: {fileID: 0}
+    - target: {fileID: 8116086532221019097, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+      propertyPath: DetectionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ccbc9d407259b8941ab0fd54313be4ef, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -48021,6 +48119,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8296391428086165091, guid: 613c69f86e531c04097989666c8725ab, type: 3}
   m_PrefabInstance: {fileID: 1678961701}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2003058814 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5543272880257240007, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
+  m_PrefabInstance: {fileID: 1399880218}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2010579195 stripped
 Transform:
@@ -49978,7 +50081,7 @@ Transform:
   m_GameObject: {fileID: 5624161429811901533}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -31.2159, y: 7.123612, z: -14.999022}
+  m_LocalPosition: {x: -31.23819, y: 7.123612, z: -14.999022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
