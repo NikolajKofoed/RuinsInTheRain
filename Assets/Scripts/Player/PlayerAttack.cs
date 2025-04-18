@@ -19,7 +19,8 @@ public class PlayerAttack : MonoBehaviour
 
     private Animator anim;
     private Player2D playerMovement;
-    private float cooldownTimer = Mathf.Infinity;
+    private float meleeCooldownTimer = Mathf.Infinity;
+    private float rangedCooldownTimer = Mathf.Infinity;
     private bool canMeleeAttack = true;
 
     private List<Projectile> projectilePool = new List<Projectile>();
@@ -47,17 +48,18 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.J) && cooldownTimer > meleeCooldown && playerMovement.CanAttack())
+        if (Input.GetKey(KeyCode.J) && meleeCooldownTimer > meleeCooldown && playerMovement.CanAttack())
         {
             MeleeAttack();
         }
 
-        if (Input.GetKey(KeyCode.K) && cooldownTimer > projectileCooldown && playerMovement.CanAttack())
+        if (Input.GetKey(KeyCode.K) && rangedCooldownTimer > projectileCooldown && playerMovement.CanAttack())
         {
             RangedAttack();
         }
 
-        cooldownTimer += Time.deltaTime;
+        meleeCooldownTimer += Time.deltaTime;
+        rangedCooldownTimer += Time.deltaTime;
     }
 
     public void MeleeAttack()
@@ -66,7 +68,7 @@ public class PlayerAttack : MonoBehaviour
 
         canMeleeAttack = false;
         anim.SetTrigger("MeleeAttack");
-        cooldownTimer = 0;
+        meleeCooldownTimer = 0;
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(meleePoint.position, meleeRange, enemyLayers);
 
@@ -96,7 +98,7 @@ public class PlayerAttack : MonoBehaviour
     {
         Debug.Log("Ranged attack occurred");
         anim.SetTrigger("RangeAttack");
-        cooldownTimer = 0;
+        rangedCooldownTimer = 0;
 
         bool fired = false;
 
@@ -104,7 +106,6 @@ public class PlayerAttack : MonoBehaviour
         {
             if (!projectile.isActiveAndEnabled)
             {
-                Debug.Log("Projectile Found");
                 projectile.gameObject.SetActive(true);
                 projectile.transform.position = firePoint.position;
                 projectile.SetDirection(Mathf.Sign(transform.localScale.x));
