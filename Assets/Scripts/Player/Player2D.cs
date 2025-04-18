@@ -235,4 +235,16 @@ public class Player2D : Singleton<Player2D>
 	{
 		return true;
 	}
+
+	public void UnlockAbility(int abilityNr)
+	{
+		if (abilityNr == 1)
+		{
+			canWallJump = true;
+		}
+		if (abilityNr == 2)
+		{
+			canDash = true;
+		}
+	}
 }

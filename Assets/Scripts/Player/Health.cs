@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
 	private Image currentHealthBar;
 	const string TOTAL_HEALTH_BAR = "HealthbarFull";
 	const string CURRENT_HEALTH_BAR = "HealthbarCurrent";
-	const string defaultLoadSceneOnDeath = "Cave_01";
+    public GameOverMenu gameOver;
 
 	[Header("iFrames")]
 	[SerializeField] private float iFramesDuration;
@@ -33,11 +33,14 @@ public class Health : MonoBehaviour
 
 	private void Awake()
 	{
+		
 		anim = GetComponent<Animator>();
 		spriteRend = GetComponent<SpriteRenderer>();
 		knockback = GetComponent<Knockback>();
 		respawnPoint = transform.position;
 	}
+
+
 
     // Sets the player respawn point, when they touch a checkpoint
     private void OnTriggerEnter2D(Collider2D collision)
@@ -54,18 +57,23 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
-        respawnPoint = transform.position;
-
-        currentHealth = startingHealth;
-        UpdateHealthBar();
+		ResetHealth();
+		respawnPoint = transform.position;
+		UpdateHealthBar();
     }
 
-    /// <summary>
-    /// Takes damage and gets knocked back
-    /// </summary>
-    /// <param name="_damage">amount of damage</param>
-    /// <param name="otherTransform">damage dealers transform</param>
-    public void TakeDamage(float _damage, Transform otherTransform = null)
+	void ResetHealth()
+	{
+		currentHealth = startingHealth;
+
+	}
+
+	/// <summary>
+	/// Takes damage and gets knocked back
+	/// </summary>
+	/// <param name="_damage">amount of damage</param>
+	/// <param name="otherTransform">damage dealers transform</param>
+	public void TakeDamage(float _damage, Transform otherTransform = null)
 	{
 		if(_damage <= 0) { return; } // 0 or negative damage doesn't count as an attack
 
@@ -81,8 +89,7 @@ public class Health : MonoBehaviour
             }
 
             //anim.SetTrigger("hurt");
-			//StartCoroutine(InvunerabilityRoutine()); // currently bugged
-
+            //StartCoroutine(InvunerabilityRoutine()); // currently bugged      
 			CheckIfDead();
 		}
 
@@ -99,10 +106,7 @@ public class Health : MonoBehaviour
 
             //anim.SetTrigger("hurt");
 			//anim.ResetTrigger("");
-			//anim.Play("idle");
 			transform.position = respawnPoint;
-
-
         }
     }
 
@@ -118,20 +122,13 @@ public class Health : MonoBehaviour
         {
 			currentHealth = 0;
 			Debug.Log("Plauer died");
-			StartCoroutine(DeathLoadSceneRoutine());
             //anim?.SetBool("Dies", true);
-        }
+            //StartCoroutine(DeathLoadSceneRoutine());
+            gameOver.GameOverUI();
+            gameObject.SetActive(false);
+		}
     }
 
-
-
-    private IEnumerator DeathLoadSceneRoutine()
-	{
-        // yield return new WaitForSeconds(2);
-        yield return null;
-        Destroy(gameObject);
-        SceneManager.LoadScene(defaultLoadSceneOnDeath);
-    }
     private void UpdateHealthBar()
     {
         if (totalHealthBar == null)

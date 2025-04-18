@@ -548,6 +548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 10
+  gameOver: {fileID: 4506675260975161061, guid: c261fac4f881805478ca8f4d01f05422, type: 3}
   iFramesDuration: 2
   numberOfFlashes: 4
   knockbackForce: 15
