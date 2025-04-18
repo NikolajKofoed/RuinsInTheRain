@@ -15,7 +15,7 @@ public class PlayerAttack : MonoBehaviour
     // Range attacks
     [SerializeField] private float projectileCooldown;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private GameObject playerProjectiles;
+    [SerializeField] public GameObject playerProjectiles { get; private set; }
 
     const string PROJECTILE_HOLDER = "ProjectileHolder";
 
@@ -35,6 +35,10 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
+        if (playerProjectiles == null)
+        {
+            playerProjectiles = GameObject.Find(PROJECTILE_HOLDER);
+        }
         // Manually cache inactive projectiles from the pool
         foreach (Transform child in playerProjectiles.transform)
         {
@@ -98,23 +102,6 @@ public class PlayerAttack : MonoBehaviour
 
     private void RangedAttack()
     {
-        if(playerProjectiles == null)
-        {
-            playerProjectiles = GameObject.Find(PROJECTILE_HOLDER);
-        }
-        if (playerProjectiles != null)
-        {
-            // Manually cache inactive projectiles from the pool
-            foreach (Transform child in playerProjectiles.transform)
-            {
-                Projectile p = child.GetComponent<Projectile>();
-                if (p != null)
-                {
-                    projectilePool.Add(p);
-                }
-            }
-        }
-
         Debug.Log("Ranged attack occurred");
         anim.SetTrigger("RangeAttack");
         rangedCooldownTimer = 0;
