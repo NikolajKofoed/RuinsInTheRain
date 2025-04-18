@@ -104,6 +104,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (!projectile.isActiveAndEnabled)
             {
+                Debug.Log("Projectile Found");
                 projectile.gameObject.SetActive(true);
                 projectile.transform.position = firePoint.position;
                 projectile.SetDirection(Mathf.Sign(transform.localScale.x));

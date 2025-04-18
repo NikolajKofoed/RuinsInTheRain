@@ -27,12 +27,6 @@ public class Health : MonoBehaviour
 	[SerializeField] private int numberOfFlashes;
 	private SpriteRenderer spriteRend;
 
-	[Header("sfx")]
-	[field: SerializeField] public UnityEvent OnHeal { get; set; }
-	[field: SerializeField] public UnityEvent OnHitByEnemy { get; set; }
-	[field: SerializeField] public UnityEvent OnRespawnHazard { get; set; }
-	[field: SerializeField] public UnityEvent OnDie { get; set; }
-
 	[SerializeField] private float knockbackForce = 15f;
 	private Knockback knockback;
 
@@ -87,7 +81,6 @@ public class Health : MonoBehaviour
             }
 
             //anim.SetTrigger("hurt");
-            OnHitByEnemy?.Invoke();
 			//StartCoroutine(InvunerabilityRoutine()); // currently bugged
 
 			CheckIfDead();
@@ -105,7 +98,6 @@ public class Health : MonoBehaviour
             TakeDamage(_hazardDamage);
 
             //anim.SetTrigger("hurt");
-            OnRespawnHazard?.Invoke();
 			//anim.ResetTrigger("");
 			//anim.Play("idle");
 			transform.position = respawnPoint;
@@ -116,7 +108,6 @@ public class Health : MonoBehaviour
 
 	public void AddHealth(float _heal)
 	{
-		OnHeal?.Invoke();
 		currentHealth = Mathf.Clamp(currentHealth + _heal, 0, startingHealth);
 		UpdateHealthBar();
 	}
