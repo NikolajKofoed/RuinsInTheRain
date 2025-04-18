@@ -286,7 +286,7 @@ Transform:
   m_GameObject: {fileID: 5880654492169449584}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.42, y: 0.07, z: 0}
+  m_LocalPosition: {x: 0.513, y: 0.049, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -532,9 +532,9 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
-  projectileCooldown: 0.25
+  projectileCooldown: 1
   firePoint: {fileID: 1156475371060216418}
-  playerProjectiles: {fileID: 1815764912291856214, guid: a329c34cfdf852442874083f82a9d647, type: 3}
+  playerProjectiles: {fileID: 0}
 --- !u!114 &7745966446135913442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,66 +550,6 @@ MonoBehaviour:
   startingHealth: 10
   iFramesDuration: 2
   numberOfFlashes: 4
-  <OnHeal>k__BackingField:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8454725519188308633}
-        m_TargetAssemblyTypeName: PlayerSounds, Assembly-CSharp
-        m_MethodName: PlayCollectHealthPickup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  <OnHitByEnemy>k__BackingField:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8454725519188308633}
-        m_TargetAssemblyTypeName: PlayerSounds, Assembly-CSharp
-        m_MethodName: HitByEnemy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  <OnRespawnHazard>k__BackingField:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8454725519188308633}
-        m_TargetAssemblyTypeName: PlayerSounds, Assembly-CSharp
-        m_MethodName: HitByRespawnHazard
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  <OnDie>k__BackingField:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8454725519188308633}
-        m_TargetAssemblyTypeName: PlayerSounds, Assembly-CSharp
-        m_MethodName: Dead
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   knockbackForce: 15
 --- !u!114 &4902749096293044157
 MonoBehaviour:
@@ -754,4 +694,4 @@ MonoBehaviour:
   jumpClip: {fileID: 8300000, guid: 5e87c10ae6f5f7942b53a92856ba418d, type: 3}
   airJump: {fileID: 8300000, guid: 718d9eef7d224e647980023a14ea997c, type: 3}
   meleeAttackClip: {fileID: 8300000, guid: f5e60c3fb96930a4899cb6c2e9aa87f8, type: 3}
-  rangedAttackClip: {fileID: 8300000, guid: 696e88d1b98db494685f12e8433aede8, type: 3}
+  rangedAttackClip: {fileID: 8300000, guid: f0dfcce054ae26b4d988a58777ca9068, type: 3}

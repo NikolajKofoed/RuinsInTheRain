@@ -33634,11 +33634,6 @@ SortingGroup:
   m_SortingLayer: 4
   m_SortingOrder: 1
   m_SortAtRoot: 0
---- !u!1 &1893779093 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7363657473028081770, guid: a329c34cfdf852442874083f82a9d647, type: 3}
-  m_PrefabInstance: {fileID: 2155551439171942028}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1912772896
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34023,6 +34018,7 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 6609181438631654044}
   SpotlightPosLeft: {fileID: 8243412128009356389}
+  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!4 &130486605860807327
 Transform:
@@ -34718,6 +34714,7 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 6889535598338342126}
   SpotlightPosLeft: {fileID: 8521496831241669143}
+  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!58 &411127088523203002
 CircleCollider2D:
@@ -35748,6 +35745,7 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 6092655961560818221}
   SpotlightPosLeft: {fileID: 9030713920941462740}
+  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!114 &1056544132719227209
 MonoBehaviour:
@@ -37004,6 +37002,7 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 5044868423556491671}
   SpotlightPosLeft: {fileID: 8060323196902104942}
+  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!114 &2023587311765590802
 MonoBehaviour:
@@ -37414,7 +37413,7 @@ PrefabInstance:
     - target: {fileID: 3121539000270260383, guid: fa4e2914bfa3fc541afbda2ddd8fab5a, type: 3}
       propertyPath: 'playerProjectiles.Array.data[0]'
       value: 
-      objectReference: {fileID: 1893779093}
+      objectReference: {fileID: 0}
     - target: {fileID: 3121539000270260383, guid: fa4e2914bfa3fc541afbda2ddd8fab5a, type: 3}
       propertyPath: 'playerProjectiles.Array.data[1]'
       value: 
@@ -37445,11 +37444,11 @@ PrefabInstance:
       objectReference: {fileID: 390415799}
     - target: {fileID: 6802203259498343292, guid: fa4e2914bfa3fc541afbda2ddd8fab5a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -41.49
+      value: 37.8
       objectReference: {fileID: 0}
     - target: {fileID: 6802203259498343292, guid: fa4e2914bfa3fc541afbda2ddd8fab5a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.84
+      value: 28.35
       objectReference: {fileID: 0}
     - target: {fileID: 6802203259498343292, guid: fa4e2914bfa3fc541afbda2ddd8fab5a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -37852,6 +37851,7 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 9134275262939610175}
   SpotlightPosLeft: {fileID: 6277326094512982726}
+  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!61 &2687330732734709506
 BoxCollider2D:
@@ -38442,6 +38442,7 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 8107696651791874562}
   SpotlightPosLeft: {fileID: 6438651041313852667}
+  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!4 &3072292375948064279
 Transform:
@@ -40543,6 +40544,7 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 1821513484600680171}
   SpotlightPosLeft: {fileID: 3502020378248521746}
+  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!61 &4866762045049718112
 BoxCollider2D:
@@ -40631,6 +40633,7 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 2204034270646932967}
   SpotlightPosLeft: {fileID: 3983628870852616990}
+  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!114 &4949638420111963817
 MonoBehaviour:
@@ -40675,6 +40678,7 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 2248051189583494664}
   SpotlightPosLeft: {fileID: 3957628893982034161}
+  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!114 &4993156261538796311
 MonoBehaviour:
@@ -41223,6 +41227,7 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 1222446591969616232}
   SpotlightPosLeft: {fileID: 4119101051584894865}
+  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!61 &5406205232745860360
 BoxCollider2D:
@@ -41469,6 +41474,7 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 1686242221310099742}
   SpotlightPosLeft: {fileID: 4519433120758364135}
+  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!4 &5620575888290675229
 Transform:
@@ -42003,6 +42009,7 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 657102117858472937}
   SpotlightPosLeft: {fileID: 2360029977808192784}
+  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!114 &6001050524914707856
 MonoBehaviour:
@@ -42128,6 +42135,7 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 1034794817099316395}
   SpotlightPosLeft: {fileID: 2847022909866969682}
+  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!4 &6092655961560818221
 Transform:
@@ -42359,6 +42367,7 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 996155934414774824}
   SpotlightPosLeft: {fileID: 2597999383449113809}
+  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!212 &6394029382288963462
 SpriteRenderer:
@@ -43329,6 +43338,7 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 4096557820548736542}
   SpotlightPosLeft: {fileID: 1226977486080594151}
+  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!1 &7242681671084787141
 GameObject:
@@ -43829,7 +43839,7 @@ Transform:
   m_GameObject: {fileID: 5624161429811901533}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -35.560356, y: 15.728952, z: -14.999022}
+  m_LocalPosition: {x: 42.15844, y: 30.722313, z: -14.999022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44231,7 +44241,7 @@ Transform:
   m_GameObject: {fileID: 651573553454535870}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.13156, y: 15.212313, z: -14.999022}
+  m_LocalPosition: {x: 42.15844, y: 30.722313, z: -14.999022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44458,6 +44468,7 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 3072292375948064279}
   SpotlightPosLeft: {fileID: 251081746540249326}
+  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!4 &8132266942790444900
 Transform:
@@ -44593,6 +44604,7 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 2887204042794865766}
   SpotlightPosLeft: {fileID: 130486605860807327}
+  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!4 &8220389249013420097
 Transform:
@@ -44654,6 +44666,7 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 2904570031933479837}
   SpotlightPosLeft: {fileID: 113125632568225124}
+  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!114 &8239144853330958844
 MonoBehaviour:
@@ -46797,6 +46810,7 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 2360904633687593973}
   SpotlightPosLeft: {fileID: 656789314065032460}
+  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!212 &8863260671159333496
 SpriteRenderer:
