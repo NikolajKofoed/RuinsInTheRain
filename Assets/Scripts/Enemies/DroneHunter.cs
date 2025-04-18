@@ -10,56 +10,45 @@ public class DroneHunter : MonoBehaviour, IEnemy
     [SerializeField] private float huntingLineOfSight;
     [SerializeField] private Transform SpotlightPosRight;
     [SerializeField] private Transform SpotlightPosLeft;
-    [SerializeField] private AudioClip DetectionSound;
     private float lineOfSight;
     private bool hunterMode = false;
-    private bool canPlayDetectionSound = false;
+    private bool previousHunterMode = false; // track last state
 
     private Rigidbody2D rb;
     private Transform player;
-    private SpriteRenderer spriteRenderer; // new
+    private SpriteRenderer spriteRenderer;
     private Light2D spotlight;
-    private AudioSource audioSource;
+
+    [SerializeField] private EnemyAudio enemyAudio; // reference to EnemyAudio
 
     [field: SerializeField] private float damage;
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
         spotlight = GetComponentInChildren<Light2D>();
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>(); // cache it
+        spriteRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
 
-    void Start()
-    {
-
+        if (enemyAudio == null)
+        {
+            enemyAudio = GetComponent<EnemyAudio>();
+        }
     }
 
     void Update()
     {
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
 
-        if (distanceFromPlayer < lineOfSight)
-        {
-            lineOfSight = huntingLineOfSight;
-            hunterMode = true;
-            if (canPlayDetectionSound)
-            {
-                canPlayDetectionSound = false;
-                PlayDetectionSound();
-                Debug.Log("played detection sound");
-            }
-        }
-        else
-        {
-            lineOfSight = idleLineOfSight;
-            hunterMode = false;
-            canPlayDetectionSound = true;
-        }
+        previousHunterMode = hunterMode;
+        hunterMode = distanceFromPlayer < lineOfSight;
+        lineOfSight = hunterMode ? huntingLineOfSight : idleLineOfSight;
 
-
+        // play detection sound only when entering hunter mode
+        if (hunterMode && !previousHunterMode && enemyAudio != null)
+        {
+            enemyAudio.PlayDetectedSound();
+        }
     }
 
     private void FixedUpdate()
@@ -76,20 +65,8 @@ public class DroneHunter : MonoBehaviour, IEnemy
 
             if (spotlight != null)
             {
-                float spotlightAngle;
-
-                if (facingLeft)
-                {
-                    spotlightAngle = 90f;
-                    spotlight.transform.position = SpotlightPosLeft.transform.position;
-                }
-                else
-                {
-                    spotlightAngle = -90f;
-                    spotlight.transform.position = SpotlightPosRight.transform.position;
-
-                }
-
+                float spotlightAngle = facingLeft ? 90f : -90f;
+                spotlight.transform.position = facingLeft ? SpotlightPosLeft.position : SpotlightPosRight.position;
                 spotlight.transform.rotation = Quaternion.Euler(0f, 0f, spotlightAngle);
             }
         }
@@ -114,15 +91,6 @@ public class DroneHunter : MonoBehaviour, IEnemy
     public void Attack()
     {
         // Optional: Add attack logic here
-    }
-
-    private void PlayDetectionSound()
-    {
-        if(DetectionSound != null)
-        {
-            audioSource.PlayOneShot(DetectionSound);
-            Debug.Log("detection sound was not null");
-        }
     }
 }
 

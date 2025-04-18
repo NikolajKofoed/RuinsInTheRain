@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 4279772974471388029}
   - component: {fileID: 4066988054233627363}
   - component: {fileID: 7432373950269850721}
+  - component: {fileID: 1897459598767004933}
   m_Layer: 7
   m_Name: Hunter Drone
   m_TagString: Enemy
@@ -349,7 +350,7 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 3072292376389691975}
   SpotlightPosLeft: {fileID: 251081746777545918}
-  DetectionSound: {fileID: 8300000, guid: ccbc9d407259b8941ab0fd54313be4ef, type: 3}
+  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!114 &-3222321511970295360
 MonoBehaviour:
@@ -424,8 +425,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6911644961e5a824d94637fc358fdd78, type: 3}
-  m_Resource: {fileID: 8300000, guid: 6911644961e5a824d94637fc358fdd78, type: 3}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -436,7 +437,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 3
-  MaxDistance: 18
+  MaxDistance: 17
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -448,20 +449,20 @@ AudioSource:
     - serializedVersion: 3
       time: 0.001824975
       value: 1.0038376
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.7845037
+      outSlope: -0.7845037
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.23266989
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -2.5000002
-      outSlope: -2.5000002
+      inSlope: -0.8080576
+      outSlope: -0.8080576
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.12376287
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -471,7 +472,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -501,7 +502,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.9
+      value: 1.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -511,3 +512,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1897459598767004933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7486847245184378809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8590c3cd11c253144bb0e76d127717fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 7432373950269850721}
+  idleSoundClip: {fileID: 8300000, guid: a2eb3498f4d9fc94299526acadb52085, type: 3}
+  hitSoundClip: {fileID: 8300000, guid: 7966793723334764f86c2dd0ff432f99, type: 3}
+  deathSoundClip: {fileID: 8300000, guid: 3dbeba14894b98f41943d633fa985e65, type: 3}
+  detectedSoundClip: {fileID: 8300000, guid: 89e946cf758af59418d2e455e59c0693, type: 3}
