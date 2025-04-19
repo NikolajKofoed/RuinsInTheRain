@@ -212,14 +212,18 @@ public class Player2D : Singleton<Player2D>
 		// BoxCast checks if a collision occurs along the player's dash path
 		Vector2 direction = targetPosition - (Vector2)transform.position;
 
-		// Perform a BoxCast for collision detection
-		RaycastHit2D hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0f, direction.normalized, direction.magnitude, SurfaceLayer);
+        Vector2 boxSize = boxCollider.size;
+        boxSize.y *= 0.9f; // shrink box so character doesn't activate it by standing on the ground(meaning you can't dash when grounded)
+
+        // Perform a BoxCast for collision detection
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, boxSize, 0f, direction.normalized, direction.magnitude, SurfaceLayer);
 
 		// Return true if a collision happens
 		return hit.collider != null;
 	}
 
-	private bool IsGrounded()
+
+    private bool IsGrounded()
 	{
 		RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, SurfaceLayer);
 		return raycastHit.collider != null;
