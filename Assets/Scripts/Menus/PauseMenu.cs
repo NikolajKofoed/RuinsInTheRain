@@ -15,7 +15,9 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (GameIsPaused)
+			if (Health.PlayerIsDead) return; // Prevent pause if dead
+
+			if (GameIsPaused)
             {
                 Resume();
             } else

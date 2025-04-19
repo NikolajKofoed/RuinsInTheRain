@@ -47147,6 +47147,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5385731352964463957, guid: c261fac4f881805478ca8f4d01f05422, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8158614593663701802, guid: c261fac4f881805478ca8f4d01f05422, type: 3}
       propertyPath: m_Name
       value: PauseText

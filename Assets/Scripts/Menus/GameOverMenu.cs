@@ -4,7 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class GameOverMenu : MonoBehaviour
 {
-	public GameObject _gameOverUI;
+	[SerializeField] public GameObject _gameOverUI;
+
+	private void Awake()
+	{
+		_gameOverUI.SetActive(false);
+	}
 
 	public void GameOverUI()
 	{

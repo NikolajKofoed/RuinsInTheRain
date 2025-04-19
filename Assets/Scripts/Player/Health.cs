@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
 	[Header("Health")]
 	[SerializeField] private float startingHealth;
     public float currentHealth { get; private set; }
+	public static bool PlayerIsDead = false;
 	private Animator anim;
 
     // Respawn
@@ -20,13 +21,16 @@ public class Health : MonoBehaviour
 	private Image currentHealthBar;
 	const string TOTAL_HEALTH_BAR = "HealthbarFull";
 	const string CURRENT_HEALTH_BAR = "HealthbarCurrent";
-    public GameOverMenu gameOver;
+    // GameOver Menu
+    [SerializeField] public GameObject GameOverUI { get; private set; }
+    const string GameOver_Menu = "UI Canvas/GameOverMenu"; // Need to be written like this because the GameOVerUI is a object inside "UI Canvas"
 
 	[Header("iFrames")]
 	[SerializeField] private float iFramesDuration;
 	[SerializeField] private int numberOfFlashes;
 	private SpriteRenderer spriteRend;
 
+    [Header("Knockback")]
 	[SerializeField] private float knockbackForce = 15f;
 	private Knockback knockback;
 
@@ -39,11 +43,35 @@ public class Health : MonoBehaviour
 		knockback = GetComponent<Knockback>();
 		respawnPoint = transform.position;
 	}
+	private void Start()
+	{
+		PlayerIsDead = false;
+		ResetHealth();
+		respawnPoint = transform.position;
+        UpdateHealthBar();
+		// To find the GameOve UI on scene start
+		if (GameOverUI == null)
+		{
+			Transform[] allTransforms = Resources.FindObjectsOfTypeAll<Transform>();
+			foreach (var t in allTransforms)
+			{
+				if (t.name == "GameOverMenu")
+				{
+					GameOverUI = t.gameObject;
+					Debug.Log("GameOverMenu found (even though it was inactive)!");
+					break;
+				}
+			}
 
+			if (GameOverUI == null)
+			{
+				Debug.LogWarning("GameOverMenu not found in scene!");
+			}
+		}
+	}
 
-
-    // Sets the player respawn point, when they touch a checkpoint
-    private void OnTriggerEnter2D(Collider2D collision)
+	// Sets the player respawn point, when they touch a checkpoint
+	private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Checkpoint")
         {
@@ -53,13 +81,6 @@ public class Health : MonoBehaviour
         {
             respawnPoint = transform.position;
         }
-    }
-
-    private void Start()
-    {
-		ResetHealth();
-		respawnPoint = transform.position;
-		UpdateHealthBar();
     }
 
 	void ResetHealth()
@@ -122,9 +143,10 @@ public class Health : MonoBehaviour
         {
 			currentHealth = 0;
 			Debug.Log("Plauer died");
-            //anim?.SetBool("Dies", true);
-            //StartCoroutine(DeathLoadSceneRoutine());
-            gameOver.GameOverUI();
+			PlayerIsDead = true;
+			//anim?.SetBool("Dies", true);
+			//StartCoroutine(DeathLoadSceneRoutine());
+			GameOverUI.SetActive(true);
             Destroy(gameObject);
 		}
     }
