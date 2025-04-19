@@ -17,8 +17,13 @@ public class GameOverMenu : MonoBehaviour
 		SceneManager.LoadSceneAsync(0);
 	}
 
-	public void ContinueGame()
+	public void ResetScene()
 	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		_gameOverUI.SetActive(false);
+
+		// Set scene entrance so AreaEntrance can place the player
+		SceneManagement.Instance.SetTransitionName("Start");  // must match a real entrance name
+
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 }

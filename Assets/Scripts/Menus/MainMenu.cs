@@ -12,10 +12,19 @@ public class MainMenu : MonoBehaviour
 
 	public void PlayGame()
     {
-        SceneManager.LoadSceneAsync(1);
+		// Reset any necessary game data before loading the scene
+		// ResetGameData();
+
+		// Load the first gameplay scene (Scene 1 in the build order)
+		SceneManager.LoadSceneAsync(1);
     }
 
-    public void Settings()
+	//private void ResetGameData()
+	//{
+		// Reset any static variables, game state, or settings you need to reset
+	//}
+
+	public void Settings()
     {
         MenuScreen.SetActive(false);
         OptionMenu.SetActive(true);

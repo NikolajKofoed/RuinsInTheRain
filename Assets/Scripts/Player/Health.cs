@@ -125,7 +125,7 @@ public class Health : MonoBehaviour
             //anim?.SetBool("Dies", true);
             //StartCoroutine(DeathLoadSceneRoutine());
             gameOver.GameOverUI();
-            gameObject.SetActive(false);
+            Destroy(gameObject);
 		}
     }
 

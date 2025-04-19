@@ -11,7 +11,14 @@ public class AreaEntrance : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log($"Transition name: {transitionName}");
+		string activeTransition = SceneManagement.Instance.SceneTransitionName;
+
+		if (string.IsNullOrEmpty(activeTransition))
+		{
+			activeTransition = "Start";
+		}
+
+		Debug.Log($"Transition name: {transitionName}");
         if (transitionName == SceneManagement.Instance.SceneTransitionName)
         {
             Debug.Log("transition name is correct");
