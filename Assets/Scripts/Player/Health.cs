@@ -22,7 +22,7 @@ public class Health : MonoBehaviour
 	const string TOTAL_HEALTH_BAR = "HealthbarFull";
 	const string CURRENT_HEALTH_BAR = "HealthbarCurrent";
     // GameOver Menu
-    [SerializeField] public GameObject GameOverUI { get; private set; }
+    private GameObject GameOverUI { get; set; }
     const string GameOver_Menu = "UI Canvas/GameOverMenu"; // Need to be written like this because the GameOVerUI is a object inside "UI Canvas"
 
 	[Header("iFrames")]
@@ -48,25 +48,23 @@ public class Health : MonoBehaviour
 		ResetHealth();
 		respawnPoint = transform.position;
         UpdateHealthBar();
-		// To find the GameOve UI on scene start
-		if (GameOverUI == null)
-		{
-			Transform[] allTransforms = Resources.FindObjectsOfTypeAll<Transform>();
-			foreach (var t in allTransforms)
-			{
-				if (t.name == "GameOverMenu")
-				{
-					GameOverUI = t.gameObject;
-					Debug.Log("GameOverMenu found (even though it was inactive)!");
-					break;
-				}
-			}
+		GameOverUI = FindGameOverUI();
+	}
 
-			if (GameOverUI == null)
+	// To find the GameOver UI
+	private GameObject FindGameOverUI()
+	{
+		Transform[] allTransforms = Resources.FindObjectsOfTypeAll<Transform>();
+		foreach (var t in allTransforms)
+		{
+			if (t.name == "GameOverMenu")
 			{
-				Debug.LogWarning("GameOverMenu not found in scene!");
+				Debug.Log("GameOverMenu found!");
+				return t.gameObject;
 			}
 		}
+		Debug.LogWarning("GameOverMenu not found in scene!");
+		return null;
 	}
 
 	// Sets the player respawn point, when they touch a checkpoint
@@ -112,7 +110,7 @@ public class Health : MonoBehaviour
 			CheckIfDead();
 		}
 
-		Debug.Log("Player hp: {currentHealth}");
+		Debug.Log("Player hp: " + currentHealth);
 	}
 
 	// For when player comes into contact with extreme enviromental hazards
@@ -122,7 +120,6 @@ public class Health : MonoBehaviour
 		if (currentHealth > 0)
 		{
             TakeDamage(_hazardDamage);
-
             //anim.SetTrigger("hurt");
 			//anim.ResetTrigger("");
 			transform.position = respawnPoint;
@@ -144,7 +141,18 @@ public class Health : MonoBehaviour
 			PlayerIsDead = true;
 			//anim?.SetBool("Dies", true);
 			//StartCoroutine(DeathLoadSceneRoutine());
-			GameOverUI.SetActive(true);
+			if (GameOverUI == null)
+			{
+				GameOverUI = FindGameOverUI();
+			}
+			if (GameOverUI != null)
+			{
+				GameOverUI.SetActive(true);
+			}
+			else
+			{
+				Debug.LogWarning("Could not show GameOverUI because it's missing!");
+			}
             Destroy(gameObject);
 		}
     }
