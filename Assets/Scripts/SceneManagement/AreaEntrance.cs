@@ -22,7 +22,7 @@ public class AreaEntrance : MonoBehaviour
         if (transitionName == SceneManagement.Instance.SceneTransitionName)
         {
             Debug.Log("transition name is correct");
-            Player2D.Instance.transform.position = this.transform.position;
+            Player2D.Instance.transform.position = this.transform.position; //Set player position to be where entrance is.
             CameraController.Instance.SetPlayerCameraFollow();
 
             UIFade.Instance.FadeToClear();

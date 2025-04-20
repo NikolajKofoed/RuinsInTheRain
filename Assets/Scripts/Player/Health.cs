@@ -37,7 +37,6 @@ public class Health : MonoBehaviour
 
 	private void Awake()
 	{
-		
 		anim = GetComponent<Animator>();
 		spriteRend = GetComponent<SpriteRenderer>();
 		knockback = GetComponent<Knockback>();
