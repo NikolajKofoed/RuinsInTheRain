@@ -645,6 +645,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1874018084}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &167666738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 167666739}
+  m_Layer: 0
+  m_Name: Events
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &167666739
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167666738}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1036494130}
+  m_Father: {fileID: 1000036045}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &168368129
 GameObject:
   m_ObjectHideFlags: 0
@@ -84352,6 +84384,93 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &883103178
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2649070912459824098, guid: 143f1c6325d6fb748863d0f7b84b21d5, type: 3}
+      propertyPath: m_Name
+      value: Spawner_Drone_Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 3882060576304663295, guid: 143f1c6325d6fb748863d0f7b84b21d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 129.75229
+      objectReference: {fileID: 0}
+    - target: {fileID: 3882060576304663295, guid: 143f1c6325d6fb748863d0f7b84b21d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 16.438114
+      objectReference: {fileID: 0}
+    - target: {fileID: 3882060576304663295, guid: 143f1c6325d6fb748863d0f7b84b21d5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3882060576304663295, guid: 143f1c6325d6fb748863d0f7b84b21d5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3882060576304663295, guid: 143f1c6325d6fb748863d0f7b84b21d5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3882060576304663295, guid: 143f1c6325d6fb748863d0f7b84b21d5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3882060576304663295, guid: 143f1c6325d6fb748863d0f7b84b21d5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3882060576304663295, guid: 143f1c6325d6fb748863d0f7b84b21d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3882060576304663295, guid: 143f1c6325d6fb748863d0f7b84b21d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3882060576304663295, guid: 143f1c6325d6fb748863d0f7b84b21d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2649070912459824098, guid: 143f1c6325d6fb748863d0f7b84b21d5, type: 3}
+      insertIndex: 10
+      addedObject: {fileID: 883103180}
+  m_SourcePrefab: {fileID: 100100000, guid: 143f1c6325d6fb748863d0f7b84b21d5, type: 3}
+--- !u!1 &883103179 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2649070912459824098, guid: 143f1c6325d6fb748863d0f7b84b21d5, type: 3}
+  m_PrefabInstance: {fileID: 883103178}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &883103180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883103179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee0356026450fb6488eb623a700b81d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 0}
+  bulletMoveSpeed: 0.1
+  burstCount: 1
+  projectilesPerBurst: 1
+  angleSpread: 0
+  startingDistance: 0.1
+  timeBetweenBursts: 0.1
+  restTime: 1
+  stagger: 0
+  oscillate: 0
 --- !u!1 &894015267
 GameObject:
   m_ObjectHideFlags: 0
@@ -84619,6 +84738,7 @@ Transform:
   - {fileID: 543777106}
   - {fileID: 894015268}
   - {fileID: 741607547}
+  - {fileID: 167666739}
   m_Father: {fileID: 1166617287}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!210 &1000036046
@@ -84707,6 +84827,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1434055370768767839, guid: ef4fff89265d3c84397a82251c68419c, type: 3}
   m_PrefabInstance: {fileID: 298525029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1036494130 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3026920950429828587, guid: 7a41633d15aac184fa02363444e03ba3, type: 3}
+  m_PrefabInstance: {fileID: 3360507682846490666}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1045642022 stripped
 Transform:
@@ -85328,6 +85453,11 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!1 &1396718890 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8906274949922948894, guid: 7a41633d15aac184fa02363444e03ba3, type: 3}
+  m_PrefabInstance: {fileID: 3360507682846490666}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1426148063 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5543272880257240007, guid: 407d47a2429b0a44b98a483316fd8fb0, type: 3}
@@ -87424,7 +87554,6 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 6609181438631654044}
   SpotlightPosLeft: {fileID: 8243412128009356389}
-  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!4 &130486605860807327
 Transform:
@@ -87898,7 +88027,6 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 6889535598338342126}
   SpotlightPosLeft: {fileID: 8521496831241669143}
-  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!58 &411127088523203002
 CircleCollider2D:
@@ -88846,7 +88974,6 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 6092655961560818221}
   SpotlightPosLeft: {fileID: 9030713920941462740}
-  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!114 &1056544132719227209
 MonoBehaviour:
@@ -89676,7 +89803,6 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 5044868423556491671}
   SpotlightPosLeft: {fileID: 8060323196902104942}
-  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!114 &2023587311765590802
 MonoBehaviour:
@@ -90051,7 +90177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3121539000270260383, guid: fa4e2914bfa3fc541afbda2ddd8fab5a, type: 3}
       propertyPath: MeleeDamage
-      value: 24
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3121539000270260383, guid: fa4e2914bfa3fc541afbda2ddd8fab5a, type: 3}
       propertyPath: 'playerProjectiles.Array.data[0]'
@@ -90493,7 +90619,6 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 9134275262939610175}
   SpotlightPosLeft: {fileID: 6277326094512982726}
-  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!61 &2687330732734709506
 BoxCollider2D:
@@ -91033,7 +91158,6 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 8107696651791874562}
   SpotlightPosLeft: {fileID: 6438651041313852667}
-  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!4 &3072292375948064279
 Transform:
@@ -91160,7 +91284,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 167666739}
     m_Modifications:
     - target: {fileID: 460512174826433676, guid: 7a41633d15aac184fa02363444e03ba3, type: 3}
       propertyPath: m_Name
@@ -91168,11 +91292,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3026920950429828587, guid: 7a41633d15aac184fa02363444e03ba3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 112.94
+      value: 127.93152
       objectReference: {fileID: 0}
     - target: {fileID: 3026920950429828587, guid: 7a41633d15aac184fa02363444e03ba3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.11
+      value: 7.7416525
       objectReference: {fileID: 0}
     - target: {fileID: 3026920950429828587, guid: 7a41633d15aac184fa02363444e03ba3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -91184,15 +91308,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3026920950429828587, guid: 7a41633d15aac184fa02363444e03ba3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3026920950429828587, guid: 7a41633d15aac184fa02363444e03ba3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3026920950429828587, guid: 7a41633d15aac184fa02363444e03ba3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3026920950429828587, guid: 7a41633d15aac184fa02363444e03ba3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -91206,6 +91330,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6057642092870409844, guid: 7a41633d15aac184fa02363444e03ba3, type: 3}
+      propertyPath: Blockade
+      value: 
+      objectReference: {fileID: 1396718890}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -92718,7 +92846,6 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 1821513484600680171}
   SpotlightPosLeft: {fileID: 3502020378248521746}
-  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!61 &4866762045049718112
 BoxCollider2D:
@@ -92807,7 +92934,6 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 2204034270646932967}
   SpotlightPosLeft: {fileID: 3983628870852616990}
-  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!114 &4949638420111963817
 MonoBehaviour:
@@ -92852,7 +92978,6 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 2248051189583494664}
   SpotlightPosLeft: {fileID: 3957628893982034161}
-  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!114 &4993156261538796311
 MonoBehaviour:
@@ -93263,7 +93388,6 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 1222446591969616232}
   SpotlightPosLeft: {fileID: 4119101051584894865}
-  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!61 &5406205232745860360
 BoxCollider2D:
@@ -93512,7 +93636,6 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 1686242221310099742}
   SpotlightPosLeft: {fileID: 4519433120758364135}
-  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!4 &5620575888290675229
 Transform:
@@ -93884,7 +94007,6 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 657102117858472937}
   SpotlightPosLeft: {fileID: 2360029977808192784}
-  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!114 &6001050524914707856
 MonoBehaviour:
@@ -93982,7 +94104,6 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 1034794817099316395}
   SpotlightPosLeft: {fileID: 2847022909866969682}
-  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!4 &6092655961560818221
 Transform:
@@ -94214,7 +94335,6 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 996155934414774824}
   SpotlightPosLeft: {fileID: 2597999383449113809}
-  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!212 &6394029382288963462
 SpriteRenderer:
@@ -95105,7 +95225,6 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 4096557820548736542}
   SpotlightPosLeft: {fileID: 1226977486080594151}
-  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!1 &7242681671084787141
 GameObject:
@@ -95999,7 +96118,6 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 3072292375948064279}
   SpotlightPosLeft: {fileID: 251081746540249326}
-  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!4 &8132266942790444900
 Transform:
@@ -96136,7 +96254,6 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 2887204042794865766}
   SpotlightPosLeft: {fileID: 130486605860807327}
-  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!50 &8230882889311217868
 Rigidbody2D:
@@ -96182,7 +96299,6 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 2904570031933479837}
   SpotlightPosLeft: {fileID: 113125632568225124}
-  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!114 &8239144853330958844
 MonoBehaviour:
@@ -96863,7 +96979,6 @@ MonoBehaviour:
   huntingLineOfSight: 8
   SpotlightPosRight: {fileID: 2360904633687593973}
   SpotlightPosLeft: {fileID: 656789314065032460}
-  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!212 &8863260671159333496
 SpriteRenderer:
@@ -97357,4 +97472,4 @@ SceneRoots:
   - {fileID: 1912772896}
   - {fileID: 1166617287}
   - {fileID: 2083687300}
-  - {fileID: 3360507682846490666}
+  - {fileID: 883103178}

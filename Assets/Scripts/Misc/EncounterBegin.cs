@@ -5,24 +5,25 @@ using UnityEngine;
 public class EncounterBegin : MonoBehaviour
 {
     [SerializeField] private GameObject BossEnemy; // Prefab to spawn
+    [SerializeField] private GameObject Blockade;
     [SerializeField] private Transform DroneSpawnPosition;
     [SerializeField] private AudioClip BossMusic;
     [SerializeField] private float fadeDuration = 1.5f;
 
-
-    private BoxCollider2D invisibleWall;
     private GameObject spawnedBoss;
     private AudioSource bossAudioSource;
     private bool hasTrigged = false;
 
     private void Awake()
     {
-        invisibleWall = GetComponent<BoxCollider2D>();
         bossAudioSource = gameObject.AddComponent<AudioSource>();
     }
     private void Start()
     {
-        invisibleWall.enabled = false;
+        if(Blockade != null)
+        {
+            Blockade.SetActive(false);
+        }
         bossAudioSource.playOnAwake = false;
         bossAudioSource.loop = true;
         bossAudioSource.volume = 0f; // Start muted for fade in
@@ -42,7 +43,11 @@ public class EncounterBegin : MonoBehaviour
         if (BossEnemy == null) return;
 
         spawnedBoss = Instantiate(BossEnemy, DroneSpawnPosition.position, Quaternion.identity);
-        invisibleWall.enabled = true;
+
+        if(Blockade != null)
+        {
+            Blockade.SetActive(true);
+        }
         GetComponent<PolygonCollider2D>().enabled = false;
 
         if (BossMusic != null)
@@ -60,7 +65,10 @@ public class EncounterBegin : MonoBehaviour
         if (spawnedBoss == null || !spawnedBoss.activeInHierarchy)
         {
             StartCoroutine(FadeOutAudio());
-            GetComponent<Collider2D>().enabled = false;
+            if (Blockade != null)
+            {
+                Blockade.SetActive(false);
+            }
             return;
         }
 

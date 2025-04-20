@@ -45,6 +45,11 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    public void UpdateMoveSpeed(float moveSpeed)
+    {
+        speed = moveSpeed;
+    }
+
     public void SetDirection(float _direction)
     {
         lifetime = 0;

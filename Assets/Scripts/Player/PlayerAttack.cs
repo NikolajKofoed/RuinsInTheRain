@@ -81,7 +81,7 @@ public class PlayerAttack : MonoBehaviour
         Debug.Log("Melee attack occurred");
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyHealth>().TakeDamage(MeleeDamage, this.transform);
+            enemy.GetComponent<EnemyHealth>()?.TakeDamage(MeleeDamage, this.transform);
             Debug.Log($"Hit enemy: " + enemy);
         }
 

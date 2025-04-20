@@ -11,13 +11,19 @@ public class EnemyHealth : MonoBehaviour
     private Animator anim;
     private Knockback knockback;
     private EnemyAudio enemyAudio; // added
+    private FlashOnDamage flash;
+
+    private void Awake()
+    {
+        flash = GetComponent<FlashOnDamage>();
+        anim = GetComponent<Animator>();
+        knockback = GetComponent<Knockback>();
+        enemyAudio = GetComponent<EnemyAudio>(); // cache audio component
+    }
 
     void Start()
     {
         currentHealth = maxHealth;
-        anim = GetComponent<Animator>();
-        knockback = GetComponent<Knockback>();
-        enemyAudio = GetComponent<EnemyAudio>(); // cache audio component
     }
 
     /// <summary>
@@ -45,6 +51,12 @@ public class EnemyHealth : MonoBehaviour
         {
             //Only play hit sound if not dying
             enemyAudio?.PlayHitSound();
+
+            if(flash != null)
+            {
+                StartCoroutine(flash.FlashRoutine());
+
+            }
         }
     }
 

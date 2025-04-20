@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DroneBroken : MonoBehaviour
+public class DroneBroken : MonoBehaviour, IEnemy
 {
     // Movement
     [SerializeField] private float moveSpeed;
@@ -87,5 +87,10 @@ public class DroneBroken : MonoBehaviour
     {
         transform.Rotate(new Vector2(0, 180));
         moveDirection.x = -moveDirection.x;
+    }
+
+    public void Attack()
+    {
+
     }
 }

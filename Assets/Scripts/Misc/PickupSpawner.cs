@@ -13,9 +13,12 @@ public class PickupSpawner : MonoBehaviour
             Instantiate(powerUpPrefab, transform.position, Quaternion.identity);
         }
 
-        for(int i = 0; i < amountDropped; i++)
+        if(currencyPrefab != null)
         {
-            Instantiate(currencyPrefab, transform.position, Quaternion.identity);
+            for (int i = 0; i < amountDropped; i++)
+            {
+                Instantiate(currencyPrefab, transform.position, Quaternion.identity);
+            }
         }
     }
 }

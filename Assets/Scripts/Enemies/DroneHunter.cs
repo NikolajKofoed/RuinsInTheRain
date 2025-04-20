@@ -19,7 +19,7 @@ public class DroneHunter : MonoBehaviour, IEnemy
     private SpriteRenderer spriteRenderer;
     private Light2D spotlight;
 
-    [SerializeField] private EnemyAudio enemyAudio; // reference to EnemyAudio
+    private EnemyAudio enemyAudio; // reference to EnemyAudio
 
     [field: SerializeField] private float damage;
 

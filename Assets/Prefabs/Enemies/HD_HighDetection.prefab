@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 4066988054233627363}
   - component: {fileID: 7432373950269850721}
   - component: {fileID: 1897459598767004933}
+  - component: {fileID: 2167930245397494199}
   m_Layer: 7
   m_Name: HD_HighDetection
   m_TagString: Enemy
@@ -364,7 +365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf8d8c59e1c8db4a812af6f3a8ddc43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currencyPrefab: {fileID: 2224924491784914626, guid: cd5922497f4549f46bfde2736f64b6f7, type: 3}
+  currencyPrefab: {fileID: 0}
+  powerUpPrefab: {fileID: 0}
   amountDropped: 1
 --- !u!114 &4279772974471388029
 MonoBehaviour:
@@ -529,3 +531,17 @@ MonoBehaviour:
   hitSoundClip: {fileID: 8300000, guid: 7966793723334764f86c2dd0ff432f99, type: 3}
   deathSoundClip: {fileID: 8300000, guid: 3dbeba14894b98f41943d633fa985e65, type: 3}
   detectedSoundClip: {fileID: 8300000, guid: 89e946cf758af59418d2e455e59c0693, type: 3}
+--- !u!114 &2167930245397494199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7486847245184378809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c441fda1eb3e643b35d1a822ed7b19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteFlashMat: {fileID: 2100000, guid: c09838ec9a240f44880f820d67751272, type: 2}
+  restoreDefaultMatTime: 0.1
