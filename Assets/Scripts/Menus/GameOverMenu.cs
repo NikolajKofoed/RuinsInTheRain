@@ -33,6 +33,7 @@ public class GameOverMenu : MonoBehaviour
 	public void MainMenu()
 	{
 		_gameOverUI.SetActive(false);
+		Health.PlayerIsDead = false;
 		SceneManager.LoadSceneAsync(0);
 	}
 
@@ -44,7 +45,7 @@ public class GameOverMenu : MonoBehaviour
 
 		// Set scene entrance so AreaEntrance can place the player
 		string lastRespawn = SceneManagement.Instance.RespawnTransitionName;
-		Debug.Log($"[GameOverMenu] Setting respawn transition to: {respawnScenePos}");
+		Debug.Log($"[GameOverMenu] Setting respawn transition to: " + respawnScenePos);
 
 		SceneManagement.Instance.SetTransitionName(lastRespawn);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);

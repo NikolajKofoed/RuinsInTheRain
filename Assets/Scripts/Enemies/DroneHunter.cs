@@ -13,6 +13,7 @@ public class DroneHunter : MonoBehaviour, IEnemy
     private float lineOfSight;
     private bool hunterMode = false;
     private bool previousHunterMode = false; // track last state
+    private EnemyHealth droneHealth;
 
     private Rigidbody2D rb;
     private Transform player;
@@ -29,6 +30,7 @@ public class DroneHunter : MonoBehaviour, IEnemy
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        droneHealth = GetComponent<EnemyHealth>();
 
         if (enemyAudio == null)
         {
@@ -36,22 +38,28 @@ public class DroneHunter : MonoBehaviour, IEnemy
         }
     }
 
-    void Update()
-    {
-        float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
+	void Update()
+	{
+		float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
 
-        previousHunterMode = hunterMode;
-        hunterMode = distanceFromPlayer < lineOfSight;
-        lineOfSight = hunterMode ? huntingLineOfSight : idleLineOfSight;
+		previousHunterMode = hunterMode;
 
-        // play detection sound only when entering hunter mode
-        if (hunterMode && !previousHunterMode && enemyAudio != null)
-        {
-            enemyAudio.PlayDetectedSound();
-        }
-    }
+		bool isDamaged = droneHealth != null && droneHealth.CurrentHealth < droneHealth.maxHealth;
 
-    private void FixedUpdate()
+		// Always use huntingLineOfSight if damaged
+		lineOfSight = isDamaged ? huntingLineOfSight : idleLineOfSight;
+
+        // Enters hunting mode if plauer within line of sight
+		hunterMode = distanceFromPlayer < lineOfSight;
+
+		// play detection sound only when entering hunter mode
+		if (hunterMode && !previousHunterMode && enemyAudio != null)
+		{
+			enemyAudio.PlayDetectedSound();
+		}
+	}
+
+	private void FixedUpdate()
     {
         if (hunterMode)
         {
@@ -93,4 +101,3 @@ public class DroneHunter : MonoBehaviour, IEnemy
         // Optional: Add attack logic here
     }
 }
-

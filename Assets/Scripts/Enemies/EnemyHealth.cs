@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private GameObject deathVfxPrefab;
 
     private int currentHealth;
+    public int CurrentHealth => currentHealth;
     private Animator anim;
     private Knockback knockback;
     private EnemyAudio enemyAudio; // added
@@ -122,4 +123,3 @@ public class EnemyHealth : MonoBehaviour
         Destroy(vfxInstance, maxDuration + 1f);
     }
 }
-

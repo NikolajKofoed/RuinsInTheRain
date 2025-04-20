@@ -9,20 +9,21 @@ public class MainMenu : MonoBehaviour
     public GameObject OptionMenu;
 	public GameObject QuitMenu;
 
+    private void Start()
+    {
+        GameObject goUI = GameObject.Find("GameOverMenu");
+        if (goUI != null && goUI.activeSelf)
+        {
+            goUI.SetActive(false);
+            Debug.Log("GameOverMenu hidden on returning to main menu.");
+        }
+    }
 
 	public void PlayGame()
     {
-		// Reset any necessary game data before loading the scene
-		// ResetGameData();
-
 		// Load the first gameplay scene (Scene 1 in the build order)
 		SceneManager.LoadSceneAsync(1);
     }
-
-	//private void ResetGameData()
-	//{
-		// Reset any static variables, game state, or settings you need to reset
-	//}
 
 	public void Settings()
     {
