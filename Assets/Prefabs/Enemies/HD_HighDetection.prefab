@@ -334,6 +334,7 @@ MonoBehaviour:
   <maxHealth>k__BackingField: 3
   knockbackForce: 15
   deathVfxPrefab: {fileID: 7221401576058908131, guid: 5eb6191deb168414abac92ac9a90de04, type: 3}
+  GetsDestroyed: 1
 --- !u!114 &8116086532221019097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,7 +352,6 @@ MonoBehaviour:
   huntingLineOfSight: 50
   SpotlightPosRight: {fileID: 3072292376389691975}
   SpotlightPosLeft: {fileID: 251081746777545918}
-  enemyAudio: {fileID: 0}
   damage: 2
 --- !u!114 &-3222321511970295360
 MonoBehaviour:

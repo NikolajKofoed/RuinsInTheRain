@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 
@@ -6,6 +7,10 @@ public class EnemyHealth : MonoBehaviour
     [field: SerializeField] public int maxHealth { get; set; } = 10;
     [SerializeField] private float knockbackForce = 15f;
     [SerializeField] private GameObject deathVfxPrefab;
+    [SerializeField] private bool GetsDestroyed = false;
+
+    public bool IsDead { get; private set; } = false;
+    public event Action OnDeath;
 
     private int currentHealth;
     private Animator anim;
@@ -65,6 +70,9 @@ public class EnemyHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
+            IsDead = true;
+            OnDeath?.Invoke();
+
             var enemy = GetComponent<IEnemy>();
             if (enemy != null)
             {
@@ -81,7 +89,14 @@ public class EnemyHealth : MonoBehaviour
 
             GetComponent<PickupSpawner>()?.DropItems();
 
-            gameObject.SetActive(false); // disable object
+            if (GetsDestroyed)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                gameObject.SetActive(false); // disable object
+            }
         }
     }
 
