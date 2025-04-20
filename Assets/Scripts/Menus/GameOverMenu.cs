@@ -20,10 +20,7 @@ public class GameOverMenu : MonoBehaviour
 		if (respawnScenePos == SceneManagement.Instance.SceneTransitionName)
 		{
 			Debug.Log("transition name is correct");
-			Player2D.Instance.transform.position = this.transform.position;
-			CameraController.Instance.SetPlayerCameraFollow();
-
-			UIFade.Instance.FadeToClear();
+			// Do NOT move the player here
 		}
 		Debug.Log($"Error: name:{SceneManagement.Instance.SceneTransitionName}");
 	}
@@ -42,10 +39,14 @@ public class GameOverMenu : MonoBehaviour
 	public void ResetScene()
 	{
 		_gameOverUI.SetActive(false);
+		// Just in case, reset player static state
+		Health.PlayerIsDead = false;
 
 		// Set scene entrance so AreaEntrance can place the player
-		SceneManagement.Instance.SetTransitionName(respawnScenePos);  // must match a real entrance name
+		string lastRespawn = SceneManagement.Instance.RespawnTransitionName;
+		Debug.Log($"[GameOverMenu] Setting respawn transition to: {respawnScenePos}");
 
+		SceneManagement.Instance.SetTransitionName(lastRespawn);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 }

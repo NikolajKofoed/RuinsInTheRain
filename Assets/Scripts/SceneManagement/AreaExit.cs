@@ -3,9 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-/// Used to load another scene
-/// </summary>
+// Used to load another scene
 public class AreaExit : MonoBehaviour
 {
     /// <summary>
@@ -38,6 +36,7 @@ public class AreaExit : MonoBehaviour
     {
         UIFade.Instance.FadeToBlack();
         SceneManagement.Instance.SetTransitionName(sceneTransitionName);
+        SceneManagement.Instance.SetRespawnTransitionName(sceneTransitionName);
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(sceneName);
     }

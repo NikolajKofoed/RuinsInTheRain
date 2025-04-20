@@ -6,8 +6,14 @@ using UnityEngine;
 public class SceneManagement : Singleton<SceneManagement>
 {
     public string SceneTransitionName { get; private set; }
+    public string RespawnTransitionName { get; private set; }
     public void SetTransitionName(string sceneTransitionName)
     {
         this.SceneTransitionName = sceneTransitionName;
+    }
+
+    public void SetRespawnTransitionName(string transitionName)
+    {
+        RespawnTransitionName = transitionName;
     }
 }

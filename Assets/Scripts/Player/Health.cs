@@ -85,7 +85,6 @@ public class Health : MonoBehaviour
 	void ResetHealth()
 	{
 		currentHealth = startingHealth;
-
 	}
 
 	/// <summary>
@@ -113,7 +112,7 @@ public class Health : MonoBehaviour
 			CheckIfDead();
 		}
 
-		Debug.Log(currentHealth);
+		Debug.Log("Player hp: {currentHealth}");
 	}
 
 	// For when player comes into contact with extreme enviromental hazards
@@ -190,7 +189,6 @@ public class Health : MonoBehaviour
             currentHealthBar.fillAmount = currentHealth / startingHealth;
         }
     }
-
 
     private IEnumerator InvunerabilityRoutine()
 	{
