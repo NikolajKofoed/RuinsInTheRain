@@ -8,6 +8,7 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private MonoBehaviour enemyType;
     [SerializeField] private float attackCooldown = 2f;
     [SerializeField] private bool stopMovingWhileAttacking = false;
+    [SerializeField] private bool canRoam = true;
     [SerializeField] private bool canRoamOnYAxis = false;
 
     private bool canAttack = true;
@@ -42,6 +43,11 @@ public class EnemyAi : MonoBehaviour
 
     private void MovementStateControl()
     {
+        if (!canRoam)
+        {
+            state = State.Attacking;
+        }
+
         switch (state)
         {
             case State.Attacking:
@@ -72,7 +78,7 @@ public class EnemyAi : MonoBehaviour
 
     private void Attacking()
     {
-        if (Vector2.Distance(transform.position, Player2D.Instance.transform.position) > attackRange)
+        if (Vector2.Distance(transform.position, Player2D.Instance.transform.position) > attackRange && canRoam)
         {
             state = State.Roaming;
         }
@@ -85,7 +91,7 @@ public class EnemyAi : MonoBehaviour
         {
             enemyPathFinding.StopMoving();
         }
-        else
+        else if(canRoam)
         {
             enemyPathFinding.MoveTo(roamPosition);
         }

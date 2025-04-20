@@ -31,10 +31,10 @@ public class Projectile : MonoBehaviour
     {
         hit = true;
 
-        if (collision.CompareTag("Enemy"))
+        if(collision.CompareTag("Enemy"))
         {
             Deactivate();
-            collision.GetComponent<EnemyHealth>().TakeDamage(projectileDamage, this.transform);
+            collision.GetComponent<EnemyHealth>()?.TakeDamage(projectileDamage, this.transform);
         }
 
         Deactivate();
@@ -43,11 +43,6 @@ public class Projectile : MonoBehaviour
         {
             StartCoroutine(DeactiveProjectileTimerRoutine()); // failsafe
         }
-    }
-
-    public void UpdateMoveSpeed(float moveSpeed)
-    {
-        speed = moveSpeed;
     }
 
     public void SetDirection(float _direction)

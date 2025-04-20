@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Shooter : MonoBehaviour
+public class Shooter : MonoBehaviour, IEnemy
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletMoveSpeed;
@@ -75,7 +75,7 @@ public class Shooter : MonoBehaviour
                 GameObject newbullet = Instantiate(bulletPrefab, pos, Quaternion.identity);
                 newbullet.transform.right = newbullet.transform.position - transform.position;
 
-                if (newbullet.TryGetComponent(out Projectile projectile))
+                if (newbullet.TryGetComponent(out EnemyProjectile projectile))
                 {
                     projectile.UpdateMoveSpeed(bulletMoveSpeed);
                 }
@@ -123,3 +123,6 @@ public class Shooter : MonoBehaviour
         return pos;
     }
 }
+
+
+

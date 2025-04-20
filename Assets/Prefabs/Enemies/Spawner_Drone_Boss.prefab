@@ -18,7 +18,10 @@ GameObject:
   - component: {fileID: 5016873768649741012}
   - component: {fileID: 2069299918118141918}
   - component: {fileID: -3286079366944279413}
+  - component: {fileID: 8572153748603200603}
+  - component: {fileID: 1645512036848094161}
   - component: {fileID: 8283930587260081300}
+  - component: {fileID: 5876434738855510858}
   m_Layer: 7
   m_Name: Spawner_Drone_Boss
   m_TagString: Enemy
@@ -157,7 +160,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.010433815, y: -0.011533499}
+  m_Offset: {x: 0.016582549, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -167,7 +170,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.4776891, y: 0.42318135}
+  m_Size: {x: 0.41093266, y: 0.4}
   m_EdgeRadius: 0
 --- !u!114 &4030116205911422026
 MonoBehaviour:
@@ -181,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232f90c34cc41844e9d0b47f470d57a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <maxHealth>k__BackingField: 25
+  <maxHealth>k__BackingField: 50
   knockbackForce: 15
   deathVfxPrefab: {fileID: 7221401576058908131, guid: 5eb6191deb168414abac92ac9a90de04, type: 3}
 --- !u!114 &7930238029273767516
@@ -229,11 +232,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 7486847245184378809, guid: 7963afc8c46020f4a8cddf7f86031271, type: 3}
-  enemyAmountPerSpawn: 3
+  enemyAmountPerSpawn: 5
   spawnIntervalMin: 4
   spawnIntervalMax: 7
   amountSpawned: 0
-  spawnDelayPerEnemy: 0.2
+  spawnDelayPerEnemy: 0.5
 --- !u!114 &2069299918118141918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,6 +269,47 @@ MonoBehaviour:
   hitSoundClip: {fileID: 8300000, guid: 7966793723334764f86c2dd0ff432f99, type: 3}
   deathSoundClip: {fileID: 8300000, guid: 3dbeba14894b98f41943d633fa985e65, type: 3}
   detectedSoundClip: {fileID: 0}
+--- !u!114 &8572153748603200603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2649070912459824098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee0356026450fb6488eb623a700b81d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 8145110505090652027, guid: cdfa594ce21708245bc6587c8b27230c, type: 3}
+  bulletMoveSpeed: 7
+  burstCount: 5
+  projectilesPerBurst: 24
+  angleSpread: 359
+  startingDistance: 0.1
+  timeBetweenBursts: 1
+  restTime: 10
+  stagger: 0
+  oscillate: 0
+--- !u!114 &1645512036848094161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2649070912459824098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2603566a46497b24f969f755480fd356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roamChangeDir: 2
+  attackRange: 10
+  enemyType: {fileID: 8572153748603200603}
+  attackCooldown: 2
+  stopMovingWhileAttacking: 0
+  canRoam: 0
+  canRoamOnYAxis: 0
 --- !u!82 &8283930587260081300
 AudioSource:
   m_ObjectHideFlags: 0
@@ -363,3 +407,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5876434738855510858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2649070912459824098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c441fda1eb3e643b35d1a822ed7b19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteFlashMat: {fileID: 2100000, guid: c09838ec9a240f44880f820d67751272, type: 2}
+  restoreDefaultMatTime: 0.1

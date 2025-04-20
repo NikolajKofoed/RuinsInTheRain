@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8666938601289563118}
   - component: {fileID: 6057642092870409844}
   - component: {fileID: 4633414810594464404}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Broken Drone Encounter Event
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,8 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc326527478ef234eb0359c41e5e1779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EncounterId: 1
   BossEnemy: {fileID: 2649070912459824098, guid: 143f1c6325d6fb748863d0f7b84b21d5, type: 3}
-  Blockade: {fileID: 0}
+  Blockade: {fileID: 8906274949922948894}
   DroneSpawnPosition: {fileID: 3048874832349831342}
   BossMusic: {fileID: 8300000, guid: b8eb971d69089fe4e9487ac67c30fb32, type: 3}
   fadeDuration: 1.5

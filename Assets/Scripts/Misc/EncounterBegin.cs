@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EncounterBegin : MonoBehaviour
 {
+    [SerializeField] private int EncounterId = 1;
     [SerializeField] private GameObject BossEnemy; // Prefab to spawn
     [SerializeField] private GameObject Blockade;
     [SerializeField] private Transform DroneSpawnPosition;
@@ -31,7 +32,7 @@ public class EncounterBegin : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !hasTrigged)
+        if (collision.CompareTag("Player") && !hasTrigged && EncounterManager.Instance.HasEncounterBeenCompleted(EncounterId) == false)  
         {
             hasTrigged = true;
             StartEncounter();
@@ -44,11 +45,24 @@ public class EncounterBegin : MonoBehaviour
 
         spawnedBoss = Instantiate(BossEnemy, DroneSpawnPosition.position, Quaternion.identity);
 
-        if(Blockade != null)
+        if (Blockade != null)
         {
             Blockade.SetActive(true);
         }
+
         GetComponent<PolygonCollider2D>().enabled = false;
+
+        // Subscribe to death
+        EnemyHealth health = spawnedBoss.GetComponent<EnemyHealth>();
+        if (health != null)
+        {
+            health.OnDeath += () =>
+            {
+                EncounterManager.Instance.CompleteEncounter(EncounterId);
+                if (Blockade != null) Blockade.SetActive(false);
+                StartCoroutine(FadeOutAudio());
+            };
+        }
 
         if (BossMusic != null)
         {
@@ -56,29 +70,6 @@ public class EncounterBegin : MonoBehaviour
             bossAudioSource.Play();
             StartCoroutine(FadeInAudio());
         }
-
-        CheckEncounterOver();
-    }
-
-    public void CheckEncounterOver()
-    {
-        if (spawnedBoss == null || !spawnedBoss.activeInHierarchy)
-        {
-            StartCoroutine(FadeOutAudio());
-            if (Blockade != null)
-            {
-                Blockade.SetActive(false);
-            }
-            return;
-        }
-
-        StartCoroutine(WaitRoutine());
-    }
-
-    private IEnumerator WaitRoutine()
-    {
-        yield return new WaitForSeconds(1f); // check if encounter is over every 1 second
-        CheckEncounterOver();
     }
 
     private IEnumerator FadeInAudio()

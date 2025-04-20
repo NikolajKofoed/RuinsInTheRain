@@ -117,6 +117,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -309,7 +322,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MiniTank_Mortor.v1_0: 8648448324440443116
+      MiniTank_Mortor.v1_1: 8544722658264000918
+      MiniTank_Mortor.v1_2: -67059597912733634
+      MiniTank_Mortor.v1_3: 2068966844756990216
+      MiniTank_Mortor.v1_4: 7216829386711965650
+      MiniTank_Mortor.v1_5: -1510054535303065930
+      MiniTank_Mortor.v1_6: 7301612007999389143
+      MiniTank_Mortor.v1_7: 3504847007026551260
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
