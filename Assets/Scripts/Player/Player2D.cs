@@ -142,7 +142,7 @@ public class Player2D : Singleton<Player2D>
 			}
 		}
 
-		if (!IsGrounded()) 
+		if (!IsGrounded() && !OnWall()) 
 		{
 			airTime += Time.deltaTime; // track airtime
         }
