@@ -9,6 +9,7 @@ public class EnemyAudio : MonoBehaviour
 
     [SerializeField] private AudioClip deathSoundClip;
     [SerializeField] private AudioClip detectedSoundClip;
+    [SerializeField] private AudioClip AttackSound;
 
     private void Awake()
     {
@@ -31,6 +32,14 @@ public class EnemyAudio : MonoBehaviour
         if (detectedSoundClip != null)
         {
             audioSource.PlayOneShot(detectedSoundClip);
+        }
+    }
+
+    public void PlayAttackSound()
+    {
+        if(AttackSound != null)
+        {
+            audioSource.PlayOneShot(AttackSound);
         }
     }
 

@@ -10,8 +10,11 @@ public class EnemyPathFinding : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private EnemyAi enemyAi;
 
+    private Animator animator;
+
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         enemyAi = GetComponent<EnemyAi>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         knockBack = GetComponent<Knockback>();
@@ -20,16 +23,37 @@ public class EnemyPathFinding : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (knockBack.GettingKnockedBack == true) { return; }
+        if (knockBack.GettingKnockedBack == true)
+        {
+            if (animator != null)
+                animator.SetBool("Moving", false);
+            return;
+        }
+
+
+
+
+
         rb.linearVelocity = speed * moveDir;
+
+        if(rb.linearVelocity == Vector2.zero)
+        {
+            if (animator != null)
+                animator.SetBool("Moving", false);
+        }
+        else
+        {
+            if (animator != null)
+                animator.SetBool("Moving", true);
+        }
 
         if (moveDir.x < 0)
         {
-            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = false;
         }
         else if (moveDir.x > 0)
         {
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = true;
         }
 
     }
