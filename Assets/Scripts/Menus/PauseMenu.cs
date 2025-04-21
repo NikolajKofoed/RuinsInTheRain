@@ -40,9 +40,11 @@ public class PauseMenu : MonoBehaviour
 			if (GameIsPaused)
             {
                 Resume();
+                Cursor.visible = false;
             } else
             {
                 Pause();
+                Cursor.visible = true;
             }
         }
         
@@ -56,6 +58,8 @@ public class PauseMenu : MonoBehaviour
         QuitGameUI.SetActive(false);
         Time.timeScale = 1.0f;
         GameIsPaused = false;
+        Cursor.visible = false;
+
     }
 
     void Pause()
@@ -63,24 +67,32 @@ public class PauseMenu : MonoBehaviour
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        Cursor.visible = true;
+
     }
 
     public void SettingsMenu()
     {
         PauseMenuUI.SetActive(false);
         OptionMenuUI.SetActive(true);
+        Cursor.visible = true;
+
     }
 
     public void ReturnToMainMenu()
     {
         PauseMenuUI.SetActive(false);
         MainMenuReturnUI.SetActive(true);
+        Cursor.visible = true;
+
     }
 
     public void QuttingMenu()
     {
         PauseMenuUI.SetActive(false);
         QuitGameUI.SetActive(true);
+        Cursor.visible = true;
+
     }
 
     public void ReturnToPauseMenu()
@@ -89,6 +101,8 @@ public class PauseMenu : MonoBehaviour
         MainMenuReturnUI.SetActive(false);
         QuitGameUI.SetActive(false);
         PauseMenuUI.SetActive(true);
+        Cursor.visible = true;
+
     }
 
     public void MainMenu()
@@ -100,7 +114,9 @@ public class PauseMenu : MonoBehaviour
 		Time.timeScale = 1.0f;
 		GameIsPaused = false;
 		SceneManager.LoadSceneAsync(0);
-	}
+        Cursor.visible = true;
+
+    }
 
     public void QuitGame()
     {

@@ -148,6 +148,7 @@ public class Health : MonoBehaviour
 			if (GameOverUI != null)
 			{
 				GameOverUI.SetActive(true);
+				Cursor.visible = true;
 			}
 			else
 			{

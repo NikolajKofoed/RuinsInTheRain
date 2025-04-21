@@ -9,7 +9,7 @@ public class GameOverMenu : MonoBehaviour
 
 	private void Start()
 	{
-		_gameOverUI.SetActive(false);
+        _gameOverUI.SetActive(false);
 		string activeTransition = SceneManagement.Instance.SceneTransitionName;
 
 		if (string.IsNullOrEmpty(activeTransition))
@@ -25,9 +25,10 @@ public class GameOverMenu : MonoBehaviour
 		Debug.Log($"Error: name:{SceneManagement.Instance.SceneTransitionName}");
 	}
 
-	public void GameOverUI()
+    public void GameOverUI()
 	{
 		_gameOverUI.SetActive(true);
+		Cursor.visible = true;
 	}
 
 	public void MainMenu()
@@ -35,9 +36,10 @@ public class GameOverMenu : MonoBehaviour
 		_gameOverUI.SetActive(false);
 		Health.PlayerIsDead = false;
 		SceneManager.LoadSceneAsync(0);
-	}
 
-	public void ResetScene()
+    }
+
+    public void ResetScene()
 	{
 		_gameOverUI.SetActive(false);
 		// Just in case, reset player static state
@@ -49,5 +51,7 @@ public class GameOverMenu : MonoBehaviour
 
 		SceneManagement.Instance.SetTransitionName(lastRespawn);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-	}
+        Cursor.visible = false;
+
+    }
 }

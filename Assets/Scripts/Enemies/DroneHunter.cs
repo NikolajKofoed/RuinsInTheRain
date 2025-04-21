@@ -40,6 +40,8 @@ public class DroneHunter : MonoBehaviour, IEnemy
 
 	void Update()
 	{
+        if (player == null) return;
+
 		float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
 
 		previousHunterMode = hunterMode;
@@ -61,6 +63,8 @@ public class DroneHunter : MonoBehaviour, IEnemy
 
 	private void FixedUpdate()
     {
+        if (player == null) return;
+
         if (hunterMode)
         {
             transform.position = Vector2.MoveTowards(rb.position, player.position, speed * Time.deltaTime);
