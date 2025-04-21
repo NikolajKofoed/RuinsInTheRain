@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class NewAbility : MonoBehaviour
@@ -7,6 +8,9 @@ public class NewAbility : MonoBehaviour
 	// Sound
 	[SerializeField] private AudioClip pickupSound;
 	private AudioSource audioSource;
+	// Text for when unlocking new ability
+	[SerializeField] public GameObject newAbilityText;
+	[SerializeField] private float showAbilityTextTimer;
 
 	private Transform player;
 
@@ -23,8 +27,18 @@ public class NewAbility : MonoBehaviour
 		{
 			PickUpSound();
 			collision.GetComponent<Player2D>().UnlockAbility(Ability); // Check Player2D scripts Unlock Ability to see what nr (abilty) you want to unlock
+			StartCoroutine(ShowNewAbilityText());
 			gameObject.SetActive(false);
 		}
+	}
+
+	// Makes it so the text is only shown for a 'x' amount of time
+	private IEnumerator ShowNewAbilityText()
+	{
+		newAbilityText.SetActive(true);
+		yield return new WaitForSeconds(showAbilityTextTimer);
+		Debug.Log("Deactivating ability text"); //Why does this not happen
+		newAbilityText.SetActive(false);
 	}
 
 	private void PickUpSound()

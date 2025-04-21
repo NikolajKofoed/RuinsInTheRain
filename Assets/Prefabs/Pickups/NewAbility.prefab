@@ -151,6 +151,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ability: 0
   pickupSound: {fileID: 8300000, guid: be3a9c52b98dd034a9b31b3d1c45321f, type: 3}
+  newAbilityText: {fileID: 0}
+  showAbilityTextTimer: 20
 --- !u!82 &-6450383421596249943
 AudioSource:
   m_ObjectHideFlags: 0
