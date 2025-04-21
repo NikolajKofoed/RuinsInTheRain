@@ -3,6 +3,7 @@ using System.Collections;
 using Unity.Cinemachine;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // refactor update to make it look cleaner - nik
 
@@ -55,8 +56,24 @@ public class Player2D : Singleton<Player2D>
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		anim = GetComponent<Animator>();
 		knockback = GetComponent<Knockback>();
+
+		// This is to deleted the player character when the player return to the main menu
+		DontDestroyOnLoad(gameObject);
+		SceneManager.sceneLoaded += OnSceneLoaded;
 	}
 
+	private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+	{
+		if (scene.name == "MainMenu")
+		{
+			Destroy(gameObject);
+		}
+	}
+
+	private void OnDestroy()
+	{
+		SceneManager.sceneLoaded -= OnSceneLoaded;
+	}
 
 	// Update is called once per frame
 	private void FixedUpdate()
