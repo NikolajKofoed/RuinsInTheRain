@@ -18,7 +18,9 @@ public class Player2D : Singleton<Player2D>
 
 	[Header("Multi jump")]
 	[SerializeField] private int ExtraJumps;
+	[SerializeField] private float JumpBuffer = 0.10f; // allows you to jump after not touching the ground for x amount of time
 	private int JumpCounter; // For resetting ExtraJump
+	private float airTime = 0;
 
 	[Header("Wall Jumping")]
 	[SerializeField] private bool canWallJump;
@@ -139,6 +141,16 @@ public class Player2D : Singleton<Player2D>
 				DashCounter = DashMaxAirAmounts;
 			}
 		}
+
+		if (!IsGrounded()) 
+		{
+			airTime += Time.deltaTime; // track airtime
+        }
+		else
+		{
+			airTime = 0f; // if on ground reset
+		}
+
 		DashCooldown -= Time.deltaTime;
 	}
 
@@ -151,7 +163,7 @@ public class Player2D : Singleton<Player2D>
 		}
 		else if (!knockback.GettingKnockedBack)
         {
-			if (IsGrounded())
+			if (IsGrounded() || JumpBuffer >= airTime)
 			{
 				playerAudio.PlayJump();
 				rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpPower);
@@ -248,7 +260,10 @@ public class Player2D : Singleton<Player2D>
 
 	private bool OnWall()
 	{
-		RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, SurfaceLayer);
+        Vector2 boxSize = boxCollider.size;
+        boxSize.y *= 0.5f; 
+
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxSize, 0, new Vector2(transform.localScale.x, 0), 0.1f, SurfaceLayer);
 		return raycastHit.collider != null;
 	}
 
