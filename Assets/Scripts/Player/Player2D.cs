@@ -26,8 +26,8 @@ public class Player2D : Singleton<Player2D>
 	[SerializeField] private bool canWallJump;
     [field: SerializeField] private float WallJumpX; //Horizontal wall jump force
     [field: SerializeField] private float WallJumpY; //Vertical wall jump force
-	// maybe we can seperate groundlayer / walllayer on the tilemap by individual tiles?
-    [Header("Layers")]
+
+	[Header("Layers")]
     [field: SerializeField] private LayerMask SurfaceLayer;
 
 	[Header("Dash")]
@@ -37,6 +37,7 @@ public class Player2D : Singleton<Player2D>
 	[field: SerializeField] private int DashMaxAirAmounts;
 	private int DashCounter; // For resetting DashAmounts
 	private float DashCooldown = 0.1f;
+
 
 	private Rigidbody2D rb;
 	private BoxCollider2D boxCollider;
@@ -142,13 +143,13 @@ public class Player2D : Singleton<Player2D>
 			}
 		}
 
-		if (!IsGrounded() && !OnWall()) 
-		{
-			airTime += Time.deltaTime; // track airtime
-        }
-		else
+		if (IsGrounded())
 		{
 			airTime = 0f; // if on ground reset
+		}
+		else
+		{
+			airTime += Time.deltaTime; // track airtime
 		}
 
 		DashCooldown -= Time.deltaTime;
@@ -203,13 +204,19 @@ public class Player2D : Singleton<Player2D>
 
 	private IEnumerator PerformDash()
 	{
+		float originalGravity = rb.gravityScale;
+		Vector2 originalVelocity = rb.linearVelocity;
+
+		rb.gravityScale = 0f;
+		rb.linearVelocity = Vector2.zero; // Stop vertical movement during dash
+
 		// Determine dash direction
 		float dashDirection = Mathf.Sign(transform.localScale.x);
 		Vector2 startPosition = transform.position;
 		Vector2 targetPosition = new Vector2(startPosition.x + dashDirection * DashLength, startPosition.y);
 
 		float timeElapsed = 0f;
-		float dashStep = 0.05f;  // Small step to check collisions frequently
+		//float dashStep = 0.05f;  // Small step to check collisions frequently
 
 		// Continue the dash while the time has not exceeded the dash duration
 		while (timeElapsed < DashDuration)
@@ -234,6 +241,8 @@ public class Player2D : Singleton<Player2D>
 
 		// Ensure the final dash position is set
 		transform.position = targetPosition;
+		// Returns gravity to normal
+		rb.gravityScale = originalGravity;
 	}
 
 	private bool CheckDashCollision(Vector2 targetPosition)
@@ -272,7 +281,7 @@ public class Player2D : Singleton<Player2D>
 		return true;
 	}
 
-	public void UnlockAbility(int abilityNr)
+	public void UnlockAbility(int abilityNr) //Read below what number correlate to which ability
 	{
 		if (abilityNr == 1)
 		{
