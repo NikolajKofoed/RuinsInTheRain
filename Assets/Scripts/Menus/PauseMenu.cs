@@ -10,8 +10,28 @@ public class PauseMenu : MonoBehaviour
     public GameObject MainMenuReturnUI;
     public GameObject QuitGameUI;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
+    {
+        // This is to make the UI canvas deleted when the player return to the main menu
+        DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+	private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+	{
+		if (scene.name == "MainMenu")
+		{
+			Destroy(gameObject);
+		}
+	}
+
+	private void OnDestroy()
+	{
+		SceneManager.sceneLoaded -= OnSceneLoaded;
+	}
+
+	// Update is called once per frame
+	void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
