@@ -163,7 +163,7 @@ public class Player2D : Singleton<Player2D>
 		}
 		else if (!knockback.GettingKnockedBack)
         {
-			if (IsGrounded() || JumpBuffer >= airTime)
+			if (IsGrounded() || (JumpBuffer >= airTime && !OnWall()))
 			{
 				playerAudio.PlayJump();
 				rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpPower);
