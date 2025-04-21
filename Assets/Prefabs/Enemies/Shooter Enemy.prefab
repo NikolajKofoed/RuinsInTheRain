@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5830577781959450942}
   - component: {fileID: 6317496667476870142}
   - component: {fileID: 6681311209418956829}
+  - component: {fileID: 5367079965114583362}
   - component: {fileID: 7085484874246369012}
   - component: {fileID: 4949638419595830568}
   - component: {fileID: -3765696732430077927}
@@ -177,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <maxHealth>k__BackingField: 5
-  knockbackForce: 10
+  knockbackForce: 15
   deathVfxPrefab: {fileID: 7221401576058908131, guid: 5eb6191deb168414abac92ac9a90de04, type: 3}
   GetsDestroyed: 0
 --- !u!114 &6317496667476870142
@@ -212,6 +213,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+--- !u!114 &5367079965114583362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887121084734342975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c441fda1eb3e643b35d1a822ed7b19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteFlashMat: {fileID: 2100000, guid: c09838ec9a240f44880f820d67751272, type: 2}
+  restoreDefaultMatTime: 0.1
 --- !u!114 &7085484874246369012
 MonoBehaviour:
   m_ObjectHideFlags: 0

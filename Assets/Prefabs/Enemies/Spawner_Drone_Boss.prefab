@@ -187,6 +187,7 @@ MonoBehaviour:
   <maxHealth>k__BackingField: 50
   knockbackForce: 15
   deathVfxPrefab: {fileID: 7221401576058908131, guid: 5eb6191deb168414abac92ac9a90de04, type: 3}
+  GetsDestroyed: 0
 --- !u!114 &7930238029273767516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,7 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currencyPrefab: {fileID: 2224924491784914626, guid: cd5922497f4549f46bfde2736f64b6f7, type: 3}
-  powerUpPrefab: {fileID: 3696135005424599854, guid: 61314d53b8f1689459acfb781ae7ceee, type: 3}
+  powerUpPrefab: {fileID: 2317463769355848905, guid: 9743dd63c78ae474d9afbc4dd3bb156e, type: 3}
   amountDropped: 15
 --- !u!114 &-3286079366944279413
 MonoBehaviour:
@@ -269,6 +270,7 @@ MonoBehaviour:
   hitSoundClip: {fileID: 8300000, guid: 7966793723334764f86c2dd0ff432f99, type: 3}
   deathSoundClip: {fileID: 8300000, guid: 3dbeba14894b98f41943d633fa985e65, type: 3}
   detectedSoundClip: {fileID: 0}
+  AttackSound: {fileID: 0}
 --- !u!114 &8572153748603200603
 MonoBehaviour:
   m_ObjectHideFlags: 0

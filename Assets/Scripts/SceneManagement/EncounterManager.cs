@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EncounterManager : Singleton<EncounterManager>
 {
@@ -8,6 +9,8 @@ public class EncounterManager : Singleton<EncounterManager>
     /// <summary>
     /// Checks if an encounter has already been completed.
     /// </summary>
+    /// 
+
     public bool HasEncounterBeenCompleted(int encounterId)
     {
         return encounterChecker.ContainsKey(encounterId) && encounterChecker[encounterId];

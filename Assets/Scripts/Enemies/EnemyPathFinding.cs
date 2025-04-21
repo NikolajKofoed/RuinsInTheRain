@@ -30,10 +30,6 @@ public class EnemyPathFinding : MonoBehaviour
             return;
         }
 
-
-
-
-
         rb.linearVelocity = speed * moveDir;
 
         if(rb.linearVelocity == Vector2.zero)

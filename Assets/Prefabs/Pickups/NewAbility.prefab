@@ -149,10 +149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630aa856eb9df264694a16b78b0ba823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ability: 0
+  Ability: 1
   pickupSound: {fileID: 8300000, guid: be3a9c52b98dd034a9b31b3d1c45321f, type: 3}
-  newAbilityText: {fileID: 0}
-  showAbilityTextTimer: 20
+  showAbilityTextTimer: 5
+  AbilityTextReference: WallJumpText
 --- !u!82 &-6450383421596249943
 AudioSource:
   m_ObjectHideFlags: 0

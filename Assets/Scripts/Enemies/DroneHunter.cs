@@ -10,6 +10,8 @@ public class DroneHunter : MonoBehaviour, IEnemy
     [SerializeField] private float huntingLineOfSight;
     [SerializeField] private Transform SpotlightPosRight;
     [SerializeField] private Transform SpotlightPosLeft;
+    [SerializeField] private float damageCooldown = .1f;
+    private float lastDamageTime = -Mathf.Infinity;
     private float lineOfSight;
     private bool hunterMode = false;
     private bool previousHunterMode = false; // track last state
@@ -88,7 +90,15 @@ public class DroneHunter : MonoBehaviour, IEnemy
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<Health>().TakeDamage(damage, transform);
+            if (Time.time >= lastDamageTime + damageCooldown)
+            {
+                Health playerHealth = collision.GetComponent<Health>();
+                if (playerHealth != null)
+                {
+                    playerHealth.TakeDamage(damage, transform);
+                    lastDamageTime = Time.time;
+                }
+            }
         }
     }
 
