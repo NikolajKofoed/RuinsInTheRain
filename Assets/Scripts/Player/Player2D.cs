@@ -64,7 +64,13 @@ public class Player2D : Singleton<Player2D>
 		SceneManager.sceneLoaded += OnSceneLoaded;
 	}
 
-	private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void Start()
+    {
+		canWallJump = PowerupManager.Instance.WallJumpUnlocked;
+		canDash = PowerupManager.Instance.DashUnlocked;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 	{
 		if (scene.name == "MainMenu")
 		{
@@ -277,10 +283,12 @@ public class Player2D : Singleton<Player2D>
 		if (abilityNr == 1)
 		{
 			canWallJump = true;
+			PowerupManager.Instance.WallJumpUnlocked = true;
 		}
 		if (abilityNr == 2)
 		{
 			canDash = true;
-		}
-	}
+            PowerupManager.Instance.DashUnlocked = true;
+        }
+    }
 }
