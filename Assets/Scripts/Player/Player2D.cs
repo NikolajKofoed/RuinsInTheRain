@@ -209,6 +209,12 @@ public class Player2D : Singleton<Player2D>
 
 	private IEnumerator PerformDash()
 	{
+		float originalGravity = rb.gravityScale;
+		Vector2 originalVelocity = rb.linearVelocity;
+
+		rb.gravityScale = 0f;
+		rb.linearVelocity = Vector2.zero; // Stop vertical movement during dash
+
 		// Determine dash direction
 		float dashDirection = Mathf.Sign(transform.localScale.x);
 		Vector2 startPosition = transform.position;
@@ -240,6 +246,7 @@ public class Player2D : Singleton<Player2D>
 
 		// Ensure the final dash position is set
 		transform.position = targetPosition;
+		rb.gravityScale = originalGravity;
 	}
 
 	private bool CheckDashCollision(Vector2 targetPosition)
