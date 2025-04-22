@@ -148,7 +148,7 @@ public class Player2D : Singleton<Player2D>
 			}
 		}
 
-		if (IsGrounded() || OnWall()) 
+		if (IsGrounded() || (OnWall() && canWallJump)) 
 		{
 			airTime = 0f; // track airtime
         }
@@ -198,7 +198,7 @@ public class Player2D : Singleton<Player2D>
 	{
 		if(!canDash) { return; }
 
-		if (!knockback.GettingKnockedBack)
+		if (!knockback.GettingKnockedBack && !OnWall() || canWallJump && !knockback.GettingKnockedBack)
 		{
 			DashCooldown = DashDuration + 0.2f; // Reset cooldown time after a dash
 			StartCoroutine(PerformDash());
