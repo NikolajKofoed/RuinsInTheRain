@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
 public class Pickup : MonoBehaviour
